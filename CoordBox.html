@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CoordBox</title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="js/Base.js"></script>
+    <script type="text/javascript" src="js/Coordinate.js"></script>
+    <script type="text/javascript" src="js/Core.js"></script>
+    <script type="text/javascript" src="js/Geo.js"></script>
+    <script type="text/javascript" src="js/wgs84_ch1903.js"></script>
+    <script type="text/javascript" src="js/latlon.js"></script>
+
+    <link rel="stylesheet" href="css/fragment.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600, 400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            /*font-family: 'Open Sans', sans-serif;*/
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+            font-weight: 300;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+
+    var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
+        '    <div class="clearfix main">' +
+        '        <div class="marker">' +
+        '            <img src="images/marker_A.png">' +
+        '        </div>' +
+        '        <div class="content">' +
+        '            <div class="description">' +
+        '                ID {0}' +
+        '            </div>' +
+        '            <div class="left">' +
+        '                <div>' +
+        '                    <a class="updown"><span class="glyphicon glyphicon-chevron-down" style="display:none"></span><span class="glyphicon glyphicon-chevron-up"></span></a>' +
+        '                </div>' +
+        '                <div class="coordinate">' +
+        '                    {1}' +
+        '                </div>' +
+        '            </div>' +
+        '            <div>' +
+        '                <a class="goto"><span class="glyphicon glyphicon-map-marker"></span></a>' +
+        '                <a class="calc"><span class="glyphicon glyphicon-new-window"></span></a>' +
+        '                <a class="edit"><span class="glyphicon glyphicon-edit"></span></a>' +
+        '                <a class="del"><span class="glyphicon glyphicon-remove-circle"></span></a>' +
+        '                <div>' +
+        '                    <a class="order"><span class="fa fa-navicon"></span></a>' +
+        '                </div>' +
+        '                <div>' +
+        '                    <a class="fav"><span class="glyphicon glyphicon-heart-empty"></span><span style="display: none;" class="glyphicon glyphicon-heart red"></span></a>' +
+        '                </div>' +
+        '            </div>' +
+        '        </div>' +
+        '    </div>' +
+        '    <div class="ext" style="display:none">' +
+        '        <table>{2}' +
+        '        </table>' +
+        '    </div>' +
+        '</li>';
+
+    var extPoints = '<tr>' +
+        '   <td class="point">{0}</td>' +
+        '   <td class="dist"><i class="fa fa-arrows-h"></i><span class="distleft">{1}km</span></td>' +
+        '   <td class="angle"><i class="fa fa-location-arrow"></i><span class="distleft">{2}°</span></td>' +
+        '   <td class="commands"><a class="goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
+        '</tr>';
+
+
+
+    $(document).ready(function () {
+
+
+        var foundCoords = ParseCoordinates();
+        var pointCount = foundCoords.length;
+        for (var i = 0; i < pointCount; i++) {
+            var ext = "";
+            var p1 = new LatLon(Number(foundCoords[i].Dec.Lat.Degree), Number(foundCoords[i].Dec.Lon.Degree));
+            for (var ii = 0; ii < pointCount; ii++) {
+                if(i!=ii) {
+                    var p2 = new LatLon(Number(foundCoords[ii].Dec.Lat.Degree), Number(foundCoords[ii].Dec.Lon.Degree));
+                    var dist = p1.distanceTo(p2);          // in km
+                    var brng = p1.bearingTo(p2);
+                    ext = ext + extPoints.format(ii,dist,Math.round(brng*10)/10);
+                }
+            }
+            var box = html_coordBox.format(i, foundCoords[i].Lv03.Format, ext);
+            $(".cordBoxList").append(box);
+        }
+
+        function GetCoordId(element) {
+            var idElement = $(element).closest('[id^=geoMapsCoordBox-]');
+            var currentId = $(idElement).attr('id');
+            var myRegexp = /.*?-(\d)+/i;
+            var match = myRegexp.exec(currentId);
+            return match[1];
+        }
+
+        $("[id^=geoMapsCoordBox-] .updown").click(function () {
+
+            var id = GetCoordId(this);
+
+            $(this).closest('[id^=geoMapsCoordBox-]').find('.ext').toggle();
+            $(this).find('.glyphicon-chevron-down').toggle();
+            $(this).find('.glyphicon-chevron-up').toggle();
+        });
+
+        $("[id^=geoMapsCoordBox-] .fav").click(function () {
+            $(this).find('.glyphicon-heart-empty').toggle();
+            $(this).find('.glyphicon-heart').toggle();
+        });
+
+        $("[id^=geoMapsCoordBox-] .showhide").click(function () {
+            $(this).find('.glyphicon-eye-close').toggle();
+            $(this).find('.glyphicon-eye-open').toggle();
+        });
+
+        $("a.allShowHide").click(function () {
+            var showElements = $(".coordBox .ext .showhide");
+            for (var i = 0; i < showElements.length; i++) {
+                var elO = showElements.eq(i).find(".glyphicon-eye-open");
+                var elC = showElements.eq(i).find(".glyphicon-eye-close");
+                if (elO.css("display") != "none") {
+                    elO.toggle();
+                    elC.toggle();
+                }
+            }
+        });
+
+        $("a.allUpDown").click(function () {
+            var downElements = $(".coordBox .ext");
+            for (var i = 0; i < downElements.length; i++) {
+                var element = downElements.eq(i);
+                if (element.css("display") != "none") {
+                    element.css("display", "none");
+                }
+            }
+            var downIcon = $(".coordBox .updown");
+            for (var i = 0; i < downIcon.length; i++) {
+                var element = downIcon.eq(i);
+                if ($(element).find('.glyphicon-chevron-down').css("display") == "inline-block") {
+                    $(element).find('.glyphicon-chevron-up').toggle();
+                    $(element).find('.glyphicon-chevron-down').toggle();
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $(".cordBoxList").sortable();
+    });
+</script>
+
+
+<div style="background-color: cadetblue;">
+    <div class="calculator">
+        <div class="coordHeader">
+            <input type="text" value="N 46° 50.796′ E 008° 27.736′"><a><span
+                class="fa fa-compass fa-lg  fa-border"></span></a>
+
+            <div>
+                <a class="allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
+                <a class="allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                <a class="allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+            </div>
+        </div>
+        <ul class="cordBoxList">        </ul>
+    </div>
+</div>
+
+
+<div style="background-color: cadetblue; padding: 50px">
+
+
+    <!-- original -->
+    <div>
+        <p>Overflow-Methode</p>
+
+        <div class="clearfix">
+            <div class="float-left">
+                <p>
+                    N 47° 16.658 E 008° 26.770
+                </p>
+            </div>
+            <div class="float-right">
+                <p>fast 90°</p>
+                <p>
+                    N 47° 16.654 E 008° 27.246
+                   </p>
+            </div>
+        </div>
+        <p>fast 180°</p>
+        <p>N 47° 16.215 E 008° 26.838</p>
+        <p>knapp 200°</p>
+        <p>N 47° 16.871 E 008° 26.155</p>
+    </div>
+
+    <div>
+        <p>Hier die Clearfix-Methode</p>
+
+        <div class="clearfix">
+            <div class="float-left">
+                <p>Der hier ist links gefloatet.</p>
+            </div>
+            <div class="float-right">
+                <p>Der hier ist rechts gefloatet</p>
+            </div>
+        </div>
+        <p>Und hier geht es ohne Floating weiter</p>
+    </div>
+
+
+</div>
+
+</body>
+</html>
