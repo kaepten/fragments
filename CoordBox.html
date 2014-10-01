@@ -64,6 +64,13 @@
         '            </div>' +
         '        </div>' +
         '    </div>' +
+        '    <div class="edit">' +
+'<table>' +
+        '   <tr>   <td> Beschreibung : </td><td><input class="test" type="text" value="ID 4 Beschreibung"> </td></tr>' +
+        '  <tr>   <td>     Koordinate : </td><td><input type="text" value=""> </td></tr>' +
+            '  <tr>   <td> </td><td> <button type="button" class="btn btn-default btn-xs">           Speichern    </button>  <button type="button" class="btn btn-default btn-xs"> Verwerfen </button></td></tr>' +
+'</table>' +
+        '    </div>' +
         '    <div class="ext" style="display:none">' +
         '        <table>{2}' +
         '        </table>' +
@@ -71,9 +78,12 @@
         '</li>';
 
     var extPoints = '<tr>' +
+        '   <td><i class="fa fa-level-up fa-rotate-90 fa-lg"></i></td>' +
         '   <td class="point">{0}</td>' +
-        '   <td class="dist"><i class="fa fa-arrows-h"></i><span class="distleft">{1}km</span></td>' +
-        '   <td class="angle"><i class="fa fa-location-arrow"></i><span class="distleft">{2}°</span></td>' +
+        '   <td><i class="fa fa-arrows-h"></i></td>' +
+        '   <td class="dist">{1}km</td>' +
+        '   <td><i class="fa fa-location-arrow"></i></td>' +
+        '   <td class="angle">{2}°</td>' +
         '   <td class="commands"><a class="goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
         '</tr>';
 
@@ -164,10 +174,9 @@
 
 
 <div style="background-color: cadetblue;">
-    <div class="calculator">
+    <div class="gM calculator reset">
         <div class="coordHeader">
-            <input type="text" value="N 46° 50.796′ E 008° 27.736′"><a><span
-                class="fa fa-compass fa-lg  fa-border"></span></a>
+            <input type="text" value="N 46° 50.796′ E 008° 27.736′"><a><span class="fa fa-compass fa-lg  fa-border"></span></a>
 
             <div>
                 <a class="allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
@@ -181,7 +190,6 @@
 
 
 <div style="background-color: cadetblue; padding: 50px">
-
 
     <!-- original -->
     <div>
@@ -204,8 +212,14 @@
         <p>N 47° 16.215 E 008° 26.838</p>
         <p>knapp 200°</p>
         <p>N 47° 16.871 E 008° 26.155</p>
+        <p>N 48° 16.098′ E 007° 11.785′</p>
     </div>
 </div>
-
+<i class="fa fa-level-up"></i> normal<br>
+<i class="fa fa-level-up fa-rotate-90"></i> fa-rotate-90<br>
+<i class="fa fa-level-up fa-rotate-180"></i> fa-rotate-180<br>
+<i class="fa fa-level-up fa-rotate-270"></i> fa-rotate-270<br>
+<i class="fa fa-level-up fa-flip-horizontal"></i> fa-flip-horizontal<br>
+<i class="fa fa-level-up fa-flip-vertical"></i> icon-flip-vertical
 </body>
 </html>
