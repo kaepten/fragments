@@ -44,31 +44,31 @@
         '            </div>' +
         '            <div class="left">' +
         '                <div>' +
-        '                    <a class="updown"><span class="glyphicon glyphicon-chevron-down" style="display:none"></span><span class="glyphicon glyphicon-chevron-up"></span></a>' +
+        '                    <a class="cmd updown"><span class="glyphicon glyphicon-chevron-down" style="display:none"></span><span class="glyphicon glyphicon-chevron-up"></span></a>' +
         '                </div>' +
         '                <div class="coordinate">' +
         '                    {1}' +
         '                </div>' +
         '            </div>' +
         '            <div>' +
-        '                <a class="goto"><span class="glyphicon glyphicon-map-marker"></span></a>' +
-        '                <a class="calc"><span class="glyphicon glyphicon-new-window"></span></a>' +
-        '                <a class="edit"><span class="glyphicon glyphicon-edit"></span></a>' +
-        '                <a class="del"><span class="glyphicon glyphicon-remove-circle"></span></a>' +
+        '                <a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a>' +
+        '                <a class="cmd calc"><span class="glyphicon glyphicon-new-window"></span></a>' +
+        '                <a class="cmd edit"><span class="glyphicon glyphicon-edit"></span></a>' +
+        '                <a class="cmd del"><span class="glyphicon glyphicon-remove-circle"></span></a>' +
         '                <div>' +
-        '                    <a class="order"><span class="fa fa-navicon"></span></a>' +
+        '                    <a class="cmd order"><span class="fa fa-navicon"></span></a>' +
         '                </div>' +
         '                <div>' +
-        '                    <a class="fav"><span class="glyphicon glyphicon-heart-empty"></span><span style="display: none;" class="glyphicon glyphicon-heart red"></span></a>' +
+        '                    <a class="cmd fav"><span class="glyphicon glyphicon-heart-empty"></span><span style="display: none;" class="glyphicon glyphicon-heart red"></span></a>' +
         '                </div>' +
         '            </div>' +
         '        </div>' +
         '    </div>' +
-        '    <div class="edit">' +
+        '    <div class="edit" style="display: none;">' +
 '<table>' +
-        '   <tr>   <td> Beschreibung : </td><td><input class="test" type="text" value="ID 4 Beschreibung"> </td></tr>' +
-        '  <tr>   <td>     Koordinate : </td><td><input type="text" value=""> </td></tr>' +
-            '  <tr>   <td> </td><td> <button type="button" class="btn btn-default btn-xs">           Speichern    </button>  <button type="button" class="btn btn-default btn-xs"> Verwerfen </button></td></tr>' +
+        '   <tr>   <td> Beschreibung : </td><td><input class="coordDesc" type="text" value="ID 4 Beschreibung"> </td></tr>' +
+        '  <tr>   <td>     Koordinate : </td><td><input class="coordValue" type="text" value=""> </td></tr>' +
+            '  <tr>   <td> </td><td> <button type="button" class="btn btn-default btn-xs save">Speichern</button>  <button type="button" class="btn btn-default btn-xs cancel">Verwerfen</button></td></tr>' +
 '</table>' +
         '    </div>' +
         '    <div class="ext" style="display:none">' +
@@ -77,20 +77,19 @@
         '    </div>' +
         '</li>';
 
-    var extPoints = '<tr>' +
+    var extPoints = '<tr class="projectionPoint-{0}">' +
         '   <td><i class="fa fa-level-up fa-rotate-90 fa-lg"></i></td>' +
-        '   <td class="point">{0}</td>' +
+        '   <td class="pointId">{0}</td>' +
         '   <td><i class="fa fa-arrows-h"></i></td>' +
-        '   <td class="dist">{1}km</td>' +
+        '   <td><span  class="dist">{1}</span>km</td>' +
         '   <td><i class="fa fa-location-arrow"></i></td>' +
-        '   <td class="angle">{2}°</td>' +
-        '   <td class="commands"><a class="goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
+        '   <td><span class="angle">{2}</span>°</td>' +
+        '   <td class="commands"><a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="cmd showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
         '</tr>';
 
 
 
     $(document).ready(function () {
-
 
         var foundCoords = ParseCoordinates();
         var pointCount = foundCoords.length;
@@ -107,6 +106,26 @@
             }
             var box = html_coordBox.format(i, foundCoords[i].Lv03.Format, ext);
             $(".cordBoxList").append(box);
+        }
+
+        function UpdateCoordinate(id, coord)
+        {
+            foundCoords[id] = coord;
+            var pointCount = foundCoords.length;
+            for (var i = 0; i < pointCount; i++) {
+                var p1 = new LatLon(Number(foundCoords[i].Dec.Lat.Degree), Number(foundCoords[i].Dec.Lon.Degree));
+                $("#geoMapsCoordBox-"+i).find('.coordinate').html(foundCoords[i].Lv03.Format);
+                for (var ii = 0; ii < pointCount; ii++) {
+                    if(i!=ii) {
+                        var p2 = new LatLon(Number(foundCoords[ii].Dec.Lat.Degree), Number(foundCoords[ii].Dec.Lon.Degree));
+                        var dist = p1.distanceTo(p2);          // in km
+                        var brng = p1.bearingTo(p2);
+
+                        $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .dist').html(dist);
+                        $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .angle').html(Math.round(brng*10)/10);
+                    }
+                }
+            }
         }
 
         function GetCoordId(element) {
@@ -134,6 +153,49 @@
         $("[id^=geoMapsCoordBox-] .showhide").click(function () {
             $(this).find('.glyphicon-eye-close').toggle();
             $(this).find('.glyphicon-eye-open').toggle();
+        });
+
+        $("a.edit").click(function () {
+            $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
+            $('div.edit').find('input.coordValue').val($(this).closest('.coordBox').find('.coordinate').html().trim());
+            $(this).closest('.coordBox').find('div.edit').toggle();
+        });
+
+        $("div.edit .cancel").click(function () {
+            $(this).closest('.coordBox').find('div.edit').toggle();
+        });
+
+        function SaveEditValues(element)
+        {
+            var coord = new Coordinate($(element).closest('div.edit').find('input.coordValue').val());
+            if (!coord.IsValid) {
+                alert('FEHLER beim Parsen der Eingabe!');
+                $('div.edit').find('input.coordValue').val($(element).closest('.coordBox').find('.coordinate').html().trim());
+                return;
+            }
+            UpdateCoordinate(GetCoordId(element), coord);
+            $(element).closest('.coordBox').find('.description').html($(element).closest('div.edit').find('input.coordDesc').val());
+            $(element).closest('.coordBox').find('div.edit').toggle();
+        }
+
+        $("div.edit .save").click(function(){
+            SaveEditValues(this);
+        });
+
+        $('div.edit').find('input.coordDesc').keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                $(this).trigger("enterKey");
+                SaveEditValues(this);
+            }
+        });
+
+        $('div.edit').find('input.coordValue').keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                $(this).trigger("enterKey");
+                SaveEditValues(this);
+            }
         });
 
         $("a.allShowHide").click(function () {
@@ -175,13 +237,17 @@
 
 <div style="background-color: cadetblue;">
     <div class="gM calculator reset">
-        <div class="coordHeader">
-            <input type="text" value="N 46° 50.796′ E 008° 27.736′"><a><span class="fa fa-compass fa-lg  fa-border"></span></a>
-
-            <div>
-                <a class="allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
-                <a class="allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
-                <a class="allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+        <div class="header clearfix">
+            <div class="left">
+                <input type="text" value="N 46° 50.796′ E 008° 27.736′">
+            </div>
+            <div class="left">
+                <a class="cmd newCoord"><span class="fa fa-compass"></span></a>
+            </div>
+            <div class="right">
+                <a class="cmd allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
+                <a class="cmd allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                <a class="cmd allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
             </div>
         </div>
         <ul class="cordBoxList">        </ul>
@@ -215,11 +281,5 @@
         <p>N 48° 16.098′ E 007° 11.785′</p>
     </div>
 </div>
-<i class="fa fa-level-up"></i> normal<br>
-<i class="fa fa-level-up fa-rotate-90"></i> fa-rotate-90<br>
-<i class="fa fa-level-up fa-rotate-180"></i> fa-rotate-180<br>
-<i class="fa fa-level-up fa-rotate-270"></i> fa-rotate-270<br>
-<i class="fa fa-level-up fa-flip-horizontal"></i> fa-flip-horizontal<br>
-<i class="fa fa-level-up fa-flip-vertical"></i> icon-flip-vertical
 </body>
 </html>
