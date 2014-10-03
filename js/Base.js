@@ -51,4 +51,85 @@ function ParseCoordinates() {
     return coords;
 }
 
+function RenderCoordinatesToPageHTML(coordsList, coordFormat) {
+    var pointCount = coordsList.length;
+    for (var i = 0; i < pointCount; i++) {
+        var ext = "";
+        var p1 = new LatLon(Number(coordsList[i].Dec.Lat.Degree), Number(coordsList[i].Dec.Lon.Degree));
+        for (var ii = 0; ii < pointCount; ii++) {
+            if (i != ii) {
+                var p2 = new LatLon(Number(coordsList[ii].Dec.Lat.Degree), Number(coordsList[ii].Dec.Lon.Degree));
+                var dist = p1.distanceTo(p2);          // in km
+                var brng = p1.bearingTo(p2);
+                ext = ext + extPoints.format(ii, dist, Math.round(brng * 10) / 10);
+            }
+        }
+        var box = html_coordBox.format(i, coordsList[i].Format(coordFormat), ext);
+        $(".cordBoxList").append(box);
+    }
+}
 
+function UpdateCoordinate(id, coords, descr) {
+    var pointCount = coords.length;
+    for (var i = 0; i < pointCount; i++) {
+        var p1 = new LatLon(Number(coords[i].Dec.Lat.Degree), Number(coords[i].Dec.Lon.Degree));
+        $("#geoMapsCoordBox-"+i).find('.coordinate').html(coords[i].Format(CoordinateFormat.Deg));
+        for (var ii = 0; ii < pointCount; ii++) {
+            if(i!=ii) {
+                var p2 = new LatLon(Number(coords[ii].Dec.Lat.Degree), Number(coords[ii].Dec.Lon.Degree));
+                var dist = p1.distanceTo(p2);          // in km
+                var brng = p1.bearingTo(p2);
+
+                $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .dist').html(dist);
+                $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .angle').html(Math.round(brng*10)/10);
+            }
+        }
+    }
+    $("#geoMapsCoordBox-"+id).find('.description').html(descr);
+    $("#geoMapsCoordBox-"+id).find('div.edit').toggle();
+}
+
+function GetCoordId(element) {
+    var idElement = $(element).closest('[id^=geoMapsCoordBox-]');
+    var currentId = $(idElement).attr('id');
+    var myRegexp = /.*?-(\d)+/i;
+    var match = myRegexp.exec(currentId);
+    return match[1];
+}
+
+function SaveEditValues(element, coordList) {
+    var coord = new Coordinate($(element).closest('div.edit').find('input.coordValue').val());
+    var descr = $(element).closest('div.edit').find('input.coordDesc').val();
+    if (!coord.IsValid) {
+        alert('FEHLER beim Parsen der Eingabe!');
+        $('div.edit').find('input.coordValue').addClass("bgred");
+        // $('div.edit').find('input.coordValue').val($(element).closest('.coordBox').find('.coordinate').html().trim());
+        return;
+    }
+    else
+    {
+        $('div.edit').find('input.coordValue').removeClass("bgred");
+    }
+    var id = GetCoordId(element);
+    coordList[id] = coord;
+    UpdateCoordinate(id, coordList, descr);
+}
+
+
+function SetCoordFormat(format)
+{
+    switch (format) {
+        case 'Dec':
+            return CoordinateFormat.Dec;
+        case 'Deg':
+            return CoordinateFormat.Deg;
+        case 'Dms':
+            return CoordinateFormat.Dms;
+        case 'Lv03':
+            return CoordinateFormat.LV03;
+        case 'Lv95':
+            return CoordinateFormat.LV95;
+        default:
+            return 'undefined';
+    }
+}

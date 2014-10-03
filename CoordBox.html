@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/Geo.js"></script>
     <script type="text/javascript" src="js/wgs84_ch1903.js"></script>
     <script type="text/javascript" src="js/latlon.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
 
     <link rel="stylesheet" href="css/fragment.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -65,11 +66,11 @@
         '        </div>' +
         '    </div>' +
         '    <div class="edit" style="display: none;">' +
-'<table>' +
-        '   <tr>   <td> Beschreibung : </td><td><input class="coordDesc" type="text" value="ID 4 Beschreibung"> </td></tr>' +
-        '  <tr>   <td>     Koordinate : </td><td><input class="coordValue" type="text" value=""> </td></tr>' +
-            '  <tr>   <td> </td><td> <button type="button" class="btn btn-default btn-xs save">Speichern</button>  <button type="button" class="btn btn-default btn-xs cancel">Verwerfen</button></td></tr>' +
-'</table>' +
+        '       <table>' +
+        '           <tr><td>Beschreibung : </td><td><input class="coordDesc" type="text" value="ID 4 Beschreibung"> </td></tr>' +
+        '           <tr><td>Koordinate : </td><td><input class="coordValue" type="text" value=""> </td></tr>' +
+        '           <tr><td></td><td> <button type="button" class="btn btn-default btn-xs save">Speichern</button>  <button type="button" class="btn btn-default btn-xs cancel">Verwerfen</button></td></tr>' +
+        '       </table>' +
         '    </div>' +
         '    <div class="ext" style="display:none">' +
         '        <table>{2}' +
@@ -91,50 +92,21 @@
 
     $(document).ready(function () {
 
-        var foundCoords = ParseCoordinates();
-        var pointCount = foundCoords.length;
-        for (var i = 0; i < pointCount; i++) {
-            var ext = "";
-            var p1 = new LatLon(Number(foundCoords[i].Dec.Lat.Degree), Number(foundCoords[i].Dec.Lon.Degree));
-            for (var ii = 0; ii < pointCount; ii++) {
-                if(i!=ii) {
-                    var p2 = new LatLon(Number(foundCoords[ii].Dec.Lat.Degree), Number(foundCoords[ii].Dec.Lon.Degree));
-                    var dist = p1.distanceTo(p2);          // in km
-                    var brng = p1.bearingTo(p2);
-                    ext = ext + extPoints.format(ii,dist,Math.round(brng*10)/10);
-                }
-            }
-            var box = html_coordBox.format(i, foundCoords[i].Lv03.Format, ext);
-            $(".cordBoxList").append(box);
-        }
+        var coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
+        var siteCoords = ParseCoordinates();
 
-        function UpdateCoordinate(id, coord)
+        // daten laden, wenn vorhanden
+        if(settingCalculator.settingsExists)
         {
-            foundCoords[id] = coord;
-            var pointCount = foundCoords.length;
-            for (var i = 0; i < pointCount; i++) {
-                var p1 = new LatLon(Number(foundCoords[i].Dec.Lat.Degree), Number(foundCoords[i].Dec.Lon.Degree));
-                $("#geoMapsCoordBox-"+i).find('.coordinate').html(foundCoords[i].Lv03.Format);
-                for (var ii = 0; ii < pointCount; ii++) {
-                    if(i!=ii) {
-                        var p2 = new LatLon(Number(foundCoords[ii].Dec.Lat.Degree), Number(foundCoords[ii].Dec.Lon.Degree));
-                        var dist = p1.distanceTo(p2);          // in km
-                        var brng = p1.bearingTo(p2);
-
-                        $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .dist').html(dist);
-                        $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .angle').html(Math.round(brng*10)/10);
-                    }
-                }
-            }
+            // gespeicherte mit vorhandenen prüfen und mergen
+        }
+        else
+        {
+            settingCalculator.Save(document.URL, siteCoords);
         }
 
-        function GetCoordId(element) {
-            var idElement = $(element).closest('[id^=geoMapsCoordBox-]');
-            var currentId = $(idElement).attr('id');
-            var myRegexp = /.*?-(\d)+/i;
-            var match = myRegexp.exec(currentId);
-            return match[1];
-        }
+        // render page
+        RenderCoordinatesToPageHTML(siteCoords, coordFormat);
 
         $("[id^=geoMapsCoordBox-] .updown").click(function () {
 
@@ -162,24 +134,12 @@
         });
 
         $("div.edit .cancel").click(function () {
+            $('div.edit').find('input.coordValue').removeClass("bgred");
             $(this).closest('.coordBox').find('div.edit').toggle();
         });
 
-        function SaveEditValues(element)
-        {
-            var coord = new Coordinate($(element).closest('div.edit').find('input.coordValue').val());
-            if (!coord.IsValid) {
-                alert('FEHLER beim Parsen der Eingabe!');
-                $('div.edit').find('input.coordValue').val($(element).closest('.coordBox').find('.coordinate').html().trim());
-                return;
-            }
-            UpdateCoordinate(GetCoordId(element), coord);
-            $(element).closest('.coordBox').find('.description').html($(element).closest('div.edit').find('input.coordDesc').val());
-            $(element).closest('.coordBox').find('div.edit').toggle();
-        }
-
         $("div.edit .save").click(function(){
-            SaveEditValues(this);
+            SaveEditValues(this, siteCoords);
         });
 
         $('div.edit').find('input.coordDesc').keyup(function(e){
@@ -230,31 +190,50 @@
     });
 
     $(function () {
-        $(".cordBoxList").sortable();
-    });
-</script>
+        $(".cordBoxList").sortable({
+            stop: function( event, ui ) {},
+            start: function( event, ui ) {}
+        });
 
+        $( ".cordBoxList" ).on( "sortstop", function( event, ui ) {
+            // console.log('stop: '+ui.item.index());
+        } );
+
+        $( ".cordBoxList" ).on( "sortstart", function( event, ui ) {
+            // console.log('start: '+ui.item.index());
+        } );
+    });
+
+
+
+</script>
 
 <div style="background-color: cadetblue;">
     <div class="gM calculator reset">
-        <div class="header clearfix">
-            <div class="left">
-                <input type="text" value="N 46° 50.796′ E 008° 27.736′">
+        <div class="header">
+            <div class="clearfix">
+                <div class="left">
+                    <input type="text" value="N 46° 50.796′ E 008° 27.736′">
+                </div>
+                <div class="left">
+                    <a class="cmd newCoord"><span class="fa fa-compass"></span></a>
+                </div>
+                <div class="right">
+                    <a class="cmd allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
+                    <a class="cmd allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                    <a class="cmd allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                </div>
             </div>
-            <div class="left">
-                <a class="cmd newCoord"><span class="fa fa-compass"></span></a>
-            </div>
-            <div class="right">
-                <a class="cmd allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
-                <a class="cmd allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
-                <a class="cmd allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+            <div>
+                <input type="radio" name="CoordFormat" value="Lv03">SwissGrid
+                <input type="radio" name="CoordFormat" value="Dms">Dms
+                <input type="radio" name="CoordFormat" value="Dec" checked>Dec
+                <input type="radio" name="CoordFormat" value="Deg">Deg
             </div>
         </div>
         <ul class="cordBoxList">        </ul>
     </div>
 </div>
-
-
 <div style="background-color: cadetblue; padding: 50px">
 
     <!-- original -->
@@ -281,5 +260,6 @@
         <p>N 48° 16.098′ E 007° 11.785′</p>
     </div>
 </div>
+
 </body>
 </html>

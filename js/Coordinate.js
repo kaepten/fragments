@@ -26,6 +26,22 @@ function Coordinate(coordinateString)
     this.IsSwissGrid = false;
     this.IsValid = false;
 
+    this.Format = function (coordinateFormat) {
+        switch (coordinateFormat) {
+            case CoordinateFormat.Dec:
+                return that.Dec.Format;
+            case CoordinateFormat.Deg:
+                return that.Deg.Format;
+            case CoordinateFormat.Dms:
+                return that.Dms.Format;
+            case CoordinateFormat.LV03:
+                return that.Lv03.Format;
+            case CoordinateFormat.LV95:
+                return that.Lv95.Format;
+            default:
+                return '';
+        }
+    }
     // initialize class (constructor
     ParsePoint(this.OriginCoordinateString);
 
@@ -241,8 +257,8 @@ Parse.LV95 = function (swissString) {
 
 var CoordFormatParser = {
     DmsPattern : "[dms.lat.p:N,E,S,W] [dms.lat.d]° [dms.lat.m]′[dms.lat.s:0].[dms.lat.s:4]″ [dms.lon.p:N,E,S,W] [dms.lon.d]° [dms.lon.m]′[dms.lon.s:0].[dms.lon.s:4]″",
-    DegPattern : "[deg.lat.p][deg.lat.d]° [deg.lat.m:0].[deg.lat.m:3]′ [deg.lon.p][deg.lon.d]° [deg.lon.m:0].[deg.lon.m:3]′",
-    DecPattern : "[dec.lat.p][dec.lat.d].[dec.lat.d:4]° [dec.lon.p][dec.lon.d:0].[dec.lon.d:4]°",
+    DegPattern : "[lat.p][lat.d:,2]° [lat.m:0].[lat.m:3]′ :-: [lon.p][lon.d:,3]° [lon.m:0].[lon.m:3]′",
+    DecPattern : "[dec.lat.p][dec.lat.d].[dec.lat.d:6]° [dec.lon.p][dec.lon.d:0].[dec.lon.d:6]°",
     Lv03Pattern : "[lv03.y:1-3,0] [lv03.y:4-6,0].[lv03.y:0,2] / [lv03.x:1-3,0] [lv03.x:4-6,0].[lv03.x:0,2]",
     Lv95Pattern : "2[lv95.y:0-3,0][lv95.y:3-6,0].[lv95.y:0,2] / 1[lv95.x:0-3,0][lv95.x:3-6,0].[lv95.x:0,2]",
 
