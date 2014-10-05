@@ -289,7 +289,7 @@
 .coordBox {
 	list-style-type: none;
 	background-color: #7b68ee;
-	width: 350px;
+	width: 400px;
 	border-bottom: solid 1px #e3e3e3;
 }
 
@@ -307,7 +307,7 @@
 
 .coordBox > .main > div.content {
 	height: 100%;
-	width: 320px;
+	width: 370px;
 	float: left;
 	background-color: #F0F0F0;
 }

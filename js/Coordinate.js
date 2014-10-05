@@ -1,4 +1,6 @@
-var CoordinateFormat = {"Deg" : "Deg","Dec" : "Dec","Dms" : "Dms", "LV03" : "LV03","LV95" : "LV95","Unknown" : null};
+var CoordinateFormat = {"Dmm" : "Dmm","Ddd" : "Ddd","Dms" : "Dms", "LV03" : "LV03","LV95" : "LV95","Unknown" : null};
+var Direction = {"East" : "E", "South" : "S", "West" : "W", "North" : "N"};
+var Dezimalstellen = 10;
 
 // Breitengrad, Längengrad = latitude, longitude = lat, lon = Nord|Süd, Ost|West (N 47 ..., E 8 ...)
 // Breitengrad, Längengrad = Nord, Ost = Y, X = (200000 600000)
@@ -10,46 +12,63 @@ function Coordinate(coordinateString)
 
     // public properties
     this.OriginCoordinateString = coordinateString;
+
     this.OriginFormat = CoordinateFormat.Unknown;
     this.Lat = "";
     this.Lon = "";
-    this.Y = "";
-    this.X = "";
-
-    this.Dec = "";
-    this.Deg = "";
-    this.Dms = "";
-    this.Lv03 = "";
-    this.Lv95 = "";
+    this.Lv03 = {X:"",Y:""};
+    this.Lv95 = {X:"",Y:""};
 
     this.IsWGS84 = false;
     this.IsSwissGrid = false;
     this.IsValid = false;
 
-    this.Format = function (coordinateFormat) {
-        switch (coordinateFormat) {
-            case CoordinateFormat.Dec:
-                return that.Dec.Format;
-            case CoordinateFormat.Deg:
-                return that.Deg.Format;
-            case CoordinateFormat.Dms:
-                return that.Dms.Format;
-            case CoordinateFormat.LV03:
-                return that.Lv03.Format;
-            case CoordinateFormat.LV95:
-                return that.Lv95.Format;
-            default:
-                return '';
-        }
-    }
     // initialize class (constructor
     ParsePoint(this.OriginCoordinateString);
+
+    this.FormatDms = CoordFormatParser.Parse(this,CoordFormatParser.DmsPattern);
+    this.FormatDmm = CoordFormatParser.Parse(this,CoordFormatParser.DmmPattern);
+    this.FormatDdd = CoordFormatParser.Parse(this,CoordFormatParser.DddPattern);
+    this.FormatLv03 = CoordFormatParser.Parse(this,CoordFormatParser.Lv03Pattern);
+    this.FormatLv95 = CoordFormatParser.Parse(this,CoordFormatParser.Lv95Pattern);
+
+    var i = 0;
+
+    this.ToFormat = function(formatString){
+        // freier Formatstring -> für Parser
+        return CoordFormatParser.Parse(that,formatString);
+    };
+
+    this.GetFormat = function(formatConst){
+        // Konstantes Format
+        if(formatConst ==CoordinateFormat.Ddd)
+        {
+            return that.FormatDdd;
+        }
+        if(formatConst ==CoordinateFormat.Dmm)
+        {
+            return that.FormatDmm;
+        }
+        if(formatConst ==CoordinateFormat.Dms)
+        {
+            return that.FormatDms;
+        }
+        if(formatConst ==CoordinateFormat.LV03)
+        {
+            return that.FormatLv03;
+        }
+        if(formatConst ==CoordinateFormat.LV95)
+        {
+            return that.FormatLv95;
+        }
+        return 'undefined';
+    };
 
     // private methods
     function CheckWGS84(){
         switch (that.OriginFormat) {
-            case CoordinateFormat.Dec:
-            case CoordinateFormat.Deg:
+            case CoordinateFormat.Ddd:
+            case CoordinateFormat.Dmm:
             case CoordinateFormat.Dms:
                 return true;
             default:
@@ -72,157 +91,168 @@ function Coordinate(coordinateString)
         }
         return true;
     }
-    function CreateObject(prefix, degree, minute, second, meter, parts, input) {
+    function CreateWGS84Object(degree, minute, second, input) {
         return {
-            Prefix : prefix,
             Degree : degree,
             Minute : minute,
             Second : second,
-            Parts  : parts,
-            Meter  : meter,
             Origin : input
         }
     }
-    function CreateWGS84Object(partsLat, partsLon) {
+    function CreateLVObject(meter, input) {
         return {
-            Lat : {
-                Degree : partsLat[0],
-                Minute : partsLat[1],
-                Second : partsLat[2]
-            },
-            Lon : {
-                Degree : partsLon[0],
-                Minute : partsLon[1],
-                Second : partsLon[2]
-            },
-            Format : ""
+            Meter : meter,
+            Origin : input
         }
     }
-    function CreateSwissObject(prefix, x, y) {
-        return {
-            Prefix : prefix,
-            X : x,
-            Y : y
-        }
-    }
+
     function CalculateDmsObjects(){
         var _parseLat = Geo.parseDMS(that.Lat.Origin);
         var _parseLon = Geo.parseDMS(that.Lon.Origin);
-        var partsLat = new Array();
-        var partsLon = new Array();
-        // dms
-        Geo.toDMSCom(_parseLat,_parseLon,partsLat, partsLon,"dms",10);
-        that.Dms = CreateWGS84Object(partsLat, partsLon);
-        that.Dms.Format = CoordFormatParser.Parse(that.Dms,CoordFormatParser.DmsPattern);
-        // dm
-        Geo.toDMSCom(_parseLat,_parseLon,partsLat, partsLon,"dm",10);
-        that.Deg = CreateWGS84Object(partsLat, partsLon);
-        that.Deg.Format = CoordFormatParser.Parse(that.Deg,CoordFormatParser.DegPattern);
-        // d
-        Geo.toDMSCom(_parseLat,_parseLon,partsLat, partsLon,"d",10);
-        that.Dec = CreateWGS84Object(partsLat, partsLon);
-        that.Dec.Format = CoordFormatParser.Parse(that.Dec,CoordFormatParser.DecPattern);
+        var partsLats = new Array();
+        var partsLons = new Array();
+        var partsLatm = new Array();
+        var partsLonm = new Array();
+        var partsLatd = new Array();
+        var partsLond = new Array();
+
+        var lats = Geo.toDMS(_parseLat,"dms",Dezimalstellen, partsLats);
+        var lons = Geo.toDMS(_parseLon,"dms",Dezimalstellen, partsLons);
+        that.Lat.Second = partsLats[2];
+        that.Lon.Second = partsLons[2];
+
+        var lats = Geo.toDMS(_parseLat,"dm",Dezimalstellen, partsLatm);
+        var lons = Geo.toDMS(_parseLon,"dm",Dezimalstellen, partsLonm);
+        that.Lat.Minute = partsLatm[1];
+        that.Lon.Minute = partsLonm[1];
+
+        var latd = Geo.toDMS(_parseLat,"d",Dezimalstellen, partsLatd);
+        var lond = Geo.toDMS(_parseLon,"d",Dezimalstellen, partsLond);
+        that.Lat.Degree = partsLatd[0];
+        that.Lon.Degree = partsLond[0];
+
+        return;
     }
-    function CalculateSwissGridObjects() {
-        that.Lv03 = CreateSwissObject("",that.X.Meter, that.Y.Meter);
-        that.Lv03.Format = CoordFormatParser.Parse(that.Lv03,CoordFormatParser.Lv03Pattern);
-        that.Lv95 = CreateSwissObject("",that.X.Meter, that.Y.Meter);
-        that.Lv95.Format = CoordFormatParser.Parse(that.Lv95,CoordFormatParser.Lv95Pattern);
-    }
+
     function ParsePoint(pointString) {
 
         var coordString = pointString.trim();
-        var pattdegRegExp=new RegExp(Parse.DegRegExp);
-        var pattdecRegExp=new RegExp(Parse.DecRegExp);
+        var pattdmmRegExp=new RegExp(Parse.DmmRegExp);
+        var pattdddRegExp=new RegExp(Parse.DddRegExp);
         var pattdmsRegExp=new RegExp(Parse.DmsRegExp);
         var pattLV03RegExp=new RegExp(Parse.LV03RegExp);
         var pattLV95RegExp=new RegExp(Parse.LV95RegExp);
 
-        if (pattdegRegExp.test(coordString)) {
-            that.OriginFormat = CoordinateFormat.Deg;
-            var parts = Parse.Deg(coordString);
+        if (pattdmmRegExp.test(coordString)) {
+            that.OriginFormat = CoordinateFormat.Dmm;
+            var parts = Parse.Dmm(coordString);
             that.Out = Core.AllElementsAsString(parts, true);
-            that.Lat = CreateObject(parts[2],parts[3],parseFloat(parts[4] +"."+parts[5]),null,null,parts,parts[1]);
-            that.Lon = CreateObject(parts[7],parts[8],parseFloat(parts[9] +"."+parts[10]),null,null,parts,parts[6]);
+            that.Lat = CreateWGS84Object(Number(parts[3]),parseFloat(parts[4] +"."+parts[5]),0,parts[1]);
+            that.Lon = CreateWGS84Object(Number(parts[9]),parseFloat(parts[10] +"."+parts[11]),0,parts[7]);
             CalculateDmsObjects();
-        } else if (pattdecRegExp.test(coordString)) {
-            that.OriginFormat = CoordinateFormat.Dec;
-            var parts = Parse.Dec(coordString);
+        } else if (pattdddRegExp.test(coordString)) {
+            that.OriginFormat = CoordinateFormat.Ddd;
+            var parts = Parse.Ddd(coordString);
             that.Out = Core.AllElementsAsString(parts, true);
-            that.Lat = CreateObject(parts[2],parseFloat(parts[3] +"."+parts[4]),null,null,null,parts,parts[1]);
-            that.Lon = CreateObject(parts[6],parseFloat(parts[7] +"."+parts[8]),null,null,null,parts,parts[5]);
+            that.Lat = CreateWGS84Object(parseFloat(parts[3] +"."+parts[4]),0,0,parts[1]);
+            that.Lon = CreateWGS84Object(parseFloat(parts[8] +"."+parts[9]),0,0,parts[6]);
             CalculateDmsObjects();
         } else if (pattdmsRegExp.test(coordString)) {
             that.OriginFormat = CoordinateFormat.Dms;
             var parts = Parse.Dms(coordString);
             that.Out = Core.AllElementsAsString(parts, true);
-            that.Lat = CreateObject(parts[2],parts[3],parts[4],parseFloat(parts[5] +"."+parts[6]),null,parts,parts[1]);
-            that.Lon = CreateObject(parts[8],parts[9],parts[10],parseFloat(parts[11] +"."+parts[12]),null,parts,parts[7]);
+            that.Lat = CreateWGS84Object(parts[3],parts[4],parseFloat(parts[5] +"."+parts[6]),parts[1]);
+            that.Lon = CreateWGS84Object(parts[10],parts[11],parseFloat(parts[12] +"."+parts[13]),parts[8]);
             CalculateDmsObjects();
         } else if (pattLV03RegExp.test(coordString)) {
             that.OriginFormat = CoordinateFormat.LV03;
             var parts = Parse.LV03(coordString);
             that.Out = Core.AllElementsAsString(parts, true);
-            that.Y = CreateObject(null,null,null,null,parseFloat(parts[2] + parts[3] + "." + parts[4]),parts, parts[1]);
-            that.X = CreateObject(null,null,null,null,parseFloat(parts[6] + parts[7] + "." + parts[8]),parts, parts[5]);
-            CalculateSwissGridObjects();
+            that.Lv03.Y = CreateLVObject(parseFloat(parts[2] + parts[3] + "." + parts[4]),parts[1]);
+            that.Lv03.X = CreateLVObject(parseFloat(parts[6] + parts[7] + "." + parts[8]),parts[5]);
         } else if (pattLV95RegExp.test(coordString)) {
             that.OriginFormat = CoordinateFormat.LV95;
             var parts = Parse.LV95(coordString);
             that.Out = Core.AllElementsAsString(parts, true);
-            that.Y = CreateObject(null,null,null,null,parseFloat(parts[3] + parts[4] + "." + parts[5]),parts, parts[1]);
-            that.X = CreateObject(null,null,null,null,parseFloat(parts[8] + parts[9] + "." + parts[10]),parts, parts[6]);
-            CalculateSwissGridObjects();
+            that.Lv95.Y = CreateLVObject(parseFloat(parts[3] + parts[4] + "." + parts[5]),parts[1]);
+            that.Lv95.X = CreateLVObject(parseFloat(parts[8] + parts[9] + "." + parts[10]),parts[6]);
         }
 
         that.IsWGS84 = CheckWGS84()
         that.IsSwissGrid = CheckSwissGrid();
         that.IsValid = CheckValid();
 
-        if(that.IsValid && that.IsSwissGrid){
-            var lat = CHtoWGSlat(that.Y.Meter,that.X.Meter);
-            var lon = CHtoWGSlng(that.Y.Meter, that.X.Meter);
-            var parts = Parse.Dec(lat +" "+lon);
-            that.Lat = CreateObject(parts[2],parseFloat(parts[3] +"."+parts[4]),null,null,null,parts,parts[1]);
-            that.Lon = CreateObject(parts[6],parseFloat(parts[7] +"."+parts[8]),null,null,null,parts,parts[5]);
-            CalculateDmsObjects();
-        } else if(that.IsValid && that.IsWGS84){
-            var _parseLat = Geo.parseDMS(that.Lat.Origin);
-            var _parseLon = Geo.parseDMS(that.Lon.Origin);
-            var y = WGStoCHy(_parseLat, _parseLon);
-            var x = WGStoCHx(_parseLat, _parseLon);
-            var parts = Parse.LV03(y + " " + x);
-            that.Y = CreateObject(null,null,null,null,parseFloat(parts[2] + parts[3] + "." + parts[4]),parts, parts[1]);
-            that.X = CreateObject(null,null,null,null,parseFloat(parts[6] + parts[7] + "." + parts[8]),parts, parts[5]);
-            CalculateSwissGridObjects();
-        }
-
+        TransformAllCoordinatesInEachOther();
         return;
+    }
+
+    function TransformAllCoordinatesInEachOther() {
+        if(that.IsValid){
+            if(that.OriginFormat == CoordinateFormat.LV95) {
+                //var req = new Request(Number(that.Lon.Degree), Number(that.Lat.Degree), NavrefFormats.LV95, NavrefFormats.LV03);
+                //var response = CallNAVREFHandler(req, NAVREFCallBackHandler);
+                var lat = CHtoWGSlat(that.Lv95.Y.Meter,that.Lv95.X.Meter);
+                var lon = CHtoWGSlng(that.Lv95.Y.Meter,that.Lv95.X.Meter);
+                var parts = Parse.Ddd(lat +" "+lon);
+                that.Lat = CreateWGS84Object(parseFloat(parts[1]), 0, 0, parts[1]);
+                that.Lon = CreateWGS84Object(parseFloat(parts[6]), 0, 0, parts[6]);
+                CalculateDmsObjects();
+            } else if(that.OriginFormat == CoordinateFormat.LV03) {
+                var lat = CHtoWGSlat(that.Lv03.Y.Meter,that.Lv03.X.Meter);
+                var lon = CHtoWGSlng(that.Lv03.Y.Meter,that.Lv03.X.Meter);
+                var parts = Parse.Ddd(lat +" "+lon);
+                that.Lat = CreateWGS84Object(parseFloat(parts[1]), 0, 0, parts[1]);
+                that.Lon = CreateWGS84Object(parseFloat(parts[6]), 0, 0, parts[6]);
+                CalculateDmsObjects();
+            } else if(that.IsWGS84) {
+                var _parseLat = Geo.parseDMS(that.Lat.Origin);
+                var _parseLon = Geo.parseDMS(that.Lon.Origin);
+                var y = WGStoCHy(_parseLat, _parseLon);
+                var x = WGStoCHx(_parseLat, _parseLon);
+                var parts = Parse.LV03(y + " " + x);
+                that.Lv03.Y = CreateLVObject(parseFloat(parts[2] + parts[3] + "." + parts[4]), parts[1]);
+                that.Lv03.X = CreateLVObject(parseFloat(parts[6] + parts[7] + "." + parts[8]), parts[5]);
+                //var req = new Request(Number(that.Lon.Degree), Number(that.Lat.Degree), NavrefFormats.Ddd, NavrefFormats.LV95);
+                //var response = CallNAVREFHandler(req, NAVREFCallBackHandler);
+            }
+        }
+    }
+
+    function NAVREFCallBackHandler(coord, req) {
+        if(req.Output == NavrefFormats.LV95) {
+            that.Lv95.Y = coord.easting;
+            that.Lv95.X = coord.northing;
+        }
+        if(req.Output == NavrefFormats.LV03) {
+            that.Lv03.Y = coord.easting;
+            that.Lv03.X = coord.northing;
+        }
     }
 }
 
+
 var Parse = {
-    DegRegExp : /^(([NS-]?)\s*(\d{1,3})\s*[°|\s]\s*(\d\d)[.,](\d*)\s*['\u2032]?)\s*(([EOW-]?)\s*(\d{1,3})\s*[°|\s]\s*(\d\d)[.,](\d*)\s*['\u2032]?)$/gmi, // DD°MM.MMMM
-    DecRegExp : /^(([NS-])?\s*(\d{1,3})[.,](\d*)\s*°?)?\s*(([EOW-])?\s*(\d{1,3})[.,](\d*)\s*°?)?$/gmi, // DD.DDDDDD°
-    DmsRegExp : /^(([NS-])\s*(\d{1,2})°\s*(\d{1,2})['′]\s*(\d{1,2})[.,]?(\d*)['|"|\u2033]+)\s*(([EOW-])\s*(\d{1,3})°\s*(\d{1,2})['′]\s*(\d{1,2})[.,]?(\d*)['|"|\u2033]+)/gmi, // DD°DD'DD.DD''
-    LV03RegExp : /^((\d\d\d)[\s.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((\d\d\d)[\s.]*(\d\d\d)[,.]?(\d*))$/gmi, // ddd ddd / ddd ddd
-    LV95RegExp : /^((Ost)?\s*2[\s]*(\d\d\d)[\s.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((Nord)?\s*1[\s]*(\d\d\d)[\s.]*(\d\d\d)[,.]?(\d*))$/gmi
+    DddRegExp : /^(([NS-])?\s*(\d{1,2})[.,]?(\d*)\s*[:d°]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[.,]?(\d*)\s*[:d°]?)\s*([EOW])?$/gmi,
+    DmmRegExp : /^(([NS-])?\s*(\d{1,2})[\s:d°]+\s*(\d{1,2})[.,]?(\d*)\s*[:'´’\u2032]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[\s:d°]+\s*(\d{1,2})[.,]?(\d*)\s*[:'´’\u2032]?)\s*([EOW])?$/gmi,
+    DmsRegExp : /^(([NS-])?\s*(\d{1,2})[\s:d°]+\s*(\d{1,2})\s*[:'´’\u2032]?\s*(\d{1,2})[.,]?(\d*)\s*[:“"\u2033]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[\s:d°]+\s*(\d{1,2})\s*[:'´’\u2032]?\s*(\d{1,2})[.,]?(\d*)\s*[:“"\u2033]?)\s*([EOW])?$/gmi,
+    LV03RegExp : /^((\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))$/gmi,
+    LV95RegExp : /^((Ost|E|East|O)?\s*2[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((Nord|N|North)?\s*1[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))$/gmi
 };
 
-Parse.Deg = function (degString) {
-    // parse coord from format = DD°MM.MMMM (Deg)
-    var myPattern = new RegExp(Parse.DegRegExp);
-    var match = myPattern.exec(degString.toString());
-    if (degString.match(Parse.DegRegExp)) {
+Parse.Dmm = function (dmmString) {
+    // parse coord from format = DD°MM.MMMM (Dmm)
+    var myPattern = new RegExp(Parse.DmmRegExp);
+    var match = myPattern.exec(dmmString.toString());
+    if (dmmString.match(Parse.DmmRegExp)) {
         return match;
     }
     return "Error";
 }
-Parse.Dec = function (decString) {
-    // parse coord from format = DD.DDDDDD° (Dec)
-    var myPattern = new RegExp(Parse.DecRegExp);
-    var match = myPattern.exec(decString.toString());
-    if (decString.match(Parse.DecRegExp)) {
+Parse.Ddd = function (dddString) {
+    // parse coord from format = DD.DDDDDD° (Ddd)
+    var myPattern = new RegExp(Parse.DddRegExp);
+    var match = myPattern.exec(dddString.toString());
+    if (dddString.match(Parse.DddRegExp)) {
         return match;
     }
     return "Error";
@@ -256,123 +286,112 @@ Parse.LV95 = function (swissString) {
 }
 
 var CoordFormatParser = {
-    DmsPattern : "[dms.lat.p:N,E,S,W] [dms.lat.d]° [dms.lat.m]′[dms.lat.s:0].[dms.lat.s:4]″ [dms.lon.p:N,E,S,W] [dms.lon.d]° [dms.lon.m]′[dms.lon.s:0].[dms.lon.s:4]″",
-    DegPattern : "[lat.p][lat.d:,2]° [lat.m:0].[lat.m:3]′ :-: [lon.p][lon.d:,3]° [lon.m:0].[lon.m:3]′",
-    DecPattern : "[dec.lat.p][dec.lat.d].[dec.lat.d:6]° [dec.lon.p][dec.lon.d:0].[dec.lon.d:6]°",
+    DmsPattern : "[lat.p:N,S] [lat.d:0,2]° [lat.m:0]′ [lat.s:0].[lat.s:3]″ [lon.p:E,W] [lon.d:0,3]° [lon.m:0]′ [lon.s:0].[lon.s:3]″",
+    DmmPattern : "[lat.p:N,S] [lat.d:0,2]° [lat.m:0].[lat.m:4]′ [lon.p:E,W] [lon.d:0,3]° [lon.m:0].[lon.m:4]′",
+    DddPattern : "[lat.p:N,S] [lat.d:0,2].[lat.d:6]° [lon.p:E,W] [lon.d:0,3].[lon.d:6]°",
     Lv03Pattern : "[lv03.y:1-3,0] [lv03.y:4-6,0].[lv03.y:0,2] / [lv03.x:1-3,0] [lv03.x:4-6,0].[lv03.x:0,2]",
-    Lv95Pattern : "2[lv95.y:0-3,0][lv95.y:3-6,0].[lv95.y:0,2] / 1[lv95.x:0-3,0][lv95.x:3-6,0].[lv95.x:0,2]",
+    Lv95Pattern : "N 2[lv95.y:0-3,0][lv95.y:3-6,0].[lv95.y:0,2] E 1[lv95.x:0-3,0][lv95.x:3-6,0].[lv95.x:0,2]",
 
     Parse : function(coord, coordFormatString)
     {
-        var reg = /\[(dec|deg|dms)\.(\w{3})\.(\w{1,2})\:?(.*?)\]/gmi;
+        var reg = /\[(lat|lon)\.(\w{1})\:?(.*?)\]/gmi;
         var regSwiss = /\[(lv03|lv95)\.(x|y):((\d-\d|\d),?(\d)?)\]/gmi;
-
         var parseOutput = coordFormatString;
         while (formatStringParts = reg.exec(coordFormatString)) {
-
-            switch (formatStringParts[1]) {
-                case "dec":
-                    parseOutput = this.FormatDms(parseOutput, formatStringParts, coord, "dec");
-                    break;
-                case "dms":
-                    parseOutput = this.FormatDms(parseOutput, formatStringParts, coord, "dms");
-                    break;
-                case "deg":
-                    parseOutput = this.FormatDms(parseOutput, formatStringParts, coord, "deg");
-                    break;
-            }
+            parseOutput = this.FormatWgs84(parseOutput, formatStringParts, coord);
         }
-
         while (formatStringParts = regSwiss.exec(coordFormatString)) {
             switch(formatStringParts[1]) {
                 case "lv03":
-                    parseOutput = this.FormatSwiss(parseOutput, formatStringParts, coord, "lv03");
+                    parseOutput = this.FormatSwiss(parseOutput, formatStringParts, coord, CoordinateFormat.LV03);
                     break;
                 case "lv95":
-                    parseOutput = this.FormatSwiss(parseOutput, formatStringParts, coord, "lv95");
+                    parseOutput = this.FormatSwiss(parseOutput, formatStringParts, coord, CoordinateFormat.LV95);
                     break;
             }
         }
         return parseOutput;
     },
 
-    FormatDms : function(coordFormatString, inputValue, coord, dmsType)  {
-        var outValue = "";
-        var dir = "";
-        switch (inputValue[3]) {
+    FormatWgs84 : function(coordFormatString, inputValue, coord)  {
+        switch (inputValue[2]) {
             case "p":
-                // lat=='' ? '' : (deg<0 ? 'S ' : 'N ')
-                if(inputValue[2] == "lat")
-                {
-                    if(inputValue[4]==null || inputValue[4] == "") {
-                        coordFormatString = coordFormatString.replace(/\[d\w{2}\.lat\.p\]/gi, coord.Lat.Degree<0 ? "-" : "");
-                    }
-                    else {
-                        var directions = inputValue[4].split(",");
-                        var dir = coord.Lat.Degree<0 ? directions[2] : directions[0];
-                        coordFormatString = coordFormatString.replace(/\[d\w{2}\.lat\.p:?(.*?)\]/gi, dir);
-                    }
+                if(inputValue[3]==null || inputValue[3] == "") {
+                    var re = new RegExp('\\['+inputValue[1]+'\\.p\\]','gi');
+                    coordFormatString = coordFormatString.replace(re, coord.Lat.Degree<0 ? "-" : "");
                 }
-                if(inputValue[2] == "lon")
-                {
-                    if(inputValue[4]==null || inputValue[4] == "") {
-                        coordFormatString = coordFormatString.replace(/\[d\w{2}\.lon\.p\]/gi, coord.Lon.Degree<0 ? "-" : "");
-                    } else {
-                        var directions = inputValue[4].split(",");
-                        var dir = coord.Lon.Degree<0 ? directions[3] : directions[1];
-                        coordFormatString = coordFormatString.replace(/\[d\w{2}\.lon\.p:?(.*?)\]/gi, dir);
-                    }
+                else {
+                    var re = new RegExp('\\['+inputValue[1]+'\.p:?(.*?)\\]','gi');
+                    var directions = inputValue[3].split(",");
+                    var testValue = inputValue[1]=="lat" ? coord.Lat.Degree : coord.Lon.Degree;
+                    var dir = testValue<0 ? directions[1] : directions[0];
+                    coordFormatString = coordFormatString.replace(re, dir);
                 }
                 break;
             case "d":
-                dir = "lat";
-                if(inputValue[2] == dir) {
-                    coordFormatString = this.FormatReplace(coordFormatString, inputValue[4], coord.Lat.Degree, dir, dmsType,"d");
-                }
-                dir = "lon";
-                if(inputValue[2] == dir){
-                    coordFormatString = this.FormatReplace(coordFormatString, inputValue[4], coord.Lon.Degree, dir, dmsType,"d");
-                }
-                break;
             case "m":
-                dir = "lat";
-                if(inputValue[2] == dir) {
-                    coordFormatString = this.FormatReplace(coordFormatString, inputValue[4], coord.Lat.Minute, dir, dmsType,"m");
-                }
-                dir = "lon";
-                if(inputValue[2] == dir){
-                    coordFormatString = this.FormatReplace(coordFormatString, inputValue[4], coord.Lon.Minute, dir, dmsType,"m");
-                }
-                break;
             case "s":
-                dir = "lat";
-                if(inputValue[2] == dir) {
-                    coordFormatString = this.FormatReplace(coordFormatString, inputValue[4], coord.Lat.Second, dir, dmsType,"s");
-                }
-                dir = "lon";
-                if(inputValue[2] == dir){
-                    coordFormatString = this.FormatReplace(coordFormatString, inputValue[4], coord.Lon.Second, dir, dmsType,"s");
-                }
+                coordFormatString = this.FormatReplace(coordFormatString, inputValue, coord);
                 break;
         }
         return coordFormatString;
     },
-
     FormatSwiss : function(coordFormatString, inputValue, coord, type){
+        var typedCoord;
+        if(type == CoordinateFormat.LV03) {
+            typedCoord = coord.Lv03;
+        } else if(type == CoordinateFormat.LV95) {
+            typedCoord = coord.Lv95;
+        }
         switch (inputValue[2]) {
             case "x":
-                coordFormatString = this.FormatReplaceSwiss(coordFormatString, inputValue,coord.X);
+                coordFormatString = this.FormatReplaceSwiss(coordFormatString, inputValue,typedCoord.X.Meter);
                 break;
             case "y":
-                coordFormatString = this.FormatReplaceSwiss(coordFormatString, inputValue,coord.Y);
+                coordFormatString = this.FormatReplaceSwiss(coordFormatString, inputValue,typedCoord.Y.Meter);
                 break;
         }
         return coordFormatString;
     },
+    FormatReplace : function(coordFormatString, inputValue, coord) {
+        var decimalNumber = inputValue[3];
+        var part = inputValue[2];
+        var dir = inputValue[1];
+        var currentValue = 0;
+        var replacePattern = inputValue[0];
+        var reP = new RegExp(/^(\d*)?(,(\d*))?$/gi);
+        var z = reP.exec(decimalNumber);
+        var padding = 0;
+        if(z) {
+            decimalNumber = Number(z[1]);
+            if(z[3]){
+                padding = Number(z[3]);
+            }
+        }
+        else {
+            decimalNumber = Number(decimalNumber);
+        }
 
-    FormatReplace : function(coordFormatString, decimalNumber, currentValue, dir, type, part) {
+        var coordDirValue = null;
+        if(inputValue[1]=="lat") {
+            coordDirValue = coord.Lat;
+        } else {
+            coordDirValue = coord.Lon;
+        }
+        switch (part) {
+            case "d":
+                currentValue = coordDirValue.Degree;
+                break;
+            case "m":
+                currentValue = coordDirValue.Minute;
+                break;
+            case "s":
+                currentValue = coordDirValue.Second;
+                break;
+        }
         currentValue = Math.abs(currentValue); // Vorzeichen entfernen
-        if(decimalNumber != null && decimalNumber != "")
+        var dezNumber = 0;
+        if(!isNaN(decimalNumber) && decimalNumber != null)
         {
             decimalNumber = Number(decimalNumber);
             if(decimalNumber==0)
@@ -383,12 +402,15 @@ var CoordFormatParser = {
                 dezNumber = String(dezNumber).split(".")[1];
             }
         }
-        else if (decimalNumber == null || decimalNumber == "")
+        else if (decimalNumber == null || isNaN(decimalNumber))
         {
-            dezNumber = runde(currentValue, Number(decimalNumber));
+            dezNumber = runde(currentValue, 0);
         }
-        var re = new RegExp('\\['+type+'\\.'+dir+'\\.'+part+'\\:?'+decimalNumber+'\\]','g');
-        return coordFormatString.replace(re, dezNumber);
+        var re = new RegExp('\\['+dir+'\\.'+part+'\\:?'+decimalNumber+'\\]','g');
+        if(padding > 0) {
+            dezNumber = String(dezNumber).fill(padding, '0',RIGHT);
+        }
+        return coordFormatString.replace(replacePattern, dezNumber);
     },
     FormatReplaceSwiss : function(coordFormatString, inputValue, xyValue){
         var cut = false;

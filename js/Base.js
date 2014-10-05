@@ -32,7 +32,6 @@ function ParseCoordinates() {
         try {
             var validCoordinates = ($(n[i]).html()).match(pageParserRegExp);
             var replaceHtml = $(n[i]).html().trim().replace(/(\r\n|\n|\r)/gm,"");
-
             for (var ii = 0; ii < validCoordinates.length; ++ii) {
 
                 var coord = new Coordinate(replaceHtml);
@@ -40,7 +39,7 @@ function ParseCoordinates() {
                     alert('Fehler beim parsen der Koordinate!');
                 }
                 coords.push(coord);
-                replaceHtml = '<span id="geoMapsCoord'+coordIndex+'" style="color:white;">'+replaceHtml+'&nbsp;('+ coord.Lv03.Format +')</span>';
+                replaceHtml = '<span id="geoMapsCoord'+coordIndex+'" style="color:white;">'+replaceHtml+'&nbsp;('+ coord.FormatLv03 +')</span>';
                 coordIndex++;
             }
             $(n[i]).html(replaceHtml);
@@ -55,28 +54,35 @@ function RenderCoordinatesToPageHTML(coordsList, coordFormat) {
     var pointCount = coordsList.length;
     for (var i = 0; i < pointCount; i++) {
         var ext = "";
-        var p1 = new LatLon(Number(coordsList[i].Dec.Lat.Degree), Number(coordsList[i].Dec.Lon.Degree));
+        var p1 = new LatLon(Number(coordsList[i].Lat.Degree), Number(coordsList[i].Lon.Degree));
         for (var ii = 0; ii < pointCount; ii++) {
             if (i != ii) {
-                var p2 = new LatLon(Number(coordsList[ii].Dec.Lat.Degree), Number(coordsList[ii].Dec.Lon.Degree));
+                var p2 = new LatLon(Number(coordsList[ii].Lat.Degree), Number(coordsList[ii].Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
                 ext = ext + extPoints.format(ii, dist, Math.round(brng * 10) / 10);
             }
         }
-        var box = html_coordBox.format(i, coordsList[i].Format(coordFormat), ext);
+        var box = html_coordBox.format(i, coordsList[i].GetFormat(coordFormat), ext);
         $(".cordBoxList").append(box);
     }
 }
 
-function UpdateCoordinate(id, coords, descr) {
+function ChangeCoordinatesFormat(coords, formatType) {
     var pointCount = coords.length;
     for (var i = 0; i < pointCount; i++) {
-        var p1 = new LatLon(Number(coords[i].Dec.Lat.Degree), Number(coords[i].Dec.Lon.Degree));
-        $("#geoMapsCoordBox-"+i).find('.coordinate').html(coords[i].Format(CoordinateFormat.Deg));
+        $("#geoMapsCoordBox-"+i).find('.coordinate').html(coords[i].GetFormat(formatType));
+    }
+}
+
+function UpdateCoordinate(id, coords, descr, formatType) {
+    var pointCount = coords.length;
+    for (var i = 0; i < pointCount; i++) {
+        var p1 = new LatLon(Number(coords[i].Lat.Degree), Number(coords[i].Lon.Degree));
+        $("#geoMapsCoordBox-"+i).find('.coordinate').html(coords[i].GetFormat(formatType));
         for (var ii = 0; ii < pointCount; ii++) {
             if(i!=ii) {
-                var p2 = new LatLon(Number(coords[ii].Dec.Lat.Degree), Number(coords[ii].Dec.Lon.Degree));
+                var p2 = new LatLon(Number(coords[ii].Lat.Degree), Number(coords[ii].Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
 
@@ -97,7 +103,7 @@ function GetCoordId(element) {
     return match[1];
 }
 
-function SaveEditValues(element, coordList) {
+function SaveEditValues(element, coordList, formatType) {
     var coord = new Coordinate($(element).closest('div.edit').find('input.coordValue').val());
     var descr = $(element).closest('div.edit').find('input.coordDesc').val();
     if (!coord.IsValid) {
@@ -112,17 +118,15 @@ function SaveEditValues(element, coordList) {
     }
     var id = GetCoordId(element);
     coordList[id] = coord;
-    UpdateCoordinate(id, coordList, descr);
+    UpdateCoordinate(id, coordList, descr, formatType);
 }
 
-
-function SetCoordFormat(format)
-{
+function SetCoordFormat(format) {
     switch (format) {
-        case 'Dec':
-            return CoordinateFormat.Dec;
-        case 'Deg':
-            return CoordinateFormat.Deg;
+        case 'Ddd':
+            return CoordinateFormat.Ddd;
+        case 'Dmm':
+            return CoordinateFormat.Dmm;
         case 'Dms':
             return CoordinateFormat.Dms;
         case 'Lv03':

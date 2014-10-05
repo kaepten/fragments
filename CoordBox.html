@@ -92,7 +92,7 @@
 
     $(document).ready(function () {
 
-        var coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
+
         var siteCoords = ParseCoordinates();
 
         // daten laden, wenn vorhanden
@@ -102,11 +102,20 @@
         }
         else
         {
-            settingCalculator.Save(document.URL, siteCoords);
+            // settingCalculator.Save(document.URL, siteCoords);
         }
 
         // render page
+        var coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
         RenderCoordinatesToPageHTML(siteCoords, coordFormat);
+
+        $("input[name=CoordFormat]").change(
+                function(){
+                    coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
+                    ChangeCoordinatesFormat(siteCoords, coordFormat);
+                    settingCalculator.SetAndSaveSettings(document.URL, siteCoords);
+                }
+        );
 
         $("[id^=geoMapsCoordBox-] .updown").click(function () {
 
@@ -139,14 +148,14 @@
         });
 
         $("div.edit .save").click(function(){
-            SaveEditValues(this, siteCoords);
+            SaveEditValues(this, siteCoords, coordFormat);
         });
 
         $('div.edit').find('input.coordDesc').keyup(function(e){
             if(e.keyCode == 13)
             {
                 $(this).trigger("enterKey");
-                SaveEditValues(this);
+                SaveEditValues(this, siteCoords, coordFormat);
             }
         });
 
@@ -154,7 +163,7 @@
             if(e.keyCode == 13)
             {
                 $(this).trigger("enterKey");
-                SaveEditValues(this);
+                SaveEditValues(this, siteCoords, coordFormat);
             }
         });
 
@@ -227,8 +236,8 @@
             <div>
                 <input type="radio" name="CoordFormat" value="Lv03">SwissGrid
                 <input type="radio" name="CoordFormat" value="Dms">Dms
-                <input type="radio" name="CoordFormat" value="Dec" checked>Dec
-                <input type="radio" name="CoordFormat" value="Deg">Deg
+                <input type="radio" name="CoordFormat" value="Ddd" checked>Ddd
+                <input type="radio" name="CoordFormat" value="Dmm">Dmm
             </div>
         </div>
         <ul class="cordBoxList">        </ul>
