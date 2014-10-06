@@ -92,28 +92,21 @@
 
     $(document).ready(function () {
 
-
         var siteCoords = ParseCoordinates();
 
-        // daten laden, wenn vorhanden
-        if(settingCalculator.settingsExists)
-        {
-            // gespeicherte mit vorhandenen prüfen und mergen
-        }
-        else
-        {
-            // settingCalculator.Save(document.URL, siteCoords);
+        var calculatorSiteSettings = LoadGeoMapsSiteSettings(document.URL);
+        if(calculatorSiteSettings == undefined) {
+            calculatorSiteSettings = CreateSiteSetting(document.URL, siteCoords); // noch nicht vorhanden, neu erstellen
         }
 
-        // render page
-        var coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
-        RenderCoordinatesToPageHTML(siteCoords, coordFormat);
+        // render page // var coordFormat = ; // SetCoordFormat($("input[name=CoordFormat]:checked").val());
+        RenderCoordinatesToPageHTML(siteCoords, calculatorSiteSettings.coordinateFormatType);
 
         $("input[name=CoordFormat]").change(
                 function(){
                     coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
                     ChangeCoordinatesFormat(siteCoords, coordFormat);
-                    settingCalculator.SetAndSaveSettings(document.URL, siteCoords);
+                    calculatorSiteSettings.coordinateFormatType = coordFormat;
                 }
         );
 

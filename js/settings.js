@@ -1,61 +1,54 @@
-var settingCalculator = {
+function SaveGeoMapsSettings(settingCalculatorObject){
+    var myJSONText = JSON.stringify(settingCalculatorObject);
+    localStorage["GeoMaps"] = myJSONText;
+}
 
-    that : this,
+function LoadGeoMapsSettings(){
+    var settingCalculatorText = localStorage["GeoMaps"];
+    if(settingCalculatorText != undefined) {
+        var settingCalculatorObject = JSON.parse(settingCalculatorText);
+        return settingCalculatorObject;
+    }
+    return undefined;
+}
 
-    userName        : '',
-    siteSettings    : [],
-    settingsExists  : false,
-    SetAndSaveSettings : function(siteUrl, siteCoords) {
-        // updatet und speichert alles settings
-        // es wird je domain www.c-dev.ch ein calculator setting gespeichert
-
-        var siteSetting = new settingSite();
-        siteSetting.url = siteUrl;
-        siteSetting.coordSettings = $("input[name=CoordFormat]:checked").val();
-        // koordinaten der site
-        for (var i = 0; i < siteCoords.length; i++) {
-            var siteCoord = new settingCoord();
-            siteCoord.pointOrigin = siteCoords[i].Origin;
-
-            set.coordSettings[i]=cord;
-        }
-
-
-
-        // speichern : prüfen ob url schon vorhanden, überschreiben oder neu anlegen
-        var found = false;
-        for(index=0; index<that.siteSetings; index++) {
-            if(that.siteSettings[i].url == siteUrl) {
-                // überschreiben
-                found = true;
+function LoadGeoMapsSiteSettings(url) {
+    var settingCalculatorObject = LoadGeoMapsSettings();
+    if(settingCalculatorObject != undefined) {
+        for (var index = 0; index < settingCalculatorObject.siteSettings.length; index++) {
+            if (settingCalculatorObject.siteSettings[i].url == url) {
+                return settingCalculatorObject.siteSettings[i];
             }
-        }
-        if(!found) {
-
-        }
-    },
-    Save            : function(url, content){
-        try {
-            var set = new settingSite();
-            set.url = url;
-            set.coordSettings = new Array(content.length);
-            for (var i = 0; i < content.length; i++) {
-                var cord = new settingCoord();
-                cord.point = content[i];
-                set.coordSettings[i]=cord;
-            }
-            this.siteSettings.push(set);
-            // this.settingsExists = true;
-        } catch(err)
-        {
-            alert(err);
         }
     }
+    return undefined;
+}
+
+function CreateSiteSetting(siteUrl, siteCoords) {
+    var siteSetting = new settingSite();
+    siteSetting.url = siteUrl;
+    siteSetting.coordSettings = [];
+    siteSetting.coordinateFormatType = CoordinateFormat.Ddd;
+    for (var i = 0; i < siteCoords.length; i++) {
+        var siteCoord = new settingCoord();
+        siteCoord.pointOrigin = siteCoords[i].OriginCoordinateString;
+        siteCoord.description =  "ID : " + i; // $("#geoMapsCoordBox-"+i+" .description").html();
+        siteSetting.coordSettings.push(siteCoord);
+    }
+    return siteSetting;
+}
+
+var settingCalculator = {
+
+    that                : this,
+    userName            : '',
+    siteSettings        : [],
+    settingsExists      : false
 };
 
 function settingSite() {
     url = '';
-    coordinateFormatType = CoordinateFormat.Ddd;
+    coordinateFormatType = undefined;
     coordSettings = [];
 }
 
