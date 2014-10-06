@@ -52,6 +52,7 @@ function settingSite() {
     coordSettings = [];
 }
 
+
 function settingCoord() {
     pointOrigin='';
     description='';
