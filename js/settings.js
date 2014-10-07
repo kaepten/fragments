@@ -1,36 +1,33 @@
-function SaveGeoMapsSettings(settingCalculatorObject){
-    var myJSONText = JSON.stringify(settingCalculatorObject);
-    localStorage["GeoMaps"] = myJSONText;
+function DeleteGeoMapsSettings(){
+    localStorage.removeItem("GeoMaps");
+    InitUI();
 }
 
-function LoadGeoMapsSettings(){
-    var settingCalculatorText = localStorage["GeoMaps"];
-    if(settingCalculatorText != undefined) {
-        var settingCalculatorObject = JSON.parse(settingCalculatorText);
-        return settingCalculatorObject;
-    }
-    return undefined;
-}
-
-function LoadGeoMapsSiteSettings(url) {
-    var settingCalculatorObject = LoadGeoMapsSettings();
-    if(settingCalculatorObject != undefined) {
-        for (var index = 0; index < settingCalculatorObject.siteSettings.length; index++) {
-            if (settingCalculatorObject.siteSettings[i].url == url) {
-                return settingCalculatorObject.siteSettings[i];
+function LoadGeoMapsSiteSettings(url, siteCoords) {
+    var settingObject;
+    var settingsText = localStorage["GeoMaps"];
+    if(settingsText != undefined) {
+        settingObject = JSON.parse(settingsText);
+        if(settingObject != undefined) {
+            for (var index = 0; index < settingObject.siteSettings.length; index++) {
+                if (settingObject.siteSettings[index].url == url) {
+                    settingObject.siteSetting = settingObject.siteSettings[index];
+                    return settingObject;
+                }
             }
         }
     }
-    return undefined;
+    settingObject = new SettingCalculator();
+    settingObject.siteSetting = CreateSiteSetting(url, siteCoords);
+    settingObject.siteSettings.push(settingObject.siteSetting);
+    return settingObject;
 }
 
 function CreateSiteSetting(siteUrl, siteCoords) {
-    var siteSetting = new settingSite();
+    var siteSetting = new SettingSite();
     siteSetting.url = siteUrl;
-    siteSetting.coordSettings = [];
-    siteSetting.coordinateFormatType = CoordinateFormat.Ddd;
     for (var i = 0; i < siteCoords.length; i++) {
-        var siteCoord = new settingCoord();
+        var siteCoord = new SettingCoord();
         siteCoord.pointOrigin = siteCoords[i].OriginCoordinateString;
         siteCoord.description =  "ID : " + i; // $("#geoMapsCoordBox-"+i+" .description").html();
         siteSetting.coordSettings.push(siteCoord);
@@ -38,26 +35,42 @@ function CreateSiteSetting(siteUrl, siteCoords) {
     return siteSetting;
 }
 
-var settingCalculator = {
+function SaveGeoMapsSettings(settingCalculatorObject){
+    var tmpSiteSetting = settingCalculatorObject.siteSetting;
+    settingCalculatorObject.siteSetting = undefined; // das muss nicht persistiert werden
+    var myJSONText = JSON.stringify(settingCalculatorObject);
+    localStorage["GeoMaps"] = myJSONText;
+    settingCalculatorObject.siteSetting = tmpSiteSetting;
+}
 
-    that                : this,
-    userName            : '',
-    siteSettings        : [],
-    settingsExists      : false
-};
+function SettingCalculator() {
+    this.userName = '';
+    this.siteSettings = new Array();
+    this.siteSetting = undefined;
+    this.settingsExists = false;
+}
 
-function settingSite() {
-    url = '';
-    coordinateFormatType = undefined;
-    coordSettings = [];
+SettingCalculator.Set = function(obj, propertyName, propertyValue, coordId) {
+    if(coordId == undefined) {
+        obj.siteSetting[propertyName] = propertyValue;
+    } else {
+        obj.siteSetting.coordSettings[coordId][propertyName] = propertyValue;
+    }
+    SaveGeoMapsSettings(obj);
+}
+
+function SettingSite() {
+    this.url = '';
+    this.coordinateFormatType = CoordinateFormat.Ddd;
+    this.coordSettings = [];
 }
 
 
-function settingCoord() {
-    pointOrigin='';
-    description='';
-    isSiteFavorite=false;
-    isGlobalFavorite=false;
-    isExpandet=false;
-    showLineTo=[];
+function SettingCoord() {
+    this.pointOrigin='';
+    this.description='';
+    this.isSiteFavorite=false;
+    this.isGlobalFavorite=false;
+    this.isExpandet=false;
+    this.showLineTo=[];
 }

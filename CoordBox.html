@@ -41,7 +41,7 @@
         '        </div>' +
         '        <div class="content">' +
         '            <div class="description">' +
-        '                ID {0}' +
+        '                {3}' +
         '            </div>' +
         '            <div class="left">' +
         '                <div>' +
@@ -88,25 +88,29 @@
         '   <td class="commands"><a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="cmd showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
         '</tr>';
 
+    var siteCoords;
+    var geoMapsSettings;
+    var coordFormat;
 
+    function InitUI() {
+        $("[id^=geoMapsCoordBox-]").remove();
+        siteCoords = ParseCoordinates();
+        geoMapsSettings = LoadGeoMapsSiteSettings(document.URL, siteCoords);
+        coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
 
+        // UI gemäss den settings aufbereiten
+        $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
+        RenderCoordinatesToPageHTML(siteCoords, geoMapsSettings);
+    }
     $(document).ready(function () {
 
-        var siteCoords = ParseCoordinates();
-
-        var calculatorSiteSettings = LoadGeoMapsSiteSettings(document.URL);
-        if(calculatorSiteSettings == undefined) {
-            calculatorSiteSettings = CreateSiteSetting(document.URL, siteCoords); // noch nicht vorhanden, neu erstellen
-        }
-
-        // render page // var coordFormat = ; // SetCoordFormat($("input[name=CoordFormat]:checked").val());
-        RenderCoordinatesToPageHTML(siteCoords, calculatorSiteSettings.coordinateFormatType);
+        InitUI();
 
         $("input[name=CoordFormat]").change(
                 function(){
                     coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
                     ChangeCoordinatesFormat(siteCoords, coordFormat);
-                    calculatorSiteSettings.coordinateFormatType = coordFormat;
+                    SettingCalculator.Set(geoMapsSettings, "coordinateFormatType", coordFormat);
                 }
         );
 
@@ -141,14 +145,14 @@
         });
 
         $("div.edit .save").click(function(){
-            SaveEditValues(this, siteCoords, coordFormat);
+            SaveEditValues(this, siteCoords, coordFormat, geoMapsSettings);
         });
 
         $('div.edit').find('input.coordDesc').keyup(function(e){
             if(e.keyCode == 13)
             {
                 $(this).trigger("enterKey");
-                SaveEditValues(this, siteCoords, coordFormat);
+                SaveEditValues(this, siteCoords, coordFormat, geoMapsSettings);
             }
         });
 
@@ -156,7 +160,7 @@
             if(e.keyCode == 13)
             {
                 $(this).trigger("enterKey");
-                SaveEditValues(this, siteCoords, coordFormat);
+                SaveEditValues(this, siteCoords, coordFormat, geoMapsSettings);
             }
         });
 
@@ -170,6 +174,10 @@
                     elC.toggle();
                 }
             }
+        });
+
+        $("a.delSettings").click(function(){
+            DeleteGeoMapsSettings();
         });
 
         $("a.allUpDown").click(function () {
@@ -211,7 +219,7 @@
 </script>
 
 <div style="background-color: cadetblue;">
-    <div class="gM calculator reset">
+    <div id="GeoMapsCalculator" class="gM calculator reset">
         <div class="header">
             <div class="clearfix">
                 <div class="left">
@@ -227,10 +235,13 @@
                 </div>
             </div>
             <div>
-                <input type="radio" name="CoordFormat" value="Lv03">SwissGrid
+                <input type="radio" name="CoordFormat" value="LV03">SwissGrid
                 <input type="radio" name="CoordFormat" value="Dms">Dms
-                <input type="radio" name="CoordFormat" value="Ddd" checked>Ddd
+                <input type="radio" name="CoordFormat" value="Ddd">Ddd
                 <input type="radio" name="CoordFormat" value="Dmm">Dmm
+            </div>
+            <div>
+                <a class="cmd delSettings">Alle Settings löschen</a>
             </div>
         </div>
         <ul class="cordBoxList">        </ul>
@@ -244,8 +255,8 @@
 
         <div class="clearfix">
             <div class="float-left">
-                <p>
-                    N 47° 16.658 E 008° 26.770
+                <p>Wie geht das,<div>wenn die Koordinate</div>  N 47° 16.654 E 008° 30.246 eingebettet ist?                     N 47° 16.658 E 008° 26.770 zwischen ein
+                wenig Text eingeklemmt.
                 </p>
             </div>
             <div class="float-right">

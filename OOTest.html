@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/OOTestLib.js"></script>
+
+</head>
+<body>
+<script>
+
+    console.log(doofesObjekt.Text);
+    doofesObjekt.Methode();
+
+    console.log(' ');
+
+    variablenObjekt.Methode();
+    variablenObjekt.ZusatzMethode();
+    console.log(variablenObjekt.Eigenschaft + " aufruf von Property");
+
+    console.log(' ');
+
+    // GlobalFunctionEins();
+    // GlobalFunctionZwei();
+
+    var obj = new Konstruktor();
+    obj.PublicFunctionEins();
+    obj.PublicFunctionZwei();
+    obj.PublicFunctionDrei(obj.ThisProp);
+    obj.PublicFunctionDrei(GlobalProp);
+
+    // obj.VarFunctionEins();
+    // obj.VarFunctionZwei();
+
+    console.log(' ');
+
+    StatischesObjekt.StatischeFunction();
+    // StatischesObjekt.TestProto(); Fehler
+
+    // var objStat = StatischesObjekt;
+    // objStat.TestProto();
+    // StatischeErweitertesObjekt.StatischeFunction();
+
+
+    variablenObjekt["Eigenschaft"] = "Wow, JS it kacke";
+    console.log(variablenObjekt.Eigenschaft);
+
+</script>
+</body>
+</html>
