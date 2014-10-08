@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/js/Coordinate.js" line="93" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="Update Handler für geänderte Werte.&#10;Bereinigung der CSS Klassen optimiert auf jQuery Zugriffe">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OOTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/OOTestLib.js" />
+    <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Base.js" afterPath="$PROJECT_DIR$/js/Base.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoordBox.html" afterPath="$PROJECT_DIR$/CoordBox.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settings.js" afterPath="$PROJECT_DIR$/js/settings.js" />
@@ -38,25 +36,15 @@
       <file leaf-file-name="CoordBox.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CoordBox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0588236" vertical-offset="4009" max-vertical-offset="4811">
-              <caret line="257" column="86" selection-start-line="257" selection-start-column="86" selection-end-line="257" selection-end-column="86" />
+            <state vertical-scroll-proportion="-8.411765" vertical-offset="2325" max-vertical-offset="5015">
+              <caret line="162" column="5" selection-start-line="162" selection-start-column="5" selection-end-line="162" selection-end-column="5" />
               <folding>
-                <marker date="1412687128113" expanded="true" signature="1997:2009" placeholder="..." />
-                <marker date="1412687128113" expanded="true" signature="3024:3038" placeholder="..." />
-                <marker date="1412687128113" expanded="true" signature="3247:3261" placeholder="..." />
-                <marker date="1412687128113" expanded="true" signature="3832:3844" placeholder="..." />
-                <marker date="1412687128113" expanded="true" signature="4553:4567" placeholder="..." />
+                <marker date="1412775469613" expanded="true" signature="1997:2009" placeholder="..." />
+                <marker date="1412775469613" expanded="true" signature="3024:3038" placeholder="..." />
+                <marker date="1412775469613" expanded="true" signature="3247:3261" placeholder="..." />
+                <marker date="1412775469613" expanded="true" signature="3832:3844" placeholder="..." />
+                <marker date="1412775469613" expanded="true" signature="4553:4567" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/settings.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -64,11 +52,29 @@
       <file leaf-file-name="Base.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30697674" vertical-offset="465" max-vertical-offset="2448">
-              <caret line="39" column="107" selection-start-line="39" selection-start-column="107" selection-end-line="39" selection-end-column="107" />
-              <folding>
-                <element signature="n#!!block;n#UpdateCoordinate#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.332" vertical-offset="1160" max-vertical-offset="3213">
+              <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coordinate.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="7548">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.2" vertical-offset="51" max-vertical-offset="2329">
+              <caret line="18" column="34" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,7 +82,7 @@
       <file leaf-file-name="OOTestLib.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OOTestLib.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="935">
               <caret line="4" column="19" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="19" />
               <folding />
             </state>
@@ -86,7 +92,7 @@
       <file leaf-file-name="OOTest.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OOTest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.730769" vertical-offset="352" max-vertical-offset="935">
+            <state vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="935">
               <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
               <folding />
             </state>
@@ -377,7 +383,13 @@
       <option name="project" value="LOCAL" />
       <updated>1412259991774</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Settings weiter ausgebaut">
+      <created>1412688179146</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1412688179146</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -406,11 +418,12 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26864034" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20338982" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15745129" sideWeight="0.757079" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33883494" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43009707" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15745129" sideWeight="0.7586207" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15745129" sideWeight="0.24292101" order="2" side_tool="false" content_ui="combo" x="1286" y="458" width="261" height="667" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3485437" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15745129" sideWeight="0.2413793" order="2" side_tool="false" content_ui="combo" x="1286" y="458" width="261" height="667" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46504855" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15550092" sideWeight="0.5011136" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3699029" sideWeight="0.5007899" order="7" side_tool="true" content_ui="tabs" />
@@ -418,7 +431,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43009707" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -467,18 +479,22 @@
     <MESSAGE value="neu organisiert mit allen Sourcen als Resourcen" />
     <MESSAGE value="HTML Testseite - Schrott entfernt" />
     <MESSAGE value="Update Handler für geänderte Werte.&#10;Bereinigung der CSS Klassen optimiert auf jQuery Zugriffe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Handler für geänderte Werte.&#10;Bereinigung der CSS Klassen optimiert auf jQuery Zugriffe" />
+    <MESSAGE value="Settings weiter ausgebaut" />
+    <option name="LAST_COMMIT_MESSAGE" value="Settings weiter ausgebaut" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="197" />
+      <option name="time" value="258" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
-        <watch expression="idSpan" />
+        <watch expression="settings.siteSetting.coordSettings" />
+        <watch expression="currentCoord.GetFormat(settings.siteSetting.coordinateFormatType)" />
+        <watch expression="settings.siteSetting.coordinateFormatType" />
+        <watch expression="currentCoord" />
       </configuration>
     </watches-manager>
   </component>
@@ -488,11 +504,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="4590">
           <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
           <folding>
-            <marker date="1412687128113" expanded="true" signature="1997:2009" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="3024:3038" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="3247:3261" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="3832:3844" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="4553:4567" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="1997:2009" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="3024:3038" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="3247:3261" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="3832:3844" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="4553:4567" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -784,7 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
           <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -796,22 +811,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7548">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OOTest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.730769" vertical-offset="352" max-vertical-offset="935">
+        <state vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="935">
           <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding />
         </state>
@@ -825,35 +827,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state vertical-scroll-proportion="-10.2" vertical-offset="51" max-vertical-offset="2329">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0588236" vertical-offset="4009" max-vertical-offset="4811">
-          <caret line="257" column="86" selection-start-line="257" selection-start-column="86" selection-end-line="257" selection-end-column="86" />
+        <state vertical-scroll-proportion="-8.411765" vertical-offset="2325" max-vertical-offset="5015">
+          <caret line="162" column="5" selection-start-line="162" selection-start-column="5" selection-end-line="162" selection-end-column="5" />
           <folding>
-            <marker date="1412687128113" expanded="true" signature="1997:2009" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="3024:3038" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="3247:3261" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="3832:3844" placeholder="..." />
-            <marker date="1412687128113" expanded="true" signature="4553:4567" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="1997:2009" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="3024:3038" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="3247:3261" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="3832:3844" placeholder="..." />
+            <marker date="1412775469613" expanded="true" signature="4553:4567" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="7548">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30697674" vertical-offset="465" max-vertical-offset="2448">
-          <caret line="39" column="107" selection-start-line="39" selection-start-column="107" selection-end-line="39" selection-end-column="107" />
-          <folding>
-            <element signature="n#!!block;n#UpdateCoordinate#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.332" vertical-offset="1160" max-vertical-offset="3213">
+          <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -97,40 +97,37 @@
         siteCoords = ParseCoordinates();
         geoMapsSettings = LoadGeoMapsSiteSettings(document.URL, siteCoords);
         coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
-
-        // UI gemäss den settings aufbereiten
         $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
-        RenderCoordinatesToPageHTML(siteCoords, geoMapsSettings);
+        RenderCoordinatesToPageHTML(geoMapsSettings);
+        InitCoordBoxHandler();
     }
-    $(document).ready(function () {
 
-        InitUI();
-
-        $("input[name=CoordFormat]").change(
-                function(){
-                    coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
-                    ChangeCoordinatesFormat(siteCoords, coordFormat);
-                    SettingCalculator.Set(geoMapsSettings, "coordinateFormatType", coordFormat);
-                }
-        );
+    function InitCoordBoxHandler() {
 
         $("[id^=geoMapsCoordBox-] .updown").click(function () {
-
             var id = GetCoordId(this);
-
             $(this).closest('[id^=geoMapsCoordBox-]').find('.ext').toggle();
             $(this).find('.glyphicon-chevron-down').toggle();
             $(this).find('.glyphicon-chevron-up').toggle();
+            SettingCalculator.Set(geoMapsSettings, "isExpandet", !geoMapsSettings.siteSetting.coordSettings[id].isExpandet, id);
         });
 
         $("[id^=geoMapsCoordBox-] .fav").click(function () {
+            var id = GetCoordId(this);
             $(this).find('.glyphicon-heart-empty').toggle();
             $(this).find('.glyphicon-heart').toggle();
+            SettingCalculator.Set(geoMapsSettings, "isSiteFavorite", !geoMapsSettings.siteSetting.coordSettings[id].isSiteFavorite, id);
         });
 
         $("[id^=geoMapsCoordBox-] .showhide").click(function () {
             $(this).find('.glyphicon-eye-close').toggle();
             $(this).find('.glyphicon-eye-open').toggle();
+            var coordId = GetCoordId(this);
+            var projectionId = GetProjectionId(this);
+            // gegenseite auch ein/ausblenden
+            $('#geoMapsCoordBox-'+projectionId+' .projectionPoint-'+coordId+' .glyphicon-eye-close').toggle();
+            $('#geoMapsCoordBox-'+projectionId+' .projectionPoint-'+coordId+' .glyphicon-eye-open').toggle();
+            SettingCalculator.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
         });
 
         $("a.edit").click(function () {
@@ -145,14 +142,14 @@
         });
 
         $("div.edit .save").click(function(){
-            SaveEditValues(this, siteCoords, coordFormat, geoMapsSettings);
+            SaveEditValues(this, coordFormat, geoMapsSettings);
         });
 
         $('div.edit').find('input.coordDesc').keyup(function(e){
             if(e.keyCode == 13)
             {
                 $(this).trigger("enterKey");
-                SaveEditValues(this, siteCoords, coordFormat, geoMapsSettings);
+                SaveEditValues(this, coordFormat, geoMapsSettings);
             }
         });
 
@@ -160,9 +157,22 @@
             if(e.keyCode == 13)
             {
                 $(this).trigger("enterKey");
-                SaveEditValues(this, siteCoords, coordFormat, geoMapsSettings);
+                SaveEditValues(this, coordFormat, geoMapsSettings);
             }
         });
+    }
+
+    $(document).ready(function () {
+
+        InitUI();
+
+        $("input[name=CoordFormat]").change(
+                function(){
+                    coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
+                    ChangeCoordinatesFormat(siteCoords, coordFormat);
+                    SettingCalculator.Set(geoMapsSettings, "coordinateFormatType", coordFormat);
+                }
+        );
 
         $("a.allShowHide").click(function () {
             var showElements = $(".coordBox .ext .showhide");
@@ -187,6 +197,8 @@
                 if (element.css("display") != "none") {
                     element.css("display", "none");
                 }
+                var id = GetCoordId(element);
+                SettingCalculator.Set(geoMapsSettings, "isExpandet",false, id);
             }
             var downIcon = $(".coordBox .updown");
             for (var i = 0; i < downIcon.length; i++) {
@@ -254,7 +266,7 @@
         <p>Overflow-Methode</p>
 
         <div class="clearfix">
-            <div class="float-left">
+            <div class="float-left">N 47° 16.654 E 008° 22.2222
                 <p>Wie geht das,<div>wenn die Koordinate</div>  N 47° 16.654 E 008° 30.246 eingebettet ist?                     N 47° 16.658 E 008° 26.770 zwischen ein
                 wenig Text eingeklemmt.
                 </p>

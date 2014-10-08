@@ -61,21 +61,40 @@ function ParseCoordinates() {
     return coords;
 }
 
-function RenderCoordinatesToPageHTML(coordsList, settings) {
-    var pointCount = coordsList.length;
+function RenderCoordinatesToPageHTML(settings) {
+    var pointCount = settings.siteSetting.coordSettings.length;
     for (var i = 0; i < pointCount; i++) {
+        var currentCoord = new Coordinate(settings.siteSetting.coordSettings[i].pointOrigin);
         var ext = "";
-        var p1 = new LatLon(Number(coordsList[i].Lat.Degree), Number(coordsList[i].Lon.Degree));
+        var p1 = new LatLon(Number(currentCoord.Lat.Degree), Number(currentCoord.Lon.Degree));
         for (var ii = 0; ii < pointCount; ii++) {
             if (i != ii) {
-                var p2 = new LatLon(Number(coordsList[ii].Lat.Degree), Number(coordsList[ii].Lon.Degree));
+                var currentProjCoord = new Coordinate(settings.siteSetting.coordSettings[ii].pointOrigin);
+                var p2 = new LatLon(Number(currentProjCoord.Lat.Degree), Number(currentProjCoord.Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
                 ext = ext + extPoints.format(ii, dist, Math.round(brng * 10) / 10);
             }
         }
-        var box = html_coordBox.format(i, coordsList[i].GetFormat(settings.siteSetting.coordinateFormatType), ext, settings.siteSetting.coordSettings[i].description);
+        var box = html_coordBox.format(i, currentCoord.GetFormat(settings.siteSetting.coordinateFormatType), ext, settings.siteSetting.coordSettings[i].description);
         $(".cordBoxList").append(box);
+    }
+    for (var i = 0; i < pointCount; i++) {
+        if (geoMapsSettings.siteSetting.coordSettings[i].isSiteFavorite) {
+            $("#geoMapsCoordBox-" + i).find('.glyphicon-heart-empty').toggle();
+            $("#geoMapsCoordBox-" + i).find('.glyphicon-heart').toggle();
+        }
+        if (geoMapsSettings.siteSetting.coordSettings[i].isExpandet) {
+            $("#geoMapsCoordBox-" + i).find('.ext').toggle();
+            $("#geoMapsCoordBox-" + i).find('.glyphicon-chevron-down').toggle();
+            $("#geoMapsCoordBox-" + i).find('.glyphicon-chevron-up').toggle();
+        }
+        for(var index=0; index<geoMapsSettings.siteSetting.coordSettings[i].showLineTo.length; index++) {
+            if(geoMapsSettings.siteSetting.coordSettings[i].showLineTo[index].isShown) {
+                $('#geoMapsCoordBox-'+i+' .projectionPoint-'+index+' .glyphicon-eye-close').toggle();
+                $('#geoMapsCoordBox-'+i+' .projectionPoint-'+index+' .glyphicon-eye-open').toggle();
+            }
+        }
     }
 }
 
@@ -109,6 +128,14 @@ function UpdateCoordinate(id, coords, descr, formatType) {
 function GetCoordId(element) {
     var idElement = $(element).closest('[id^=geoMapsCoordBox-]');
     var currentId = $(idElement).attr('id');
+    var myRegexp = /.*?-(\d)+/i;
+    var match = myRegexp.exec(currentId);
+    return match[1];
+}
+
+function GetProjectionId(element) {
+    var idElement = $(element).closest('[class^=projectionPoint-]');
+    var currentId = $(idElement).attr('class');
     var myRegexp = /.*?-(\d)+/i;
     var match = myRegexp.exec(currentId);
     return match[1];
