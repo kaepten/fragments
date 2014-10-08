@@ -8,6 +8,7 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
     var settingsText = localStorage["GeoMaps"];
     if(settingsText != undefined) {
         settingObject = JSON.parse(settingsText);
+        SettingSite.SetCoordinateObjects(settingObject);
         if(settingObject != undefined) {
             for (var index = 0; index < settingObject.siteSettings.length; index++) {
                 if (settingObject.siteSettings[index].url == url) {
@@ -19,14 +20,12 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
                         var origin = siteCoords[index].OriginCoordinateString;
                         var notFound = true;
                         for(var setIndex=0; setIndex<settingObject.siteSetting.coordSettings.length; setIndex++){
-                            var setOrigin = settingObject.siteSetting.coordSettings[setIndex].pointOrigin;
+                            var setOrigin = settingObject.siteSetting.coordSettings[setIndex].coordinate.OriginCoordinateString;
                             if(origin == setOrigin) {
                                 notFound = false; break; } // coordinate vorhanden
                         }
                         if(notFound) {
-                            var siteCoord = new SettingCoord();
-                            siteCoord.pointOrigin = siteCoords[index].OriginCoordinateString;
-                            siteCoord.description =  "ID : " + newIndex++; // $("#geoMapsCoordBox-"+i+" .description").html();
+                            var siteCoord = new SettingCoord(siteCoords[index].OriginCoordinateString, "ID : " + newIndex++);
                             tempList.push(siteCoord);
                         }
                     }
@@ -51,6 +50,7 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
                         }
                     }
                     SaveGeoMapsSettings(settingObject);
+                    SettingSite.SetCoordinateObjects(settingObject);
                     return settingObject; // abbruch des for loops
                 }
             }
@@ -59,6 +59,7 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
     settingObject = new SettingCalculator();
     settingObject.siteSetting = CreateSiteSetting(url, siteCoords);
     settingObject.siteSettings.push(settingObject.siteSetting);
+    SettingSite.SetCoordinateObjects(settingObject);
     return settingObject;
 }
 
@@ -66,9 +67,7 @@ function CreateSiteSetting(siteUrl, siteCoords) {
     var siteSetting = new SettingSite();
     siteSetting.url = siteUrl;
     for (var i = 0; i < siteCoords.length; i++) {
-        var siteCoord = new SettingCoord();
-        siteCoord.pointOrigin = siteCoords[i].OriginCoordinateString;
-        siteCoord.description =  "ID : " + i; // $("#geoMapsCoordBox-"+i+" .description").html();
+        var siteCoord = new SettingCoord(siteCoords[i].OriginCoordinateString, "ID : " + i);
         for (var iL = 0; iL < siteCoords.length; iL++) {
             siteCoord.showLineTo.push({coordId:iL,isShown:false});
         }
@@ -79,6 +78,7 @@ function CreateSiteSetting(siteUrl, siteCoords) {
 
 function SaveGeoMapsSettings(settingCalculatorObject){
     var tmpSiteSetting = settingCalculatorObject.siteSetting;
+    SettingSite.ClearCoordinateObjects(tmpSiteSetting); // das muss nicht persistiert werden.
     settingCalculatorObject.siteSetting = undefined; // das muss nicht persistiert werden
     var myJSONText = JSON.stringify(settingCalculatorObject);
     localStorage["GeoMaps"] = myJSONText;
@@ -121,11 +121,28 @@ function SettingSite() {
     this.coordSettings = [];
 }
 
+SettingSite.ClearCoordinateObjects = function(coordSettings) {
+    for (var i = 0; i < coordSettings.length; i++) {
+        coordSettings[i].coordinate = undefined;
+    }
+}
 
-function SettingCoord() {
-    this.pointOrigin='';
-    this.description='';
+SettingSite.SetCoordinateObjects = function(coordSettings) {
+    for(var i=0; i<coordSettings.siteSettings.length; i++) {
+        for (var ii = 0; ii < coordSettings.siteSettings[i].coordSettings.length; ii++) {
+            if (coordSettings.siteSettings[i].coordSettings[ii].coordinate == undefined || coordSettings.siteSettings[i].coordSettings[ii].coordinate == '') {
+                coordSettings.siteSettings[i].coordSettings[ii].coordinate = new Coordinate(coordSettings.siteSettings[i].coordSettings[ii].pointOrigin);
+            }
+        }
+    }
+}
+
+
+function SettingCoord(origin, description) {
+    this.pointOrigin=origin; // redundant, weil coordinate objekt NICHT gespeichert wird!
+    this.description=description;
     this.isSiteFavorite=false;
     this.isExpandet=false;
-    this.showLineTo=[];
+    this.showLineTo=[]; // coordId isShown
+    this.coordinate= new Coordinate(origin);
 }

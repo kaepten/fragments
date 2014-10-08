@@ -39,31 +39,6 @@ function Coordinate(coordinateString)
         return CoordFormatParser.Parse(that,formatString);
     };
 
-    this.GetFormat = function(formatConst){
-        // Konstantes Format
-        if(formatConst ==CoordinateFormat.Ddd)
-        {
-            return that.FormatDdd;
-        }
-        if(formatConst ==CoordinateFormat.Dmm)
-        {
-            return that.FormatDmm;
-        }
-        if(formatConst ==CoordinateFormat.Dms)
-        {
-            return that.FormatDms;
-        }
-        if(formatConst ==CoordinateFormat.LV03)
-        {
-            return that.FormatLv03;
-        }
-        if(formatConst ==CoordinateFormat.LV95)
-        {
-            return that.FormatLv95;
-        }
-        return 'undefined';
-    };
-
     // private methods
     function CheckWGS84(){
         switch (that.OriginFormat) {
@@ -229,6 +204,31 @@ function Coordinate(coordinateString)
         }
     }
 }
+
+Coordinate.GetFormat = function(formatConst, coordinate){
+    // Konstantes Format
+    if(formatConst ==CoordinateFormat.Ddd)
+    {
+        return coordinate.FormatDdd;
+    }
+    if(formatConst ==CoordinateFormat.Dmm)
+    {
+        return coordinate.FormatDmm;
+    }
+    if(formatConst ==CoordinateFormat.Dms)
+    {
+        return coordinate.FormatDms;
+    }
+    if(formatConst ==CoordinateFormat.LV03)
+    {
+        return coordinate.FormatLv03;
+    }
+    if(formatConst ==CoordinateFormat.LV95)
+    {
+        return coordinate.FormatLv95;
+    }
+    return 'undefined';
+};
 
 
 var Parse = {
