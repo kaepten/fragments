@@ -9,7 +9,7 @@ function ParseCoordinates() {
                 if (t) {
                     if (lastParent == undefined || lastParent != n.parentNode) {
                         lastParent = n.parentNode;
-
+                        //TODO : Problem, wenn auf derselben Zeile schon eine Vorhandene vorkommt!
                         var idElement = $(n).closest('[id^=GeoMapsCalculator]'); // koordinaten im Calculator auslassen
                         if(idElement.length==0) {
                             out.push(n.parentNode);

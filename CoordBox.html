@@ -132,8 +132,18 @@
 
         $("a.edit").click(function () {
             $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
-            $('div.edit').find('input.coordValue').val($(this).closest('.coordBox').find('.coordinate').html().trim());
+            var id = GetCoordId(this);
+            var coord = geoMapsSettings.siteSetting.coordSettings[id].coordinate.OriginCoordinateString;
+            $('div.edit').find('input.coordValue').val(coord);
             $(this).closest('.coordBox').find('div.edit').toggle();
+        });
+
+        $("a.del").click(function () {
+            var id = GetCoordId(this);
+            geoMapsSettings.siteSetting.coordSettings.splice(id,1);
+            $("[id^=geoMapsCoordBox-]").remove();
+            RenderCoordinatesToPageHTML(geoMapsSettings);
+            InitCoordBoxHandler();
         });
 
         $("div.edit .cancel").click(function () {
@@ -264,25 +274,10 @@
     <!-- original -->
     <div>
         <p>Overflow-Methode</p>
+        <p>N 47° 16.654 E 008° 11.11111111</p>
+        <p>N 47° 16.654 E 008° 22.22</p>
 
-        <div class="clearfix">
-            <div class="float-left">N 47° 16.654 E 008° 22.2222
-                <p>Wie geht das,<div>wenn die Koordinate</div>  N 47° 16.654 E 008° 30.246 eingebettet ist?                     N 47° 16.658 E 008° 26.770 zwischen ein
-                wenig Text eingeklemmt.
-                </p>
-            </div>
-            <div class="float-right">
-                <p>fast 90°</p>
-                <p>
-                    N 47° 16.654 E 008° 27.246
-                   </p>
-            </div>
-        </div>
-        <p>fast 180°</p>
-        <p>N 47° 16.215 E 008° 26.838</p>
-        <p>knapp 200°</p>
-        <p>N 47° 16.871 E 008° 26.155</p>
-        <p>N 48° 16.098′ E 007° 11.785′</p>
+        <p>N 47° 16.654 E 008° 33.333333</p>
     </div>
 </div>
 

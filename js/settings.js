@@ -8,27 +8,35 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
     var settingsText = localStorage["GeoMaps"];
     if(settingsText != undefined) {
         settingObject = JSON.parse(settingsText);
-        SettingSite.SetCoordinateObjects(settingObject);
         if(settingObject != undefined) {
             for (var index = 0; index < settingObject.siteSettings.length; index++) {
                 if (settingObject.siteSettings[index].url == url) {
                     settingObject.siteSetting = settingObject.siteSettings[index];
+                    SettingSite.SetCoordinateObjects(settingObject.siteSetting);
+
                     // schnittmenge bilden von Seite zu gespeicherten
                     var tempList = [];
-                    var newIndex = settingObject.siteSetting.coordSettings.length;
+                    var newIndex = 0;
+                    if(settingObject.siteSetting.coordSettings != undefined && settingObject.siteSetting.coordSettings != '') {
+                        newIndex = settingObject.siteSetting.coordSettings.length; // ans Ende hinzufügen bei vorhandenen
+                    }
                     for(var index=0; index<siteCoords.length; index++) {
-                        var origin = siteCoords[index].OriginCoordinateString;
+                        var origin = siteCoords[index].OriginCoordinateString; // Coordinate Objekte
                         var notFound = true;
                         for(var setIndex=0; setIndex<settingObject.siteSetting.coordSettings.length; setIndex++){
                             var setOrigin = settingObject.siteSetting.coordSettings[setIndex].coordinate.OriginCoordinateString;
                             if(origin == setOrigin) {
                                 notFound = false; break; } // coordinate vorhanden
+                            else {
+                                notFound = true;
+                            }
                         }
                         if(notFound) {
                             var siteCoord = new SettingCoord(siteCoords[index].OriginCoordinateString, "ID : " + newIndex++);
                             tempList.push(siteCoord);
                         }
                     }
+                    // neue abfüllen und lineTo generieren
                     for(var i=0; i<tempList.length;i++) {
                         var siteCoord = tempList[i];
                         settingObject.siteSetting.coordSettings.push(siteCoord);
@@ -49,8 +57,27 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
                             }
                         }
                     }
+
+                    // checken, ob in den Settings nicht Favs sind, die auf der Seite nicht mehr existieren
+                    var checkedCoordinates = [];
+                    var found = false;
+                    for (var coordIndex = 0; coordIndex < settingObject.siteSetting.coordSettings.length; coordIndex++) {
+                        for(var index=0; index<siteCoords.length; index++) {
+                            if(siteCoords[index].OriginCoordinateString == settingObject.siteSetting.coordSettings[coordIndex].coordinate.OriginCoordinateString) {
+                                found = true;
+                                break;
+                            } else {
+                                found = false;
+                            }
+                        }
+                        if(found || settingObject.siteSetting.coordSettings[coordIndex].isSiteFavorite) {
+                            checkedCoordinates.push(settingObject.siteSetting.coordSettings[coordIndex]);
+                        }
+                    }
+                    settingObject.siteSetting.coordSettings = checkedCoordinates;
+
                     SaveGeoMapsSettings(settingObject);
-                    SettingSite.SetCoordinateObjects(settingObject);
+                    SettingSite.SetCoordinateObjects(settingObject.siteSetting); // update nochmals der neu hinzugefügten!
                     return settingObject; // abbruch des for loops
                 }
             }
@@ -59,7 +86,8 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
     settingObject = new SettingCalculator();
     settingObject.siteSetting = CreateSiteSetting(url, siteCoords);
     settingObject.siteSettings.push(settingObject.siteSetting);
-    SettingSite.SetCoordinateObjects(settingObject);
+    SaveGeoMapsSettings(settingObject);
+    SettingSite.SetCoordinateObjects(settingObject.siteSetting);
     return settingObject;
 }
 
@@ -77,12 +105,18 @@ function CreateSiteSetting(siteUrl, siteCoords) {
 }
 
 function SaveGeoMapsSettings(settingCalculatorObject){
-    var tmpSiteSetting = settingCalculatorObject.siteSetting;
-    SettingSite.ClearCoordinateObjects(tmpSiteSetting); // das muss nicht persistiert werden.
+    var backupSiteSetting = jQuery.extend(true, {}, settingCalculatorObject.siteSetting);
+    var saveableSiteSetting = SettingSite.ClearCoordinateObjects(settingCalculatorObject.siteSetting); // das muss nicht persistiert werden.
+    for(var index=0; index<settingCalculatorObject.siteSettings.length; index++) {
+        if(settingCalculatorObject.siteSettings[index].url == settingCalculatorObject.siteSetting.url) {
+            settingCalculatorObject.siteSettings[index].coordSettings = saveableSiteSetting;
+        }
+    }
     settingCalculatorObject.siteSetting = undefined; // das muss nicht persistiert werden
     var myJSONText = JSON.stringify(settingCalculatorObject);
     localStorage["GeoMaps"] = myJSONText;
-    settingCalculatorObject.siteSetting = tmpSiteSetting;
+
+    settingCalculatorObject.siteSetting = backupSiteSetting;
 }
 
 function SettingCalculator() {
@@ -91,7 +125,6 @@ function SettingCalculator() {
     this.siteSetting = undefined;
     this.settingsExists = false;
 }
-
 SettingCalculator.Set = function(obj, propertyName, propertyValue, coordId) {
     if(coordId == undefined) {
         obj.siteSetting[propertyName] = propertyValue;
@@ -100,7 +133,6 @@ SettingCalculator.Set = function(obj, propertyName, propertyValue, coordId) {
     }
     SaveGeoMapsSettings(obj);
 }
-
 SettingCalculator.SetProjectionShowLineTo = function(obj, coordId, showLineToCoordId) {
     for(var index=0; index<obj.siteSetting.coordSettings[coordId].showLineTo.length; index++) {
         if (obj.siteSetting.coordSettings[coordId].showLineTo[index].coordId == showLineToCoordId) {
@@ -117,26 +149,26 @@ SettingCalculator.SetProjectionShowLineTo = function(obj, coordId, showLineToCoo
 
 function SettingSite() {
     this.url = '';
-    this.coordinateFormatType = CoordinateFormat.Ddd;
+    this.coordinateFormatType = CoordinateFormat.Dmm;
     this.coordSettings = [];
 }
-
-SettingSite.ClearCoordinateObjects = function(coordSettings) {
-    for (var i = 0; i < coordSettings.length; i++) {
-        coordSettings[i].coordinate = undefined;
+SettingSite.ClearCoordinateObjects = function(siteSetting) {
+    var favorites = [];
+    for (var i = 0; i < siteSetting.coordSettings.length; i++) {
+        if(siteSetting.coordSettings[i].isSiteFavorite || true) {
+            siteSetting.coordSettings[i].coordinate = undefined;
+            favorites.push(siteSetting.coordSettings[i]);
+        }
     }
+    return favorites;
 }
-
-SettingSite.SetCoordinateObjects = function(coordSettings) {
-    for(var i=0; i<coordSettings.siteSettings.length; i++) {
-        for (var ii = 0; ii < coordSettings.siteSettings[i].coordSettings.length; ii++) {
-            if (coordSettings.siteSettings[i].coordSettings[ii].coordinate == undefined || coordSettings.siteSettings[i].coordSettings[ii].coordinate == '') {
-                coordSettings.siteSettings[i].coordSettings[ii].coordinate = new Coordinate(coordSettings.siteSettings[i].coordSettings[ii].pointOrigin);
-            }
+SettingSite.SetCoordinateObjects = function(siteSetting) {
+    for(var i=0; i<siteSetting.coordSettings.length; i++) {
+        if (siteSetting.coordSettings[i].coordinate == undefined || siteSetting.coordSettings[i].coordinate == '') {
+            siteSetting.coordSettings[i].coordinate = new Coordinate(siteSetting.coordSettings[i].pointOrigin);
         }
     }
 }
-
 
 function SettingCoord(origin, description) {
     this.pointOrigin=origin; // redundant, weil coordinate objekt NICHT gespeichert wird!
