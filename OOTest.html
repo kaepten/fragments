@@ -45,6 +45,17 @@
     variablenObjekt["Eigenschaft"] = "Wow, JS it kacke";
     console.log(variablenObjekt.Eigenschaft);
 
+    // test array
+    var testArray = [];
+    for(var index=0; index<10; index++){
+        var testObjekt = {id:index,name:"name"+index};
+        testArray.push(testObjekt);
+    }
+
+    var x =testArray[0];
+    x["name"]="guguguguguguguggu";
+    console.log("TEST "+testArray[0]["name"]);
+
 </script>
 </body>
 </html>

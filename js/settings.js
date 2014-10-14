@@ -13,7 +13,6 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
                 if (settingObject.siteSettings[index].url == url) {
                     settingObject.siteSetting = settingObject.siteSettings[index];
                     SettingSite.SetCoordinateObjects(settingObject.siteSetting);
-
                     // schnittmenge bilden von Seite zu gespeicherten
                     var tempList = [];
                     var newIndex = 0;
@@ -32,7 +31,9 @@ function LoadGeoMapsSiteSettings(url, siteCoords) {
                             }
                         }
                         if(notFound) {
-                            var siteCoord = new SettingCoord(siteCoords[index].OriginCoordinateString, "ID : " + newIndex++);
+                            // var siteCoord = new SettingCoord(siteCoords[index].OriginCoordinateString, "ID : " + newIndex++);
+                            var newGUID = getGUID();
+                            var siteCoord = new SettingCoord(siteCoords[index].OriginCoordinateString, "ID : " + newGUID, newGUID);
                             tempList.push(siteCoord);
                         }
                     }
@@ -95,7 +96,8 @@ function CreateSiteSetting(siteUrl, siteCoords) {
     var siteSetting = new SettingSite();
     siteSetting.url = siteUrl;
     for (var i = 0; i < siteCoords.length; i++) {
-        var siteCoord = new SettingCoord(siteCoords[i].OriginCoordinateString, "ID : " + i);
+        var newGUID = getGUID();
+        var siteCoord = new SettingCoord(siteCoords[i].OriginCoordinateString, "ID : " + newGUID, newGUID);
         for (var iL = 0; iL < siteCoords.length; iL++) {
             siteCoord.showLineTo.push({coordId:iL,isShown:false});
         }
@@ -170,7 +172,8 @@ SettingSite.SetCoordinateObjects = function(siteSetting) {
     }
 }
 
-function SettingCoord(origin, description) {
+function SettingCoord(origin, description, id) {
+    this.id = id;
     this.pointOrigin=origin; // redundant, weil coordinate objekt NICHT gespeichert wird!
     this.description=description;
     this.isSiteFavorite=false;

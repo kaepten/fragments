@@ -62,24 +62,24 @@ function ParseCoordinates() {
 }
 
 function RenderCoordinatesToPageHTML(settings) {
-    var pointCount = settings.siteSetting.coordSettings.length;
-    for (var i = 0; i < pointCount; i++) {
-        var currentCoord = new Coordinate(settings.siteSetting.coordSettings[i].pointOrigin);
+    var coordsCount = settings.siteSetting.coordSettings.length;
+    for (var currentCoord = 0; currentCoord < coordsCount; currentCoord++) {
+        var currentCoord = settings.siteSetting.coordSettings[currentCoord];
         var ext = "";
-        var p1 = new LatLon(Number(currentCoord.Lat.Degree), Number(currentCoord.Lon.Degree));
-        for (var ii = 0; ii < pointCount; ii++) {
-            if (i != ii) {
-                var currentProjCoord = new Coordinate(settings.siteSetting.coordSettings[ii].pointOrigin);
+        var p1 = new LatLon(Number(currentCoord.coordinate.Lat.Degree), Number(currentCoord.coordinate.Lon.Degree));
+        for (var lineToCoordinate = 0; lineToCoordinate < coordsCount; lineToCoordinate++) {
+            if (currentCoord != lineToCoordinate) {
+                var currentProjCoord = settings.siteSetting.coordSettings[lineToCoordinate].coordinate;
                 var p2 = new LatLon(Number(currentProjCoord.Lat.Degree), Number(currentProjCoord.Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
-                ext = ext + extPoints.format(ii, dist, Math.round(brng * 10) / 10);
+                ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinate].id, dist, Math.round(brng * 10) / 10);
             }
         }
-        var box = html_coordBox.format(i, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,settings.siteSetting.coordSettings[i].coordinate), ext, settings.siteSetting.coordSettings[i].description);
+        var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, currentCoord.description);
         $(".cordBoxList").append(box);
     }
-    for (var i = 0; i < pointCount; i++) {
+    for (var i = 0; i < coordsCount; i++) {
         if (geoMapsSettings.siteSetting.coordSettings[i].isSiteFavorite) {
             $("#geoMapsCoordBox-" + i).find('.glyphicon-heart-empty').toggle();
             $("#geoMapsCoordBox-" + i).find('.glyphicon-heart').toggle();
@@ -97,11 +97,10 @@ function RenderCoordinatesToPageHTML(settings) {
         }
     }
 }
-//TODO : prüfen, was coords ist!
-function ChangeCoordinatesFormat(coords, formatType) {
-    var pointCount = coords.length;
-    for (var i = 0; i < pointCount; i++) {
-        $("#geoMapsCoordBox-"+i).find('.coordinate').html(Coordinate.GetFormat(formatType, coords[i]));
+
+function ChangeCoordinatesFormat(settings, formatType) {
+    for (var i = 0; i < settings.siteSetting.coordSettings.length; i++) {
+        $("#geoMapsCoordBox-"+settings.siteSetting.coordSettings[i].id).find('.coordinate').html(Coordinate.GetFormat(formatType, settings.siteSetting.coordSettings[i].coordinate));
     }
 }
 
@@ -129,7 +128,7 @@ function UpdateCoordinate(id, settings, descr, formatType) {
 function GetCoordId(element) {
     var idElement = $(element).closest('[id^=geoMapsCoordBox-]');
     var currentId = $(idElement).attr('id');
-    var myRegexp = /.*?-(\d)+/i;
+    var myRegexp = /.*?-([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})/i;
     var match = myRegexp.exec(currentId);
     return match[1];
 }
@@ -137,7 +136,7 @@ function GetCoordId(element) {
 function GetProjectionId(element) {
     var idElement = $(element).closest('[class^=projectionPoint-]');
     var currentId = $(idElement).attr('class');
-    var myRegexp = /.*?-(\d)+/i;
+    var myRegexp = /.*?-([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})/i;
     var match = myRegexp.exec(currentId);
     return match[1];
 }
@@ -177,10 +176,4 @@ function SetCoordFormat(format) {
         default:
             return 'undefined';
     }
-}
-
-if (!String.prototype.contains ) {
-    String.prototype.contains = function() {
-        return String.prototype.indexOf.apply( this, arguments ) !== -1;
-    };
 }

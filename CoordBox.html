@@ -179,7 +179,7 @@
         $("input[name=CoordFormat]").change(
                 function(){
                     coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
-                    ChangeCoordinatesFormat(siteCoords, coordFormat);
+                    ChangeCoordinatesFormat(geoMapsSettings, coordFormat);
                     SettingCalculator.Set(geoMapsSettings, "coordinateFormatType", coordFormat);
                 }
         );
@@ -236,8 +236,6 @@
         } );
     });
 
-
-
 </script>
 
 <div style="background-color: cadetblue;">
@@ -278,6 +276,7 @@
         <p>N 47° 16.654 E 008° 22.22</p>
 
         <p>N 47° 16.654 E 008° 33.333333</p>
+
     </div>
 </div>
 
