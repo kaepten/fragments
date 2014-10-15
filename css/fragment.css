@@ -86,6 +86,11 @@
 	background-color: #ff6262;
 }
 
+.calculator input[type="text"].bgred {
+	color: #ffffff;
+	background-color: #ff6262;
+}
+
 .gM .green {
 	color: #269927;
 }
@@ -142,6 +147,7 @@
 .calculator > .header {
 	background-color: #dadada;
 	border-bottom: solid 1px #e3e3e3;	
+	width: 400px;
 }
 
 .calculator > .header div.left:nth-child(2) {	

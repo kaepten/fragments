@@ -146,8 +146,6 @@
             var id = GetCoordId(this);
             SettingSite.DeleteCoord(geoMapsSettings, id);
             $("[id^=geoMapsCoordBox-"+id+"]").remove();
-            // RenderCoordinatesToPageHTML(geoMapsSettings);
-            // InitCoordBoxHandler();
         });
 
         $("div.edit .cancel").click(function () {
@@ -201,6 +199,17 @@
             DeleteGeoMapsSettings();
         });
 
+        $("a.allDelete").click(function () {
+            var ids = [];
+           for(var coordIndex=0; coordIndex<geoMapsSettings.siteSetting.coordSettings.length; coordIndex++) {
+               ids.push(geoMapsSettings.siteSetting.coordSettings[coordIndex].id);
+           }
+            for(var idIndex=0; idIndex<ids.length; idIndex++) {
+                SettingSite.DeleteCoord(geoMapsSettings, ids[idIndex]);
+                $("[id^=geoMapsCoordBox-"+ids[idIndex]+"]").remove();
+            }
+        });
+
         $("a.allUpDown").click(function () {
             var downElements = $(".coordBox .ext");
             for (var i = 0; i < downElements.length; i++) {
@@ -220,6 +229,33 @@
                 }
             }
         });
+
+        $("a.newCoord").click(function(){addNew();});
+
+        $("#newCoordinate").keyup(function(e){
+            if(e.keyCode == 13) {
+                $(this).trigger("enterKey");
+                addNew();
+            }
+        });
+
+        function addNew() {
+            var newCoord = new Coordinate($("#newCoordinate").val());
+            if(newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
+                $("#newCoordinate").removeClass("bgred");
+                if($("#newCoordinate").val().trim().length == 0) return;
+                var newGUID = getGUID();
+                var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, "Kurzbeschreibung Koordinate", newGUID);
+                geoMapsSettings.siteSetting.coordSettings.push(siteCoord);
+                $("[id^=geoMapsCoordBox-]").remove();
+                RenderCoordinatesToPageHTML(geoMapsSettings);
+                AppendCoordBoxHandler();
+                $("#newCoordinate").val('');
+            } else {
+                $("#newCoordinate").addClass("bgred");
+                return;
+            }
+        }
     }
 
     $(function () {
@@ -244,7 +280,7 @@
         <div class="header">
             <div class="clearfix">
                 <div class="left">
-                    <input type="text" value="N 46° 50.796′ E 008° 27.736′">
+                    <input id="newCoordinate" type="text" value="">
                 </div>
                 <div class="left">
                     <a class="cmd newCoord"><span class="fa fa-compass"></span></a>
