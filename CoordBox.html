@@ -80,7 +80,7 @@
 
     var extPoints = '<tr class="projectionPoint-{0}">' +
         '   <td><i class="fa fa-level-up fa-rotate-90 fa-lg"></i></td>' +
-        '   <td class="pointId">{0}</td>' +
+        '   <td class="pointId">{3}</td>' +
         '   <td><i class="fa fa-arrows-h"></i></td>' +
         '   <td><span  class="dist">{1}</span>km</td>' +
         '   <td><i class="fa fa-location-arrow"></i></td>' +
@@ -99,24 +99,28 @@
         coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
         $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
         RenderCoordinatesToPageHTML(geoMapsSettings);
-        InitCoordBoxHandler();
+        AppendCoordBoxHandler();
     }
 
-    function InitCoordBoxHandler() {
+    $(document).ready(function () {
+        InitUI();
+        AppendDocumentHandler();
+    });
 
+    function AppendCoordBoxHandler(){
         $("[id^=geoMapsCoordBox-] .updown").click(function () {
             var id = GetCoordId(this);
             $(this).closest('[id^=geoMapsCoordBox-]').find('.ext').toggle();
             $(this).find('.glyphicon-chevron-down').toggle();
             $(this).find('.glyphicon-chevron-up').toggle();
-            SettingCalculator.Set(geoMapsSettings, "isExpandet", !geoMapsSettings.siteSetting.coordSettings[id].isExpandet, id);
+            SettingSite.SetExpandet(geoMapsSettings, id, !SettingSite.GetSettingCoord(geoMapsSettings, id).isExpandet);
         });
 
         $("[id^=geoMapsCoordBox-] .fav").click(function () {
             var id = GetCoordId(this);
             $(this).find('.glyphicon-heart-empty').toggle();
             $(this).find('.glyphicon-heart').toggle();
-            SettingCalculator.Set(geoMapsSettings, "isSiteFavorite", !geoMapsSettings.siteSetting.coordSettings[id].isSiteFavorite, id);
+            SettingSite.SetFavorite(geoMapsSettings, id, !SettingSite.GetSettingCoord(geoMapsSettings, id).isSiteFavorite);
         });
 
         $("[id^=geoMapsCoordBox-] .showhide").click(function () {
@@ -127,23 +131,23 @@
             // gegenseite auch ein/ausblenden
             $('#geoMapsCoordBox-'+projectionId+' .projectionPoint-'+coordId+' .glyphicon-eye-close').toggle();
             $('#geoMapsCoordBox-'+projectionId+' .projectionPoint-'+coordId+' .glyphicon-eye-open').toggle();
-            SettingCalculator.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
+            SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
         });
 
         $("a.edit").click(function () {
             $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
             var id = GetCoordId(this);
-            var coord = geoMapsSettings.siteSetting.coordSettings[id].coordinate.OriginCoordinateString;
+            var coord = SettingSite.GetSettingCoord(geoMapsSettings, id).coordinate.OriginCoordinateString;
             $('div.edit').find('input.coordValue').val(coord);
             $(this).closest('.coordBox').find('div.edit').toggle();
         });
 
         $("a.del").click(function () {
             var id = GetCoordId(this);
-            geoMapsSettings.siteSetting.coordSettings.splice(id,1);
-            $("[id^=geoMapsCoordBox-]").remove();
-            RenderCoordinatesToPageHTML(geoMapsSettings);
-            InitCoordBoxHandler();
+            SettingSite.DeleteCoord(geoMapsSettings, id);
+            $("[id^=geoMapsCoordBox-"+id+"]").remove();
+            // RenderCoordinatesToPageHTML(geoMapsSettings);
+            // InitCoordBoxHandler();
         });
 
         $("div.edit .cancel").click(function () {
@@ -171,16 +175,12 @@
             }
         });
     }
-
-    $(document).ready(function () {
-
-        InitUI();
-
+    function AppendDocumentHandler(){
         $("input[name=CoordFormat]").change(
                 function(){
-                    coordFormat = SetCoordFormat($("input[name=CoordFormat]:checked").val());
+                    coordFormat = GetCoordinateFormatObject($("input[name=CoordFormat]:checked").val());
                     ChangeCoordinatesFormat(geoMapsSettings, coordFormat);
-                    SettingCalculator.Set(geoMapsSettings, "coordinateFormatType", coordFormat);
+                    SettingSite.SetCoordFormat(geoMapsSettings, coordFormat);
                 }
         );
 
@@ -194,6 +194,7 @@
                     elC.toggle();
                 }
             }
+            SettingSite.ClearAllLineTo(geoMapsSettings);
         });
 
         $("a.delSettings").click(function(){
@@ -208,7 +209,7 @@
                     element.css("display", "none");
                 }
                 var id = GetCoordId(element);
-                SettingCalculator.Set(geoMapsSettings, "isExpandet",false, id);
+                SettingSite.SetExpandet(geoMapsSettings, id, false);
             }
             var downIcon = $(".coordBox .updown");
             for (var i = 0; i < downIcon.length; i++) {
@@ -219,7 +220,7 @@
                 }
             }
         });
-    });
+    }
 
     $(function () {
         $(".cordBoxList").sortable({
@@ -274,9 +275,10 @@
         <p>Overflow-Methode</p>
         <p>N 47° 16.654 E 008° 11.11111111</p>
         <p>N 47° 16.654 E 008° 22.22</p>
-
-        <p>N 47° 16.654 E 008° 33.333333</p>
-
+        <p>N 47° 16.654 E 008° 55.11111111</p>
+        <p>N 47° 16.654 E 008° 66.22</p>
+        <p>N 47° 16.654 E 008° 77.11111111</p>
+        <p>N 47° 16.654 E 008° 88.22</p>
     </div>
 </div>
 

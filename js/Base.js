@@ -63,17 +63,17 @@ function ParseCoordinates() {
 
 function RenderCoordinatesToPageHTML(settings) {
     var coordsCount = settings.siteSetting.coordSettings.length;
-    for (var currentCoord = 0; currentCoord < coordsCount; currentCoord++) {
-        var currentCoord = settings.siteSetting.coordSettings[currentCoord];
+    for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
+        var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
         var ext = "";
         var p1 = new LatLon(Number(currentCoord.coordinate.Lat.Degree), Number(currentCoord.coordinate.Lon.Degree));
-        for (var lineToCoordinate = 0; lineToCoordinate < coordsCount; lineToCoordinate++) {
-            if (currentCoord != lineToCoordinate) {
-                var currentProjCoord = settings.siteSetting.coordSettings[lineToCoordinate].coordinate;
+        for (var lineToCoordinateIndex = 0; lineToCoordinateIndex < coordsCount; lineToCoordinateIndex++) {
+            if (currentCoord.id != settings.siteSetting.coordSettings[lineToCoordinateIndex].id) {
+                var currentProjCoord = settings.siteSetting.coordSettings[lineToCoordinateIndex].coordinate;
                 var p2 = new LatLon(Number(currentProjCoord.Lat.Degree), Number(currentProjCoord.Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
-                ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinate].id, dist, Math.round(brng * 10) / 10);
+                ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinateIndex].id, dist, Math.round(brng * 10) / 10, settings.siteSetting.coordSettings[lineToCoordinateIndex].description);
             }
         }
         var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, currentCoord.description);
@@ -81,18 +81,18 @@ function RenderCoordinatesToPageHTML(settings) {
     }
     for (var i = 0; i < coordsCount; i++) {
         if (geoMapsSettings.siteSetting.coordSettings[i].isSiteFavorite) {
-            $("#geoMapsCoordBox-" + i).find('.glyphicon-heart-empty').toggle();
-            $("#geoMapsCoordBox-" + i).find('.glyphicon-heart').toggle();
+            $("#geoMapsCoordBox-" + geoMapsSettings.siteSetting.coordSettings[i].id).find('.glyphicon-heart-empty').toggle();
+            $("#geoMapsCoordBox-" + geoMapsSettings.siteSetting.coordSettings[i].id).find('.glyphicon-heart').toggle();
         }
         if (geoMapsSettings.siteSetting.coordSettings[i].isExpandet) {
-            $("#geoMapsCoordBox-" + i).find('.ext').toggle();
-            $("#geoMapsCoordBox-" + i).find('.glyphicon-chevron-down').toggle();
-            $("#geoMapsCoordBox-" + i).find('.glyphicon-chevron-up').toggle();
+            $("#geoMapsCoordBox-" + geoMapsSettings.siteSetting.coordSettings[i].id).find('.ext').toggle();
+            $("#geoMapsCoordBox-" + geoMapsSettings.siteSetting.coordSettings[i].id).find('.glyphicon-chevron-down').toggle();
+            $("#geoMapsCoordBox-" + geoMapsSettings.siteSetting.coordSettings[i].id).find('.glyphicon-chevron-up').toggle();
         }
         for(var index=0; index<geoMapsSettings.siteSetting.coordSettings[i].showLineTo.length; index++) {
             if(geoMapsSettings.siteSetting.coordSettings[i].showLineTo[index].isShown) {
-                $('#geoMapsCoordBox-'+i+' .projectionPoint-'+index+' .glyphicon-eye-close').toggle();
-                $('#geoMapsCoordBox-'+i+' .projectionPoint-'+index+' .glyphicon-eye-open').toggle();
+                $('#geoMapsCoordBox-'+geoMapsSettings.siteSetting.coordSettings[i].id+' .projectionPoint-'+geoMapsSettings.siteSetting.coordSettings[i].showLineTo[index].coordId+' .glyphicon-eye-close').toggle();
+                $('#geoMapsCoordBox-'+geoMapsSettings.siteSetting.coordSettings[i].id+' .projectionPoint-'+geoMapsSettings.siteSetting.coordSettings[i].showLineTo[index].coordId+' .glyphicon-eye-open').toggle();
             }
         }
     }
@@ -105,24 +105,26 @@ function ChangeCoordinatesFormat(settings, formatType) {
 }
 
 function UpdateCoordinate(id, settings, descr, formatType) {
+    // update ui für Coordinate
+    $("#geoMapsCoordBox-"+id).find('.description').html(descr);
+    $("#geoMapsCoordBox-"+id).find('div.edit').toggle();
+    // update sämtliche line-To Einträge
     var coords = settings.siteSetting.coordSettings;
     var pointCount = coords.length;
     for (var i = 0; i < pointCount; i++) {
         var p1 = new LatLon(Number(coords[i].coordinate.Lat.Degree), Number(coords[i].coordinate.Lon.Degree));
-        $("#geoMapsCoordBox-"+i).find('.coordinate').html(Coordinate.GetFormat(formatType, coords[i].coordinate));
+        $("#geoMapsCoordBox-"+coords[i].id).find('.coordinate').html(Coordinate.GetFormat(formatType, coords[i].coordinate));
         for (var ii = 0; ii < pointCount; ii++) {
             if(i!=ii) {
                 var p2 = new LatLon(Number(coords[ii].coordinate.Lat.Degree), Number(coords[ii].coordinate.Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
 
-                $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .dist').html(dist);
-                $("#geoMapsCoordBox-"+i).find('.projectionPoint-'+ii+' .angle').html(Math.round(brng*10)/10);
+                $("#geoMapsCoordBox-"+coords[ii].id).find('.projectionPoint-'+coords[ii].id+' .dist').html(dist);
+                $("#geoMapsCoordBox-"+coords[ii].id).find('.projectionPoint-'+coords[ii].id+' .angle').html(Math.round(brng*10)/10);
             }
         }
     }
-    $("#geoMapsCoordBox-"+id).find('.description').html(descr);
-    $("#geoMapsCoordBox-"+id).find('div.edit').toggle();
 }
 
 function GetCoordId(element) {
@@ -130,6 +132,10 @@ function GetCoordId(element) {
     var currentId = $(idElement).attr('id');
     var myRegexp = /.*?-([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})/i;
     var match = myRegexp.exec(currentId);
+    if(match == null) {
+        myRegexp = /.*?-(\d+)/i;
+        match = myRegexp.exec(currentId);
+    }
     return match[1];
 }
 
@@ -138,30 +144,28 @@ function GetProjectionId(element) {
     var currentId = $(idElement).attr('class');
     var myRegexp = /.*?-([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})/i;
     var match = myRegexp.exec(currentId);
+    if(match == null) {
+        myRegexp = /.*?-(\d+)/i;
+        match = myRegexp.exec(currentId);
+    }
     return match[1];
 }
 
-function SaveEditValues(element, formatType, geoMapsSettings) {
+function SaveEditValues(element, formatType, settings) {
     var coord = new Coordinate($(element).closest('div.edit').find('input.coordValue').val());
     var descr = $(element).closest('div.edit').find('input.coordDesc').val();
     if (!coord.IsValid) {
         alert('FEHLER beim Parsen der Eingabe!');
         $('div.edit').find('input.coordValue').addClass("bgred");
-        // $('div.edit').find('input.coordValue').val($(element).closest('.coordBox').find('.coordinate').html().trim());
         return;
-    }
-    else
-    {
+    } else {
         $('div.edit').find('input.coordValue').removeClass("bgred");
     }
-    var id = GetCoordId(element);
-    geoMapsSettings.siteSetting.coordSettings[id].coordinate = coord;
-    UpdateCoordinate(id, geoMapsSettings, descr, formatType);
-    SettingCalculator.Set(geoMapsSettings, "description", descr, id);
-    SettingCalculator.Set(geoMapsSettings, "pointOrigin", coord.OriginCoordinateString, id);
+    SettingSite.SetSettingCoord(settings, GetCoordId(element), coord, descr);
+    UpdateCoordinate(GetCoordId(element), settings, descr, formatType);
 }
 
-function SetCoordFormat(format) {
+function GetCoordinateFormatObject(format) {
     switch (format) {
         case 'Ddd':
             return CoordinateFormat.Ddd;

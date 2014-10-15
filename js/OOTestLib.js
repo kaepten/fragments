@@ -47,3 +47,20 @@ StatischesObjekt.StatischeFunction = function() {console.log("StatischesObjekt.S
 
 //var StatischeErweitertesObjekt = function(){};
 //StatischeErweitertesObjekt.prototype.StatischeFunction = function() {console.log("StatischeErweitertesObjekt.StatischeFunction");};
+
+
+function MainSetting() {
+    this.subSettings = [];
+}
+
+MainSetting.GetSubSetting = function(id) {
+    "use strict";
+    for(var i=0; i<siteSetting.coordSettings.length; i++) {
+
+    }
+}
+
+function SubSetting(description, id) {
+    this.id = id;
+    this.description=description;
+}

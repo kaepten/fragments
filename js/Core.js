@@ -85,7 +85,15 @@ String.prototype.x = function(num) {
     return tmp;
 };
 
+var idList = [1];
 function getGUID(){
+    /*
+    var oldId = idList[idList.length-1];
+    var newId = ++oldId;
+    idList.push(newId);
+    return newId;
+    */
+
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = (d + Math.random()*16)%16 | 0;
