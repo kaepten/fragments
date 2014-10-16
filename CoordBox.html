@@ -37,7 +37,7 @@
     var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
         '    <div class="clearfix main">' +
         '        <div class="marker">' +
-        '            <img src="images/marker_A.png">' +
+        '            <!-- <img src="images/marker_A.png"> -->{4}' +
         '        </div>' +
         '        <div class="content">' +
         '            <div class="description">' +
@@ -67,12 +67,12 @@
         '    </div>' +
         '    <div class="edit" style="display: none;">' +
         '       <table>' +
-        '           <tr><td>Beschreibung : </td><td><input class="coordDesc" type="text" value="ID 4 Beschreibung"> </td></tr>' +
+        '           <tr><td>Beschreibung : </td><td><input class="coordDesc" type="text" value=""> </td></tr>' +
         '           <tr><td>Koordinate : </td><td><input class="coordValue" type="text" value=""> </td></tr>' +
         '           <tr><td></td><td> <button type="button" class="btn btn-default btn-xs save">Speichern</button>  <button type="button" class="btn btn-default btn-xs cancel">Verwerfen</button></td></tr>' +
         '       </table>' +
         '    </div>' +
-        '    <div class="ext" style="display:none">' +
+        '    <div class="ext" style="display: none;">' +
         '        <table>{2}' +
         '        </table>' +
         '    </div>' +
@@ -110,7 +110,13 @@
     function AppendCoordBoxHandler(){
         $("[id^=geoMapsCoordBox-] .updown").click(function () {
             var id = GetCoordId(this);
-            $(this).closest('[id^=geoMapsCoordBox-]').find('.ext').toggle();
+            var el = $(this).closest('[id^=geoMapsCoordBox-]').find('.ext');
+            if(SettingSite.GetSettingCoord(geoMapsSettings, id).isExpandet) {
+                el.hide(200);
+            } else {
+                el.show(200);
+            }
+
             $(this).find('.glyphicon-chevron-down').toggle();
             $(this).find('.glyphicon-chevron-up').toggle();
             SettingSite.SetExpandet(geoMapsSettings, id, !SettingSite.GetSettingCoord(geoMapsSettings, id).isExpandet);
@@ -135,11 +141,16 @@
         });
 
         $("a.edit").click(function () {
-            $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
+            // $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
+            $(this).closest('.coordBox').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
             var id = GetCoordId(this);
             var coord = SettingSite.GetSettingCoord(geoMapsSettings, id).coordinate.OriginCoordinateString;
-            $('div.edit').find('input.coordValue').val(coord);
-            $(this).closest('.coordBox').find('div.edit').toggle();
+            // $('div.edit').find('input.coordValue').val(coord);
+            $(this).closest('.coordBox').find('input.coordValue').val(coord);
+
+            var el = $(this).closest('.coordBox').find('div.edit');
+            if(el.is(":visible") ) { el.hide(200);
+            } else { el.show(200);}
         });
 
         $("a.del").click(function () {
@@ -200,14 +211,22 @@
         });
 
         $("a.allDelete").click(function () {
-            var ids = [];
-           for(var coordIndex=0; coordIndex<geoMapsSettings.siteSetting.coordSettings.length; coordIndex++) {
-               ids.push(geoMapsSettings.siteSetting.coordSettings[coordIndex].id);
-           }
-            for(var idIndex=0; idIndex<ids.length; idIndex++) {
-                SettingSite.DeleteCoord(geoMapsSettings, ids[idIndex]);
-                $("[id^=geoMapsCoordBox-"+ids[idIndex]+"]").remove();
+
+            if (Confirm('Sollen alle Koordinaten aus dem Calculator entfernt werden?\r\nDie Seite muss neu geladen werden um die vorhanenen Koordinaten wieder zu erkennen.')) {
+                var ids = [];
+                for(var coordIndex=0; coordIndex<geoMapsSettings.siteSetting.coordSettings.length; coordIndex++) {
+                    if(!geoMapsSettings.siteSetting.coordSettings[coordIndex].isSiteFavorite) {
+                        ids.push(geoMapsSettings.siteSetting.coordSettings[coordIndex].id);
+                    }
+                }
+                for(var idIndex=0; idIndex<ids.length; idIndex++) {
+                    SettingSite.DeleteCoord(geoMapsSettings, ids[idIndex]);
+                    $("[id^=geoMapsCoordBox-"+ids[idIndex]+"]").remove();
+                }
+            } else {
+                // Do nothing!
             }
+
         });
 
         $("a.allUpDown").click(function () {
@@ -230,29 +249,47 @@
             }
         });
 
-        $("a.newCoord").click(function(){addNew();});
+        $("a.newCoord").click(function(){errorFlag = true; addNew();});
 
         $("#newCoordinate").keyup(function(e){
+            /*
+            var newCoord = new Coordinate($("#newCoordinate").val());
+            if(!newCoord.IsValid) {
+                $("#newCoordinate").addClass("bgred");
+            } else {
+                $("#newCoordinate").removeClass("bgred");
+            }
+            */
             if(e.keyCode == 13) {
                 $(this).trigger("enterKey");
+                errorFlag = true;
                 addNew();
+            } else {
+                errorFlag = false;
             }
         });
 
+        errorFlag = true;
         function addNew() {
             var newCoord = new Coordinate($("#newCoordinate").val());
             if(newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
                 $("#newCoordinate").removeClass("bgred");
                 if($("#newCoordinate").val().trim().length == 0) return;
                 var newGUID = getGUID();
-                var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, "Kurzbeschreibung Koordinate", newGUID);
+                var uiId = GetUiId();
+                var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
                 geoMapsSettings.siteSetting.coordSettings.push(siteCoord);
+
+
+
+
                 $("[id^=geoMapsCoordBox-]").remove();
                 RenderCoordinatesToPageHTML(geoMapsSettings);
                 AppendCoordBoxHandler();
                 $("#newCoordinate").val('');
             } else {
                 $("#newCoordinate").addClass("bgred");
+                setTimeout(function() { console.log("error : " + errorFlag); if(errorFlag) { $("#newCoordinate").val(''); } $("#newCoordinate").removeClass("bgred"); }, 2000);
                 return;
             }
         }
@@ -309,12 +346,7 @@
     <!-- original -->
     <div>
         <p>Overflow-Methode</p>
-        <p>N 47° 16.654 E 008° 11.11111111</p>
-        <p>N 47° 16.654 E 008° 22.22</p>
-        <p>N 47° 16.654 E 008° 55.11111111</p>
-        <p>N 47° 16.654 E 008° 66.22</p>
-        <p>N 47° 16.654 E 008° 77.11111111</p>
-        <p>N 47° 16.654 E 008° 88.22</p>
+        <p>Bank: N 47° 16.654 E 008° 88.22 Parkplatz: N 47° 16.654 E 008° 77.77</p>
     </div>
 </div>
 

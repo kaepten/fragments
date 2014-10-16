@@ -143,8 +143,8 @@ function Coordinate(coordinateString)
             that.OriginFormat = CoordinateFormat.LV03;
             var parts = Parse.LV03(coordString);
             that.Out = Core.AllElementsAsString(parts, true);
-            that.Lv03.Y = CreateLVObject(parseFloat(parts[2] + parts[3] + "." + parts[4]),parts[1]);
-            that.Lv03.X = CreateLVObject(parseFloat(parts[6] + parts[7] + "." + parts[8]),parts[5]);
+            that.Lv03.Y = CreateLVObject(parseFloat(parts[2] + parts[3] + "." + parts[5]),parts[1]);
+            that.Lv03.X = CreateLVObject(parseFloat(parts[7] + parts[8] + "." + parts[10]),parts[6]);
         } else if (pattLV95RegExp.test(coordString)) {
             that.OriginFormat = CoordinateFormat.LV95;
             var parts = Parse.LV95(coordString);
@@ -232,10 +232,10 @@ Coordinate.GetFormat = function(formatConst, coordinate){
 
 
 var Parse = {
-    DddRegExp : /^(([NS-])?\s*(\d{1,2})[.,]?(\d*)\s*[:d°]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[.,]?(\d*)\s*[:d°]?)\s*([EOW])?$/gmi,
+    DddRegExp : /^(([NS-])?\s*(\d{1,2})[.,]+(\d*)\s*[:d°]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[.,]+(\d*)\s*[:d°]?)\s*([EOW])?$/gmi,
     DmmRegExp : /^(([NS-])?\s*(\d{1,2})[\s:d°]+\s*(\d{1,2})[.,]?(\d*)\s*[:'´’\u2032]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[\s:d°]+\s*(\d{1,2})[.,]?(\d*)\s*[:'´’\u2032]?)\s*([EOW])?$/gmi,
     DmsRegExp : /^(([NS-])?\s*(\d{1,2})[\s:d°]+\s*(\d{1,2})\s*[:'´’\u2032]?\s*(\d{1,2})[.,]?(\d*)\s*[:“"\u2033]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[\s:d°]+\s*(\d{1,2})\s*[:'´’\u2032]?\s*(\d{1,2})[.,]?(\d*)\s*[:“"\u2033]?)\s*([EOW])?$/gmi,
-    LV03RegExp : /^((\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))$/gmi,
+    LV03RegExp : /^((\d\d\d)[\s,.]*(\d\d\d)([,.](\d*))?)[\s\/]*\s*((\d\d\d)[\s,.]*(\d\d\d)([,.](\d*))?)$/gmi,
     LV95RegExp : /^((Ost|E|East|O)?\s*2[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((Nord|N|North)?\s*1[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))$/gmi
 };
 

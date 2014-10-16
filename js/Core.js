@@ -88,9 +88,9 @@ String.prototype.x = function(num) {
 var idList = [1];
 function getGUID(){
     /*
-    var oldId = idList[idList.length-1];
+    var oldId = globalCoordinateUiIdList[globalCoordinateUiIdList.length-1];
     var newId = ++oldId;
-    idList.push(newId);
+    globalCoordinateUiIdList.push(newId);
     return newId;
     */
 

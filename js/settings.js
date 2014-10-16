@@ -1,9 +1,11 @@
 function DeleteGeoMapsSettings(){
     localStorage.removeItem("GeoMaps");
+    globalCoordinateUiIdList = [0];
     InitUI();
 }
 
 function LoadGeoMapsSiteSettings(url, pageParsedCoordinates) {
+    globalCoordinateUiIdList = [0];
     var settingObject;
     var settingsText = localStorage["GeoMaps"];
     if(settingsText != undefined) {
@@ -14,6 +16,12 @@ function LoadGeoMapsSiteSettings(url, pageParsedCoordinates) {
             for (var index = 0; index < settingObject.siteSettings.length; index++) {
                 if (settingObject.siteSettings[index].url == url) {
                     settingObject.siteSetting = settingObject.siteSettings[index];
+
+                    //uiId aktualisieren
+                    for(var indx= 0; indx<settingObject.siteSetting.coordSettings.length; indx++) {
+                        GetUiId(indx+1);
+                        settingObject.siteSetting.coordSettings[indx].uiId = indx+1;
+                    }
                     SettingSite.SetCoordinateObjects(settingObject.siteSetting);
                 }
             }
@@ -33,7 +41,8 @@ function LoadGeoMapsSiteSettings(url, pageParsedCoordinates) {
                 }
                 if(notFound) {
                     var newGUID = getGUID();
-                    var newSiteCoord = new SettingCoord(parsedOrigin, "ID : " + newGUID, newGUID);
+                    var uiId = GetUiId();
+                    var newSiteCoord = new SettingCoord(parsedOrigin, newGUID, uiId);
                     newCoordinates.push(newSiteCoord);
                 }
             }
@@ -88,7 +97,8 @@ function CreateSiteSetting(siteUrl, siteCoords) {
     siteSetting.url = siteUrl;
     for (var i = 0; i < siteCoords.length; i++) {
         var newGUID = getGUID();
-        var siteCoord = new SettingCoord(siteCoords[i].OriginCoordinateString, "Kurzbeschreibung Koordinate", newGUID);
+        var uiId = GetUiId();
+        var siteCoord = new SettingCoord(siteCoords[i].OriginCoordinateString, newGUID, uiId);
         siteSetting.coordSettings.push(siteCoord);
     }
     for (var i = 0; i < siteSetting.coordSettings.length; i++) {
@@ -109,7 +119,7 @@ function CreateSiteSetting(siteUrl, siteCoords) {
 function SaveGeoMapsSettings(settingCalculatorObject){
 
     var siteUrl = settingCalculatorObject.siteSetting.url;
-    SettingSite.ClearCoordinateObjects(settingCalculatorObject.siteSetting);
+    SettingSite.ClearNotSaveables(settingCalculatorObject.siteSetting);
     settingCalculatorObject.siteSetting = undefined;
     localStorage["GeoMaps"] = JSON.stringify(settingCalculatorObject);
 
@@ -175,9 +185,15 @@ SettingSite.SetProjectionShowLineTo = function(setting, coordId, projectionCoord
     SaveGeoMapsSettings(setting);
 }
 
-SettingSite.ClearCoordinateObjects = function(siteSetting) {
+SettingSite.ClearNotSaveables = function(siteSetting) {
     for (var i = 0; i < siteSetting.coordSettings.length; i++) {
         siteSetting.coordSettings[i].coordinate = undefined;
+        /*
+        siteSetting.coordSettings[i].id = undefined;
+        for(var ii=0; ii<siteSetting.coordSettings[i].showLineTo.length; ii++) {
+            siteSetting.coordSettings[i].showLineTo[ii].coordId = undefined;
+        }
+        */
     }
 }
 
@@ -252,10 +268,25 @@ SettingSite.SetCoordFormat = function(setting, format){
     SaveGeoMapsSettings(setting);
 }
 
-function SettingCoord(origin, description, id) {
+var globalCoordinateUiIdList = [0];
+function GetUiId(currentId) {
+    "use strict";
+    var id = -1;
+    if(currentId != undefined) {
+        id = currentId;
+    } else {
+        id = ++globalCoordinateUiIdList[globalCoordinateUiIdList.length - 1];
+    }
+    globalCoordinateUiIdList.push(id);
+    return id;
+}
+
+
+function SettingCoord(origin, id, uiId) {
+    this.uiId = uiId;
     this.id = id;
     this.pointOrigin=origin; // redundant, weil coordinate objekt NICHT gespeichert wird!
-    this.description=description;
+    this.description= "Koordinate : "+ uiId;
     this.isSiteFavorite=false;
     this.isExpandet=false;
     this.showLineTo=[]; // coordId isShown

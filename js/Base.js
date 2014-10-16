@@ -9,7 +9,6 @@ function ParseCoordinates() {
                 if (t) {
                     if (lastParent == undefined || lastParent != n.parentNode) {
                         lastParent = n.parentNode;
-                        //TODO : Problem, wenn auf derselben Zeile schon eine Vorhandene vorkommt!
                         var idElement = $(n).closest('[id^=GeoMapsCalculator]'); // koordinaten im Calculator auslassen
                         if(idElement.length==0) {
                             out.push(n.parentNode);
@@ -62,6 +61,7 @@ function ParseCoordinates() {
 }
 
 function RenderCoordinatesToPageHTML(settings) {
+    console.log("Render");
     var coordsCount = settings.siteSetting.coordSettings.length;
     for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
         var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
@@ -73,10 +73,10 @@ function RenderCoordinatesToPageHTML(settings) {
                 var p2 = new LatLon(Number(currentProjCoord.Lat.Degree), Number(currentProjCoord.Lon.Degree));
                 var dist = p1.distanceTo(p2);          // in km
                 var brng = p1.bearingTo(p2);
-                ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinateIndex].id, dist, Math.round(brng * 10) / 10, settings.siteSetting.coordSettings[lineToCoordinateIndex].description);
+                ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinateIndex].id, dist, Math.round(brng * 10) / 10, settings.siteSetting.coordSettings[lineToCoordinateIndex].uiId);
             }
         }
-        var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, currentCoord.description);
+        var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, currentCoord.description, currentCoord.uiId);
         $(".cordBoxList").append(box);
     }
     for (var i = 0; i < coordsCount; i++) {
@@ -180,4 +180,9 @@ function GetCoordinateFormatObject(format) {
         default:
             return 'undefined';
     }
+}
+
+function Confirm(questionString) {
+    "use strict";
+    return confirm(questionString);
 }
