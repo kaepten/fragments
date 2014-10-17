@@ -4,12 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/js/Coordinate.js" line="68" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="Settings weiter ausgebaut">
+    <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Base.js" afterPath="$PROJECT_DIR$/js/Base.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CoordBox.html" afterPath="$PROJECT_DIR$/CoordBox.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Coordinate.js" afterPath="$PROJECT_DIR$/js/Coordinate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Core.js" afterPath="$PROJECT_DIR$/js/Core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fragment.css" afterPath="$PROJECT_DIR$/css/fragment.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settings.js" afterPath="$PROJECT_DIR$/js/settings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -39,14 +36,14 @@
       <file leaf-file-name="CoordBox.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CoordBox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5522388" vertical-offset="4276" max-vertical-offset="6103">
-              <caret line="282" column="3" selection-start-line="282" selection-start-column="3" selection-end-line="282" selection-end-column="3" />
+            <state vertical-scroll-proportion="2.0098684" vertical-offset="1175" max-vertical-offset="6035">
+              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
-                <marker date="1413468266432" expanded="false" signature="2009:2021" placeholder="..." />
-                <marker date="1413468266432" expanded="false" signature="3036:3050" placeholder="..." />
-                <marker date="1413468266432" expanded="false" signature="3259:3273" placeholder="..." />
-                <marker date="1413468266432" expanded="false" signature="3827:3841" placeholder="..." />
-                <marker date="1413468266432" expanded="false" signature="4550:4564" placeholder="..." />
+                <marker date="1413530770446" expanded="false" signature="2009:2021" placeholder="..." />
+                <marker date="1413530770446" expanded="false" signature="3036:3050" placeholder="..." />
+                <marker date="1413530770446" expanded="false" signature="3259:3273" placeholder="..." />
+                <marker date="1413530770446" expanded="false" signature="3827:3841" placeholder="..." />
+                <marker date="1413530770446" expanded="false" signature="4550:4564" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -55,8 +52,8 @@
       <file leaf-file-name="Base.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.36" vertical-offset="0" max-vertical-offset="1003">
-              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="1275">
+              <caret line="170" column="77" selection-start-line="170" selection-start-column="77" selection-end-line="170" selection-end-column="77" />
               <folding>
                 <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
                 <element signature="e#794#873#0" expanded="false" />
@@ -67,23 +64,21 @@
                 <element signature="e#1890#2397#0" expanded="false" />
                 <element signature="e#2002#2094#0" expanded="false" />
                 <element signature="e#2476#2511#0" expanded="false" />
-                <element signature="e#4118#4375#0" expanded="false" />
-                <element signature="e#4921#5460#0" expanded="false" />
-                <element signature="e#5010#5450#0" expanded="false" />
+                <element signature="e#4298#4555#0" expanded="false" />
+                <element signature="e#5101#5640#0" expanded="false" />
+                <element signature="e#5190#5630#0" expanded="false" />
                 <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
-                <element signature="e#5599#5788#0" expanded="false" />
+                <element signature="e#5779#5968#0" expanded="false" />
                 <element signature="n#!!block;n#UpdateCoordinate#0" expanded="false" />
-                <element signature="e#6177#6997#0" expanded="false" />
-                <element signature="e#6464#6991#0" expanded="false" />
-                <element signature="e#6488#6981#0" expanded="false" />
+                <element signature="e#6357#7177#0" expanded="false" />
+                <element signature="e#6644#7171#0" expanded="false" />
+                <element signature="e#6668#7161#0" expanded="false" />
                 <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
-                <element signature="e#7312#7394#0" expanded="false" />
+                <element signature="e#7492#7574#0" expanded="false" />
                 <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
-                <element signature="e#7741#7823#0" expanded="false" />
-                <element signature="e#8102#8241#0" expanded="false" />
-                <element signature="e#8247#8323#0" expanded="false" />
+                <element signature="e#7921#8003#0" expanded="false" />
                 <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
-                <element signature="e#8526#8907#0" expanded="false" />
+                <element signature="e#8910#9291#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,11 +87,9 @@
       <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/settings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.52" vertical-offset="1069" max-vertical-offset="4896">
-              <caret line="108" column="9" selection-start-line="104" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
-              <folding>
-                <element signature="e#2437#3352#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-10.8" vertical-offset="3810" max-vertical-offset="5253">
+              <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,7 +97,7 @@
       <file leaf-file-name="OOTestLib.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OOTestLib.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+            <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="663">
               <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
               <folding>
                 <element signature="e#200#431#0" expanded="false" />
@@ -302,14 +295,10 @@
       <ConfigurationWrapper RunnerId="debuggableProgram" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -317,6 +306,10 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -412,7 +405,13 @@
       <option name="project" value="LOCAL" />
       <updated>1412688179146</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="UiId für bessere Lesbarkeit der Koordinaten eingeführt.&#10;Dient nur zur Darstellung, intern wir mit GUID gearbeitet.">
+      <created>1413468307913</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1413468307913</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -441,12 +440,12 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4464567" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33657587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16407767" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30739298" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27330175" sideWeight="0.56" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16166404" sideWeight="0.56" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14165351" sideWeight="0.44" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39202335" sideWeight="0.4997367" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34660193" sideWeight="0.4997367" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6118677" sideWeight="0.5002633" order="7" side_tool="true" content_ui="tabs" />
@@ -456,8 +455,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -476,9 +475,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28698885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -503,25 +502,20 @@
     <MESSAGE value="HTML Testseite - Schrott entfernt" />
     <MESSAGE value="Update Handler für geänderte Werte.&#10;Bereinigung der CSS Klassen optimiert auf jQuery Zugriffe" />
     <MESSAGE value="Settings weiter ausgebaut" />
-    <option name="LAST_COMMIT_MESSAGE" value="Settings weiter ausgebaut" />
+    <MESSAGE value="UiId für bessere Lesbarkeit der Koordinaten eingeführt.&#10;Dient nur zur Darstellung, intern wir mit GUID gearbeitet." />
+    <option name="LAST_COMMIT_MESSAGE" value="UiId für bessere Lesbarkeit der Koordinaten eingeführt.&#10;Dient nur zur Darstellung, intern wir mit GUID gearbeitet." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/CoordBox.html</url>
-          <line>139</line>
-          <option name="timeStamp" value="540" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="541" />
+      <option name="time" value="547" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
-        <watch expression="setting" />
+        <watch expression="localStorage[&quot;GeoMaps&quot;]" />
+        <watch expression="coord" />
       </configuration>
     </watches-manager>
   </component>
@@ -531,11 +525,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="4590">
           <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
           <folding>
-            <marker date="1413468266432" expanded="false" signature="2009:2021" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="3036:3050" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="3259:3273" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="3827:3841" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="4550:4564" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="2009:2021" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="3036:3050" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="3259:3273" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="3827:3841" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="4550:4564" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -868,10 +862,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.8" vertical-offset="3810" max-vertical-offset="5253">
+          <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.36" vertical-offset="0" max-vertical-offset="1003">
-          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="1275">
+          <caret line="170" column="77" selection-start-line="170" selection-start-column="77" selection-end-line="170" selection-end-column="77" />
           <folding>
             <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
             <element signature="e#794#873#0" expanded="false" />
@@ -882,47 +884,35 @@
             <element signature="e#1890#2397#0" expanded="false" />
             <element signature="e#2002#2094#0" expanded="false" />
             <element signature="e#2476#2511#0" expanded="false" />
-            <element signature="e#4118#4375#0" expanded="false" />
-            <element signature="e#4921#5460#0" expanded="false" />
-            <element signature="e#5010#5450#0" expanded="false" />
+            <element signature="e#4298#4555#0" expanded="false" />
+            <element signature="e#5101#5640#0" expanded="false" />
+            <element signature="e#5190#5630#0" expanded="false" />
             <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
-            <element signature="e#5599#5788#0" expanded="false" />
+            <element signature="e#5779#5968#0" expanded="false" />
             <element signature="n#!!block;n#UpdateCoordinate#0" expanded="false" />
-            <element signature="e#6177#6997#0" expanded="false" />
-            <element signature="e#6464#6991#0" expanded="false" />
-            <element signature="e#6488#6981#0" expanded="false" />
+            <element signature="e#6357#7177#0" expanded="false" />
+            <element signature="e#6644#7171#0" expanded="false" />
+            <element signature="e#6668#7161#0" expanded="false" />
             <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
-            <element signature="e#7312#7394#0" expanded="false" />
+            <element signature="e#7492#7574#0" expanded="false" />
             <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
-            <element signature="e#7741#7823#0" expanded="false" />
-            <element signature="e#8102#8241#0" expanded="false" />
-            <element signature="e#8247#8323#0" expanded="false" />
+            <element signature="e#7921#8003#0" expanded="false" />
             <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
-            <element signature="e#8526#8907#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.52" vertical-offset="1069" max-vertical-offset="4896">
-          <caret line="108" column="9" selection-start-line="104" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
-          <folding>
-            <element signature="e#2437#3352#0" expanded="false" />
+            <element signature="e#8910#9291#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5522388" vertical-offset="4276" max-vertical-offset="6103">
-          <caret line="282" column="3" selection-start-line="282" selection-start-column="3" selection-end-line="282" selection-end-column="3" />
+        <state vertical-scroll-proportion="2.0098684" vertical-offset="1175" max-vertical-offset="6035">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
-            <marker date="1413468266432" expanded="false" signature="2009:2021" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="3036:3050" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="3259:3273" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="3827:3841" placeholder="..." />
-            <marker date="1413468266432" expanded="false" signature="4550:4564" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="2009:2021" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="3036:3050" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="3259:3273" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="3827:3841" placeholder="..." />
+            <marker date="1413530770446" expanded="false" signature="4550:4564" placeholder="..." />
           </folding>
         </state>
       </provider>

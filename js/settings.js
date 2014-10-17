@@ -4,6 +4,28 @@ function DeleteGeoMapsSettings(){
     InitUI();
 }
 
+function AddNewCoordinateObject(newCoordinates, settingObject) {
+// neue abfüllen und lineTo generieren
+    for (var newCoordIdx = 0; newCoordIdx < newCoordinates.length; newCoordIdx++) {
+        var siteCoord = newCoordinates[newCoordIdx];
+        settingObject.siteSetting.coordSettings.push(siteCoord);
+        for (var innerNewCoordIdx = 0; innerNewCoordIdx < settingObject.siteSetting.coordSettings.length; innerNewCoordIdx++) {
+            if (siteCoord.id == settingObject.siteSetting.coordSettings[innerNewCoordIdx].id) {
+                for (var iInnerNewCoordIdx = 0; iInnerNewCoordIdx < settingObject.siteSetting.coordSettings.length; iInnerNewCoordIdx++) {
+                    siteCoord.showLineTo.push({
+                        coordId: settingObject.siteSetting.coordSettings[iInnerNewCoordIdx].id,
+                        isShown: false
+                    });
+                }
+            } else {
+                settingObject.siteSetting.coordSettings[innerNewCoordIdx].showLineTo.push({
+                    coordId: siteCoord.id,
+                    isShown: false
+                });
+            }
+        }
+    }
+}
 function LoadGeoMapsSiteSettings(url, pageParsedCoordinates) {
     globalCoordinateUiIdList = [0];
     var settingObject;
@@ -47,20 +69,7 @@ function LoadGeoMapsSiteSettings(url, pageParsedCoordinates) {
                 }
             }
 
-            // neue abfüllen und lineTo generieren
-            for(var newCoordIdx=0; newCoordIdx<newCoordinates.length;newCoordIdx++) {
-                var siteCoord = newCoordinates[newCoordIdx];
-                settingObject.siteSetting.coordSettings.push(siteCoord);
-                for (var innerNewCoordIdx = 0; innerNewCoordIdx < settingObject.siteSetting.coordSettings.length; innerNewCoordIdx++) {
-                    if(siteCoord.id == settingObject.siteSetting.coordSettings[innerNewCoordIdx].id) {
-                        for (var iInnerNewCoordIdx = 0; iInnerNewCoordIdx < settingObject.siteSetting.coordSettings.length; iInnerNewCoordIdx++) {
-                            siteCoord.showLineTo.push({coordId: settingObject.siteSetting.coordSettings[iInnerNewCoordIdx].id, isShown: false});
-                        }
-                    } else {
-                        settingObject.siteSetting.coordSettings[innerNewCoordIdx].showLineTo.push({coordId: siteCoord.id, isShown: false});
-                    }
-                }
-            }
+            AddNewCoordinateObject(newCoordinates, settingObject);
 
             // checken, ob in den Settings nicht Favs sind, die auf der Seite nicht mehr existieren
             var checkedCoordinates = [];
@@ -286,7 +295,7 @@ function SettingCoord(origin, id, uiId) {
     this.uiId = uiId;
     this.id = id;
     this.pointOrigin=origin; // redundant, weil coordinate objekt NICHT gespeichert wird!
-    this.description= "Koordinate : "+ uiId;
+    this.description= "";
     this.isSiteFavorite=false;
     this.isExpandet=false;
     this.showLineTo=[]; // coordId isShown

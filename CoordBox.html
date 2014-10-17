@@ -142,12 +142,10 @@
 
         $("a.edit").click(function () {
             // $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
-            $(this).closest('.coordBox').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
             var id = GetCoordId(this);
-            var coord = SettingSite.GetSettingCoord(geoMapsSettings, id).coordinate.OriginCoordinateString;
-            // $('div.edit').find('input.coordValue').val(coord);
-            $(this).closest('.coordBox').find('input.coordValue').val(coord);
-
+            var coordObj = SettingSite.GetSettingCoord(geoMapsSettings, id);
+            $(this).closest('.coordBox').find('input.coordValue').val(coordObj.coordinate.OriginCoordinateString);
+            $(this).closest('.coordBox').find('input.coordDesc').val(coordObj.description);
             var el = $(this).closest('.coordBox').find('div.edit');
             if(el.is(":visible") ) { el.hide(200);
             } else { el.show(200);}
@@ -278,10 +276,8 @@
                 var newGUID = getGUID();
                 var uiId = GetUiId();
                 var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
-                geoMapsSettings.siteSetting.coordSettings.push(siteCoord);
 
-
-
+                AddNewCoordinateObject([siteCoord], geoMapsSettings);
 
                 $("[id^=geoMapsCoordBox-]").remove();
                 RenderCoordinatesToPageHTML(geoMapsSettings);
