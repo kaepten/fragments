@@ -34,14 +34,14 @@
 
 <script>
 
-    var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
+var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
         '    <div class="clearfix main">' +
         '        <div class="marker">' +
         '            <!-- <img src="images/marker_A.png"> -->{4}' +
         '        </div>' +
         '        <div class="content">' +
         '            <div class="description">' +
-        '                {3}' +
+        '               {3}' +
         '            </div>' +
         '            <div class="left">' +
         '                <div>' +
@@ -78,7 +78,7 @@
         '    </div>' +
         '</li>';
 
-    var extPoints = '<tr class="projectionPoint-{0}">' +
+var extPoints = '<tr class="projectionPoint-{0}">' +
         '   <td><i class="fa fa-level-up fa-rotate-90 fa-lg"></i></td>' +
         '   <td class="pointId">{3}</td>' +
         '   <td><i class="fa fa-arrows-h"></i></td>' +
@@ -88,223 +88,216 @@
         '   <td class="commands"><a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="cmd showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
         '</tr>';
 
-    var siteCoords;
-    var geoMapsSettings;
-    var coordFormat;
+var qualityMarker = '<i class="fa fa-adjust mid green" style="display: none;"></i><i class="fa fa-circle low orange" style="display: none;"></i><i class="fa fa-circle high green" style="display: none;"></i>&nbsp;{0}';
 
-    function InitUI() {
-        $("[id^=geoMapsCoordBox-]").remove();
-        siteCoords = ParseCoordinates();
-        geoMapsSettings = LoadGeoMapsSiteSettings(document.URL, siteCoords);
-        coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
-        $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
-        RenderCoordinatesToPageHTML(geoMapsSettings);
-        AppendCoordBoxHandler();
-    }
+var siteCoords;
+var geoMapsSettings;
+var coordFormat;
 
-    $(document).ready(function () {
-        InitUI();
-        AppendDocumentHandler();
+$(document).ready(function () {
+    InitUI();
+    AppendDocumentHandler();
+});
+
+function AppendCoordBoxHandler() {
+
+    $("[id^=geoMapsCoordBox-] .updown").click(function () {
+        var id = GetCoordId(this);
+        var el = $(this).closest('[id^=geoMapsCoordBox-]').find('.ext');
+        if (SettingSite.GetSettingCoordObject(geoMapsSettings, id).isExpandet) {
+            el.hide(200);
+        } else {
+            el.show(200);
+        }
+        $(this).find('.glyphicon-chevron-down').toggle();
+        $(this).find('.glyphicon-chevron-up').toggle();
+        SettingCoord.SetExpandet(geoMapsSettings, id, !SettingSite.GetSettingCoordObject(geoMapsSettings, id).isExpandet);
     });
 
-    function AppendCoordBoxHandler(){
-        $("[id^=geoMapsCoordBox-] .updown").click(function () {
-            var id = GetCoordId(this);
-            var el = $(this).closest('[id^=geoMapsCoordBox-]').find('.ext');
-            if(SettingSite.GetSettingCoord(geoMapsSettings, id).isExpandet) {
-                el.hide(200);
-            } else {
-                el.show(200);
-            }
+    $("[id^=geoMapsCoordBox-] .fav").click(function () {
+        var id = GetCoordId(this);
+        $(this).find('.glyphicon-heart-empty').toggle();
+        $(this).find('.glyphicon-heart').toggle();
+        SettingCoord.SetFavorite(geoMapsSettings, id, !SettingSite.GetSettingCoordObject(geoMapsSettings, id).isSiteFavorite);
+    });
 
-            $(this).find('.glyphicon-chevron-down').toggle();
-            $(this).find('.glyphicon-chevron-up').toggle();
-            SettingSite.SetExpandet(geoMapsSettings, id, !SettingSite.GetSettingCoord(geoMapsSettings, id).isExpandet);
-        });
+    $("[id^=geoMapsCoordBox-] .showhide").click(function () {
+        $(this).find('.glyphicon-eye-close').toggle();
+        $(this).find('.glyphicon-eye-open').toggle();
+        var coordId = GetCoordId(this);
+        var projectionId = GetProjectionId(this); // gegenseite auch ein/ausblenden
+        $('#geoMapsCoordBox-' + projectionId + ' .projectionPoint-' + coordId + ' .glyphicon-eye-close').toggle();
+        $('#geoMapsCoordBox-' + projectionId + ' .projectionPoint-' + coordId + ' .glyphicon-eye-open').toggle();
+        SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
+    });
 
-        $("[id^=geoMapsCoordBox-] .fav").click(function () {
-            var id = GetCoordId(this);
-            $(this).find('.glyphicon-heart-empty').toggle();
-            $(this).find('.glyphicon-heart').toggle();
-            SettingSite.SetFavorite(geoMapsSettings, id, !SettingSite.GetSettingCoord(geoMapsSettings, id).isSiteFavorite);
-        });
+    $("a.edit").click(function () {
+        var id = GetCoordId(this);
+        var coordObj = SettingSite.GetSettingCoordObject(geoMapsSettings, id);
+        $(this).closest('.coordBox').find('input.coordValue').val(coordObj.coordinate.OriginCoordinateString);
+        $(this).closest('.coordBox').find('input.coordDesc').val(coordObj.description);
+        var el = $(this).closest('.coordBox').find('div.edit');
+        if (el.is(":visible")) {
+            el.hide(200);
+        } else {
+            el.show(200);
+        }
+    });
 
-        $("[id^=geoMapsCoordBox-] .showhide").click(function () {
-            $(this).find('.glyphicon-eye-close').toggle();
-            $(this).find('.glyphicon-eye-open').toggle();
-            var coordId = GetCoordId(this);
-            var projectionId = GetProjectionId(this);
-            // gegenseite auch ein/ausblenden
-            $('#geoMapsCoordBox-'+projectionId+' .projectionPoint-'+coordId+' .glyphicon-eye-close').toggle();
-            $('#geoMapsCoordBox-'+projectionId+' .projectionPoint-'+coordId+' .glyphicon-eye-open').toggle();
-            SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
-        });
+    $("a.del").click(function () {
+        var id = GetCoordId(this);
+        SettingSite.DeleteCoord(geoMapsSettings, id);
+        $("[id^=geoMapsCoordBox-" + id + "]").remove();
+    });
 
-        $("a.edit").click(function () {
-            // $('div.edit').find('input.coordDesc').val($(this).closest('.coordBox').find('.description').html().trim());
-            var id = GetCoordId(this);
-            var coordObj = SettingSite.GetSettingCoord(geoMapsSettings, id);
-            $(this).closest('.coordBox').find('input.coordValue').val(coordObj.coordinate.OriginCoordinateString);
-            $(this).closest('.coordBox').find('input.coordDesc').val(coordObj.description);
-            var el = $(this).closest('.coordBox').find('div.edit');
-            if(el.is(":visible") ) { el.hide(200);
-            } else { el.show(200);}
-        });
+    $("div.edit .cancel").click(function () {
+        $('div.edit').find('input.coordValue').removeClass("bgred");
+        $(this).closest('.coordBox').find('div.edit').toggle();
+    });
 
-        $("a.del").click(function () {
-            var id = GetCoordId(this);
-            SettingSite.DeleteCoord(geoMapsSettings, id);
-            $("[id^=geoMapsCoordBox-"+id+"]").remove();
-        });
+    $("div.edit .save").click(function () {
+        SaveEditValues(this, coordFormat, geoMapsSettings);
+    });
 
-        $("div.edit .cancel").click(function () {
-            $('div.edit').find('input.coordValue').removeClass("bgred");
-            $(this).closest('.coordBox').find('div.edit').toggle();
-        });
-
-        $("div.edit .save").click(function(){
+    $('div.edit').find('input.coordDesc').keyup(function (e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
             SaveEditValues(this, coordFormat, geoMapsSettings);
-        });
+        }
+    });
 
-        $('div.edit').find('input.coordDesc').keyup(function(e){
-            if(e.keyCode == 13)
-            {
-                $(this).trigger("enterKey");
-                SaveEditValues(this, coordFormat, geoMapsSettings);
-            }
-        });
+    $('div.edit').find('input.coordValue').keyup(function (e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
+            SaveEditValues(this, coordFormat, geoMapsSettings);
+        }
+    });
+}
 
-        $('div.edit').find('input.coordValue').keyup(function(e){
-            if(e.keyCode == 13)
-            {
-                $(this).trigger("enterKey");
-                SaveEditValues(this, coordFormat, geoMapsSettings);
-            }
-        });
-    }
-    function AppendDocumentHandler(){
-        $("input[name=CoordFormat]").change(
-                function(){
-                    coordFormat = GetCoordinateFormatObject($("input[name=CoordFormat]:checked").val());
-                    ChangeCoordinatesFormat(geoMapsSettings, coordFormat);
-                    SettingSite.SetCoordFormat(geoMapsSettings, coordFormat);
-                }
-        );
+function AppendDocumentHandler() {
 
-        $("a.allShowHide").click(function () {
-            var showElements = $(".coordBox .ext .showhide");
-            for (var i = 0; i < showElements.length; i++) {
-                var elO = showElements.eq(i).find(".glyphicon-eye-open");
-                var elC = showElements.eq(i).find(".glyphicon-eye-close");
-                if (elO.css("display") != "none") {
-                    elO.toggle();
-                    elC.toggle();
-                }
-            }
-            SettingSite.ClearAllLineTo(geoMapsSettings);
-        });
+    $("input[name=CoordFormat]").change(function () {
+        coordFormat = GetCoordinateFormatObject($("input[name=CoordFormat]:checked").val());
+        ChangeCoordinatesFormat(geoMapsSettings, coordFormat);
+        SettingSite.SetCoordFormat(geoMapsSettings, coordFormat);
+    });
 
-        $("a.delSettings").click(function(){
-            DeleteGeoMapsSettings();
-        });
-
-        $("a.allDelete").click(function () {
-
-            if (Confirm('Sollen alle Koordinaten aus dem Calculator entfernt werden?\r\nDie Seite muss neu geladen werden um die vorhanenen Koordinaten wieder zu erkennen.')) {
-                var ids = [];
-                for(var coordIndex=0; coordIndex<geoMapsSettings.siteSetting.coordSettings.length; coordIndex++) {
-                    if(!geoMapsSettings.siteSetting.coordSettings[coordIndex].isSiteFavorite) {
-                        ids.push(geoMapsSettings.siteSetting.coordSettings[coordIndex].id);
-                    }
-                }
-                for(var idIndex=0; idIndex<ids.length; idIndex++) {
-                    SettingSite.DeleteCoord(geoMapsSettings, ids[idIndex]);
-                    $("[id^=geoMapsCoordBox-"+ids[idIndex]+"]").remove();
-                }
-            } else {
-                // Do nothing!
-            }
-
-        });
-
-        $("a.allUpDown").click(function () {
-            var downElements = $(".coordBox .ext");
-            for (var i = 0; i < downElements.length; i++) {
-                var element = downElements.eq(i);
-                if (element.css("display") != "none") {
-                    element.css("display", "none");
-                }
-                var id = GetCoordId(element);
-                SettingSite.SetExpandet(geoMapsSettings, id, false);
-            }
-            var downIcon = $(".coordBox .updown");
-            for (var i = 0; i < downIcon.length; i++) {
-                var element = downIcon.eq(i);
-                if ($(element).find('.glyphicon-chevron-down').css("display") == "inline-block") {
-                    $(element).find('.glyphicon-chevron-up').toggle();
-                    $(element).find('.glyphicon-chevron-down').toggle();
-                }
-            }
-        });
-
-        $("a.newCoord").click(function(){errorFlag = true; addNew();});
-
-        $("#newCoordinate").keyup(function(e){
-            /*
-            var newCoord = new Coordinate($("#newCoordinate").val());
-            if(!newCoord.IsValid) {
-                $("#newCoordinate").addClass("bgred");
-            } else {
-                $("#newCoordinate").removeClass("bgred");
-            }
-            */
-            if(e.keyCode == 13) {
-                $(this).trigger("enterKey");
-                errorFlag = true;
-                addNew();
-            } else {
-                errorFlag = false;
-            }
-        });
-
-        errorFlag = true;
-        function addNew() {
-            var newCoord = new Coordinate($("#newCoordinate").val());
-            if(newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
-                $("#newCoordinate").removeClass("bgred");
-                if($("#newCoordinate").val().trim().length == 0) return;
-                var newGUID = getGUID();
-                var uiId = GetUiId();
-                var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
-
-                AddNewCoordinateObject([siteCoord], geoMapsSettings);
-
-                $("[id^=geoMapsCoordBox-]").remove();
-                RenderCoordinatesToPageHTML(geoMapsSettings);
-                AppendCoordBoxHandler();
-                $("#newCoordinate").val('');
-            } else {
-                $("#newCoordinate").addClass("bgred");
-                setTimeout(function() { console.log("error : " + errorFlag); if(errorFlag) { $("#newCoordinate").val(''); } $("#newCoordinate").removeClass("bgred"); }, 2000);
-                return;
+    $("a.allShowHide").click(function () {
+        var showElements = $(".coordBox .ext .showhide");
+        for (var i = 0; i < showElements.length; i++) {
+            var elO = showElements.eq(i).find(".glyphicon-eye-open");
+            var elC = showElements.eq(i).find(".glyphicon-eye-close");
+            if (elO.css("display") != "none") {
+                elO.toggle();
+                elC.toggle();
             }
         }
-    }
-
-    $(function () {
-        $(".cordBoxList").sortable({
-            stop: function( event, ui ) {},
-            start: function( event, ui ) {}
-        });
-
-        $( ".cordBoxList" ).on( "sortstop", function( event, ui ) {
-            // console.log('stop: '+ui.item.index());
-        } );
-
-        $( ".cordBoxList" ).on( "sortstart", function( event, ui ) {
-            // console.log('start: '+ui.item.index());
-        } );
+        SettingSite.HideAllShowLineTo(geoMapsSettings);
     });
+
+    $("a.delSettings").click(function () {
+        DeleteGeoMapsSettings();
+    });
+
+    $("a.allDelete").click(function () {
+        if (Confirm('Sollen alle Koordinaten aus dem Calculator entfernt werden?\r\nDie Seite muss neu geladen werden um die vorhanenen Koordinaten wieder zu erkennen.')) {
+            var ids = [];
+            for (var coordIndex = 0; coordIndex < geoMapsSettings.siteSetting.coordSettings.length; coordIndex++) {
+                if (!geoMapsSettings.siteSetting.coordSettings[coordIndex].isSiteFavorite) {
+                    ids.push(geoMapsSettings.siteSetting.coordSettings[coordIndex].id);
+                }
+            }
+            for (var idIndex = 0; idIndex < ids.length; idIndex++) {
+                SettingSite.DeleteCoord(geoMapsSettings, ids[idIndex]);
+                $("[id^=geoMapsCoordBox-" + ids[idIndex] + "]").remove();
+            }
+        } else {
+            // Do nothing!
+        }
+
+    });
+
+    $("a.allUpDown").click(function () {
+        var downElements = $(".coordBox .ext");
+        for (var i = 0; i < downElements.length; i++) {
+            var element = downElements.eq(i);
+            if (element.css("display") != "none") {
+                element.css("display", "none");
+            }
+            var id = GetCoordId(element);
+            SettingCoord.SetExpandet(geoMapsSettings, id, false);
+        }
+        var downIcon = $(".coordBox .updown");
+        for (var i = 0; i < downIcon.length; i++) {
+            var element = downIcon.eq(i);
+            if ($(element).find('.glyphicon-chevron-down').css("display") == "inline-block") {
+                $(element).find('.glyphicon-chevron-up').toggle();
+                $(element).find('.glyphicon-chevron-down').toggle();
+            }
+        }
+    });
+
+    $("a.newCoord").click(function () {
+        errorFlag = true;
+        addNew();
+    });
+
+    $("#newCoordinate").keyup(function (e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
+            errorFlag = true;
+            addNew();
+        } else {
+            errorFlag = false;
+        }
+    });
+
+    errorFlag = true;
+    function addNew() {
+        var newCoord = new Coordinate($("#newCoordinate").val());
+        if (newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
+            $("#newCoordinate").removeClass("bgred");
+            if ($("#newCoordinate").val().trim().length == 0) return;
+            var newGUID = getGUID();
+            var uiId = GetUiId();
+            var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
+
+            AddNewCoordinateObject([siteCoord], geoMapsSettings);
+
+            $("[id^=geoMapsCoordBox-]").remove();
+            RenderCoordinatesToPageHTML(geoMapsSettings);
+            AppendCoordBoxHandler();
+            $("#newCoordinate").val('');
+        } else {
+            $("#newCoordinate").addClass("bgred");
+            setTimeout(function () {
+                console.log("error : " + errorFlag);
+                if (errorFlag) {
+                    $("#newCoordinate").val('');
+                }
+                $("#newCoordinate").removeClass("bgred");
+            }, 2000);
+            return;
+        }
+    }
+}
+
+$(function () {
+    $(".cordBoxList").sortable({
+        stop: function (event, ui) {
+        },
+        start: function (event, ui) {
+        }
+    });
+
+    $(".cordBoxList").on("sortstop", function (event, ui) {
+        // console.log('stop: '+ui.item.index());
+    });
+
+    $(".cordBoxList").on("sortstart", function (event, ui) {
+        // console.log('start: '+ui.item.index());
+    });
+});
 
 </script>
 
@@ -334,14 +327,14 @@
                 <a class="cmd delSettings">Alle Settings löschen</a>
             </div>
         </div>
-        <ul class="cordBoxList">        </ul>
+        <ul class="cordBoxList"></ul>
     </div>
 </div>
 <div style="background-color: cadetblue; padding: 50px">
 
-    <!-- original -->
     <div>
         <p>Overflow-Methode</p>
+
         <p>Bank: N 47° 16.654 E 008° 88.22 Parkplatz: N 47° 16.654 E 008° 77.77</p>
     </div>
 </div>

@@ -382,6 +382,55 @@
 
 
 
+    <li id="geoMapsCoordBox-{0}"  class="coordBox">
+        <div class="clearfix main">
+            <div class="marker">
+                <!-- <img src="images/marker_A.png"> -->{4}
+            </div>
+            <div class="content">
+                <div class="description">
+                    {3}
+                </div>
+                <div class="left">
+                    <div>
+                        <a class="cmd updown"><span class="glyphicon glyphicon-chevron-down" style="display:none"></span><span class="glyphicon glyphicon-chevron-up"></span></a>
+                    </div>
+                    <div class="coordinate">
+                        {1}
+                    </div>
+                </div>
+                <div>
+                    <a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a>
+                    <a class="cmd calc"><span class="glyphicon glyphicon-new-window"></span></a>
+                    <a class="cmd edit"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a class="cmd del"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                    <div>
+                        <a class="cmd order"><span class="fa fa-navicon"></span></a>
+                    </div>
+                    <div>
+                        <a class="cmd fav"><span class="glyphicon glyphicon-heart-empty"></span><span style="display: none;" class="glyphicon glyphicon-heart red"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="edit" style="display: none;">
+            <table>
+                <tr><td>Beschreibung : </td><td><input class="coordDesc" type="text" value=""> </td></tr>
+                <tr><td>Koordinate : </td><td><input class="coordValue" type="text" value=""> </td></tr>
+                <tr><td></td><td> <button type="button" class="btn btn-default btn-xs save">Speichern</button>  <button type="button" class="btn btn-default btn-xs cancel">Verwerfen</button></td></tr>
+            </table>
+        </div>
+        <div class="ext" style="display: none;">
+            <table>{2}
+            </table>
+        </div>
+    </li>
+
+
+
+
+
+
         <li class="ui-state-default">
         <div id="mapCoordsdfasfsafsa-1" class="geomaps mapCoord">
             <div class="mapCoordMain">
