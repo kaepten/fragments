@@ -37,7 +37,7 @@
 var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
         '    <div class="clearfix main">' +
         '        <div class="marker">' +
-        '            <!-- <img src="images/marker_A.png"> -->{4}' +
+        '            <img src="media/coordMarker.svg" alt="">{4}' +
         '        </div>' +
         '        <div class="content">' +
         '            <div class="description">' +
@@ -301,43 +301,60 @@ $(function () {
 
 </script>
 
-<div style="background-color: cadetblue;">
-    <div id="GeoMapsCalculator" class="gM calculator reset">
-        <div class="header">
-            <div class="clearfix">
-                <div class="left">
-                    <input id="newCoordinate" type="text" value="">
-                </div>
-                <div class="left">
-                    <a class="cmd newCoord"><span class="fa fa-compass"></span></a>
-                </div>
-                <div class="right">
-                    <a class="cmd allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
-                    <a class="cmd allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
-                    <a class="cmd allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
-                </div>
-            </div>
-            <div>
-                <input type="radio" name="CoordFormat" value="LV03">SwissGrid
-                <input type="radio" name="CoordFormat" value="Dms">Dms
-                <input type="radio" name="CoordFormat" value="Ddd">Ddd
-                <input type="radio" name="CoordFormat" value="Dmm">Dmm
-            </div>
-            <div>
-                <a class="cmd delSettings">Alle Settings löschen</a>
-            </div>
-        </div>
-        <ul class="cordBoxList"></ul>
-    </div>
-</div>
-<div style="background-color: cadetblue; padding: 50px">
+
+
+
+
+<div style="z-index: 200">
+    <h2>GeoAdmin map</h2>
+    <script src="http://api3.geo.admin.ch/loader.js?lang=en" type="text/javascript"></script>
+    <div id="map" style="height: 400px;width: 100%"></div>
+    <script type="text/javascript">
+        var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
+        var map = new ga.Map({
+            target: 'map',
+            layers: [layer],
+            view: new ol.View2D({
+                resolution: 500,
+                center: [670000, 160000]
+            })
+        });
+    </script>
+
 
     <div>
-        <p>Overflow-Methode</p>
-
         <p>Bank: N 47° 16.654 E 008° 88.22 Parkplatz: N 47° 16.654 E 008° 77.77</p>
     </div>
 </div>
+
+<div id="GeoMapsCalculator" class="gM calculator reset" style="z-index: 1000">
+    <div class="header">
+        <div class="clearfix">
+            <div class="left">
+                <input id="newCoordinate" type="text" value="">
+            </div>
+            <div class="left">
+                <a class="cmd newCoord"><span class="fa fa-compass"></span></a>
+            </div>
+            <div class="right">
+                <a class="cmd allShowHide"><span class="glyphicon glyphicon-eye-close"></span></a>
+                <a class="cmd allUpDown"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                <a class="cmd allDelete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+            </div>
+        </div>
+        <div>
+            <input type="radio" name="CoordFormat" value="LV03">SwissGrid
+            <input type="radio" name="CoordFormat" value="Dms">Dms
+            <input type="radio" name="CoordFormat" value="Ddd">Ddd
+            <input type="radio" name="CoordFormat" value="Dmm">Dmm
+        </div>
+        <div>
+            <a class="cmd delSettings">Alle Settings löschen</a>
+        </div>
+    </div>
+    <ul class="cordBoxList"></ul>
+</div>
+
 
 </body>
 </html>

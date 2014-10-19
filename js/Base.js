@@ -61,7 +61,6 @@ function ParseCoordinates() {
 }
 
 function RenderCoordinatesToPageHTML(settings) {
-    console.log("Render");
     var coordsCount = settings.siteSetting.coordSettings.length;
     for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
         var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];

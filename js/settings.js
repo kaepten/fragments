@@ -77,7 +77,7 @@ function LoadGeoMapsSiteSettings(url, parsedPageCoords) {
             return settingObject;
         }
     }
-    return CreateInitialSetting();
+    return CreateInitialSetting(url, parsedPageCoords);
 }
 
 function SetCurrentSettingSite(setting, url) {
@@ -132,7 +132,7 @@ function FindNewCoordinates(setting, parsedPageCoords) {
     return newCoordinates;
 }
 
-function CreateInitialSetting() {
+function CreateInitialSetting(url, parsedPageCoords) {
     var settingObject = new SettingCalculator();
     settingObject.siteSetting = CreateSiteSetting(url, parsedPageCoords);
     settingObject.siteSettings.push(settingObject.siteSetting);
