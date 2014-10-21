@@ -2,85 +2,16 @@
 // @name        GoogleMaps Div
 // @namespace   c-dev
 // @description GoogleMaps Div
-// @include     *.geocaching.com/*
 // @include     *.c-dev.ch/*
 // @version     1
 // @grant       none
 // @require     https://gist.githubusercontent.com/arantius/3123124/raw/grant-none-shim.js
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js
 // @require     http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js
-// @require		http://cloud.github.com/downloads/enriquez/ezpz-tooltip/jquery.ezpz_tooltip.js
+// @resource    customCSS http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css
 // ==/UserScript==
 
-// if (window.top != window.self) { return; } // don't run on frames or iframes
-
-GM_addStyle('#example-content-1 {    display: none; position: absolute; padding: 10px; border: 1px solid black;    background-color: white;}');
-
-String.prototype.trim = function () {
-    return this.replace(/^\s*/, "").replace(/\s*$/, "");
-};
-
-$ = jQuery.noConflict(true);
-
-$(document).ready(
-    function() {
-        InsertCoordsPopups();
-
-        return;
-        $("body").prepend('<span class="tooltip-target" id="example-target-1">First Target</span><div class="tooltip-content" id="example-content-1" style="background: red">Content for first</div>');
-        $(".tooltip-target").ezpz_tooltip({
-            stayOnContent: true,
-            offset:-10
-        }); // configuration of pop-up
-    });
-
-
-function InsertCoordsPopups() {
-    $.fn.egrep = function(pat) {
-        var out = [];
-        var lastParent;
-        var textNodes = function(n) {
-            if (n.nodeType == 3) {
-                var t = typeof pat == 'string' ? n.nodeValue.indexOf(pat) != -1 : pat.test(n.nodeValue);
-                if (t) {
-                    if (lastParent == undefined || lastParent != n.parentNode) {
-                        lastParent = n.parentNode;
-                        out.push(n.parentNode);
-                    }
-                }
-            }
-            else {
-                $.each(n.childNodes, function(a, b) {
-                    textNodes(b);
-                });
-            }
-        };
-        this.each(function() {
-            textNodes(this);
-        });
-        return out;
-    };
-    var pageParserRegExp = /(id="geoMapsCoord\d*">)?\s*([N|S])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d\d\d)'*.*?([EOW])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d\d\d)'*\s*/gmi;
-    var n = $('body').egrep(pageParserRegExp);
-    var popIndex = 0;
-    for (var i = 0; i < n.length; ++i) {
-        try {
-            var coordText = ($(n[i]).html());
-            var validCoordinates = coordText.match(pageParserRegExp);
-            var replaceHtml = $(n[i]).html();
-            for (var ii = 0; ii < validCoordinates.length; ++ii) {
-                // WrapCoodinate(replaceHtml, validCoordinates[ii], popIndex);
-                // InsertPopUp(popIndex, validCoordinates[ii]);
-                console.log(replaceHtml + " " + validCoordinates[ii]);
-                popIndex++;
-            }
-            $(n[i]).html(replaceHtml);
-        } catch(err) {
-            console.log('## ERROR ## ' + coordText);
-            console.log(err);
-        }
-    }
-}
+if (window.top != window.self) { return; } //don't run on frames or iframes
 
 var counter = GM_getValue('counter', 0);
 console.log('This script has been run ' + counter + ' times.');
@@ -91,27 +22,23 @@ GM_setValue('counter', ++counter);
 // GM_addStyle("#map-canvas { width: 350px; height: 350px; padding: 0.5em; background-color: black}");
 
 
+this.$ = this.jQuery = jQuery.noConflict(true);
+$(document).ready(function()
+{
+    // alert("jQuery is loaded");
+});
 
-var sidepopCss = "right: -400px; position: absolute; z-index: 90000;  width: 450px; height:100%; top:1px; bottom: 0px; background-color: yellow; border: black solid";
-var sidepop = "<div id='sidepop' style='"+sidepopCss+"'>Sidepop</div>";
-$('body').prepend(sidepop);
-
-var flag = true;
-$(document).ready(
-    function() {
-
-
-
-        $('#sidepop').hover(function () {
-            if(flag){$('#sidepop').css('right','0px');}
-            else{ $('#sidepop').css('right','-400px');}
-            flag = !flag;
-        });
-    }
-);
-
-var html  = '<div id="main" style="padding: 0px; padding-top: 50px;  position: absolute; z-index: 10000;  width: 450px; height: 230px; background-color: chartreuse; border: black solid"><div class="notDrag"  id="map-canvas" style="position: relative;width: 100%; height: 100%; margin: 0; background-color: red;"></div></div>';
+var html  = '<div id="main" style="padding: 0px; padding-top: 0px;  position: absolute; z-index: 10000;  width: 450px; height: 570px; background-color: chartreuse; border: black solid"><div id="latbox"></div><div class="notDrag"  id="map-canvas" style="position: relative;width: 100%; height: 100%; margin: 0; background-color: red;"></div></div>';
 $('body').prepend(html);
+
+
+
+
+// var html  = '<div id="main" style="padding: 0px; padding-top: 0px;  position: absolute; z-index: 10010;  width: 450px; height: 570px; background-color: chartreuse; border: black solid"><iframe src="http://www.geocaching.com" width="420px" height="100%"></iframe> </div>';
+// $('body').prepend(html);
+
+
+
 
 window.google = window.google || {};
 google.maps = google.maps || {};
@@ -144,14 +71,54 @@ $(function() {
 });
 
 
+function updateMarkerPosition(latLng) {
+    // document.getElementById('info').innerHTML = [        latLng.lat(),        latLng.lng()    ].join(', ');
+    $('#latbox').html([        latLng.lat(),        latLng.lng()    ].join(', '));
+    console.log([        latLng.lat(),        latLng.lng()    ].join(', '));
+}
+
 var map;
 function initialize() {
-    // N 47.267283° E 8.499317°
-    var mapOptions = { zoom: 16, center: new google.maps.LatLng(47.267283, 8.499317) };
+
+    var latLng = new google.maps.LatLng(47.267283, 8.499317);
+    var mapOptions = { zoom: 16, center:  latLng};
     map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
     console.log("map loaded");
+
+    var markerTemp = new google.maps.Marker({
+        position: latLng,
+        title: 'Point A',
+        map: map,
+        draggable: true
+    });
+
+    google.maps.event.addListener(map, 'click', function(event) {
+        addMarker(event.latLng);
+    });
+
+    google.maps.event.addListener(markerTemp, 'drag', function() {
+        updateMarkerPosition(markerTemp.getPosition());
+    });
+
+
+    // Update current position info.
+    updateMarkerPosition(latLng);
+}
+
+var markers = [];
+
+
+function addMarker(location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        draggable:true,
+        title:"Drag me!"
+    });
+    markers.push(marker);
+    google.maps.event.addListener(marker, 'drag', function() {
+        updateMarkerPosition(marker.getPosition());
+    });
 }
 
 setTimeout(function() { window.onload = initialize(); }, 500);
-
-

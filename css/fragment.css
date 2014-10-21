@@ -63,6 +63,7 @@
 .gM.calculator {
 	background: black;
 	float: right;
+    width: 400px;
 }
 
 .gM .left {

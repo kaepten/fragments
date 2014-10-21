@@ -301,33 +301,7 @@ $(function () {
 
 </script>
 
-
-
-
-
-<div style="z-index: 200">
-    <h2>GeoAdmin map</h2>
-    <script src="http://api3.geo.admin.ch/loader.js?lang=en" type="text/javascript"></script>
-    <div id="map" style="height: 400px;width: 100%"></div>
-    <script type="text/javascript">
-        var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
-        var map = new ga.Map({
-            target: 'map',
-            layers: [layer],
-            view: new ol.View2D({
-                resolution: 500,
-                center: [670000, 160000]
-            })
-        });
-    </script>
-
-
-    <div>
-        <p>Bank: N 47° 16.654 E 008° 88.22 Parkplatz: N 47° 16.654 E 008° 77.77</p>
-    </div>
-</div>
-
-<div id="GeoMapsCalculator" class="gM calculator reset" style="z-index: 1000">
+<div id="GeoMapsCalculator" class="gM calculator reset">
     <div class="header">
         <div class="clearfix">
             <div class="left">
@@ -355,6 +329,25 @@ $(function () {
     <ul class="cordBoxList"></ul>
 </div>
 
+<div style="background-color: #6495ed; border: 1px dashed #C0C0C0; margin: 0px 26em 1em 1em; bottom:1em; height: 800px">
+    <h2>GeoAdmin map</h2>
+    <script src="http://api3.geo.admin.ch/loader.js?lang=en" type="text/javascript"></script>
+    <div id="map" style="height: 650px;width: 100%"></div>
+    <script type="text/javascript">
+        var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
+        var map = new ga.Map({
+            target: 'map',
+            layers: [layer],
+            view: new ol.View2D({
+                resolution: 100,
+                center: [670000, 160000]
+            })
+        });
+    </script>
+    <div>
+        <p>Bank: N 47° 16.654 E 008° 88.22 Parkplatz: N 47° 16.654 E 008° 77.77</p>
+    </div>
+</div>
 
 </body>
 </html>
