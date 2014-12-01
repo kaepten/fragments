@@ -20,6 +20,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600, 400,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300' rel='stylesheet' type='text/css'>
 
+
     <style>
         body {
             /*font-family: 'Open Sans', sans-serif;*/
@@ -28,6 +29,48 @@
             font-size: 1em;
         }
     </style>
+
+
+
+
+    <style type="text/css">
+        .rotate-north {
+            position: absolute;
+            top: 165px;
+            left: 8px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 4px;
+            padding: 2px;
+        }
+        .ol-touch .rotate-north {
+            top: 80px;
+        }
+        .rotate-north a {
+            display: block;
+            color: black;
+            font-size: 18px;
+            margin: 1px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 2px;
+            height: 22px;
+            width: 150px;
+            background: rgba(0,60,136,0.4);
+        }
+        .ol-touch .rotate-north a {
+            font-size: 20px;
+            height: 30px;
+            width: 30px;
+            line-height: 26px;
+        }
+        .rotate-north a:hover {
+            background: rgba(0,60,136,0.7);
+        }
+    </style>
+
+
+
+
 </head>
 <body>
 
@@ -348,6 +391,54 @@ $(function () {
 
     <script type="text/javascript">
 
+
+        /**
+         * Define a namespace for the application.
+         */
+        window.app = {};
+        var app = window.app;
+
+
+        /**
+         * @constructor
+         * @extends {ol.control.Control}
+         * @param {Object=} opt_options Control options.
+         */
+        app.RotateNorthControl = function(opt_options) {
+
+            var options = opt_options || {};
+
+            var anchor = document.createElement('a');
+            anchor.href = '#rotate-north';
+            anchor.innerHTML = '<span id="geoMapKoords"></span>';
+
+            var this_ = this;
+            var handleRotateNorth = function(e) {
+                // prevent #rotate-north anchor from getting appended to the url
+                e.preventDefault();
+                this_.getMap().getView().setRotation(this_.getMap().getView().getRotation() + 90);
+            };
+
+            anchor.addEventListener('click', handleRotateNorth, false);
+            anchor.addEventListener('touchstart', handleRotateNorth, false);
+
+            var element = document.createElement('div');
+            element.className = 'rotate-north ol-unselectable';
+            element.appendChild(anchor);
+
+            ol.control.Control.call(this, {
+                element: element,
+                target: options.target
+            });
+        };
+        ol.inherits(app.RotateNorthControl, ol.control.Control);
+
+
+
+
+
+
+
         var container = document.getElementById('popup');
         var content = document.getElementById('popup-content');
         var closer = document.getElementById('popup-closer');
@@ -381,6 +472,13 @@ $(function () {
 
         var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
         var map = new ga.Map({
+            controls: ol.control.defaults({
+                attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+                    collapsible: false
+                })
+            }).extend([
+                new app.RotateNorthControl()
+            ]),
             target: 'map',
             layers: [layer],
             overlays: [overlay],
@@ -410,18 +508,34 @@ $(function () {
             coordinateFormat: ol.coordinate.createStringXY(0),
             projection: 'EPSG:21781',
             className: 'custom-mouse-position',
-            target: document.getElementById('mouse-position'),
+            target: document.getElementById('geoMapKoords'),
             undefinedHTML: '&nbsp;'
         });
 
         map.addControl(mousePositionControl);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         var tpl =
                 '<div class="checkbox">' +
                 '<label>{label}' +
                 '<input type="checkbox" onclick="$.displayLayer(\'{layerBodId}\', this.checked)"/>' +
-                '</label>' + '<button onclick="$.getLegend(\'{layerBodId}\')" class="btn btn-default legend-btn" data-toggle="modal" data-target="#legend-modal">i</button>'
-        '</div>';
+                '</label>' + '<button onclick="$.getLegend(\'{layerBodId}\')" class="btn btn-default legend-btn" data-toggle="modal" data-target="#legend-modal">i</button></div>';
+
+
+
 
         var nano = function(template, data) {
             return template.replace(/\{([\w\.]*)\}/g,

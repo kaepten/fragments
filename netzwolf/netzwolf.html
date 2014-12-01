@@ -1,0 +1,105 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Setzen mehrerer Marker (mit Permalink)</title>
+
+    <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+
+
+    <!--==================================================================================
+    "multimark.js" enthaelt die Definition der Klasse "OpenLayers.Layer.MultiMark".
+    Diese erlaubt das Eingeben, Loeschen und Permalinken von *mehreren* Markern.
+    Bitte kopiere diese Datei auf den eigenen Server. Danke.
+    ===================================================================================-->
+
+    <script type="text/javascript" src="multimark.js"></script>
+
+
+    <script type="text/javascript">
+        //------------------------------------------------------------------------------------
+        //	Die anonyme Onload-Function baut das Kartenobjekt aus Komponenten zusammen.
+        //------------------------------------------------------------------------------------
+
+        window.onload = function () {
+
+            //----------------------------------------------------------------------------
+            //	Karte - der Name ('map') muss mit der id des <div> uebereinstimmen.
+            //----------------------------------------------------------------------------
+
+            var map = new OpenLayers.Map ('map');
+
+            //----------------------------------------------------------------------------
+            //	Default-Koordinatensystem fuer alle Controls
+            //----------------------------------------------------------------------------
+
+            map.displayProjection = new OpenLayers.Projection('EPSG:4326');
+
+            //----------------------------------------------------------------------------
+            //	Kartenlayer
+            //----------------------------------------------------------------------------
+
+            map.addLayer (new OpenLayers.Layer.OSM.Mapnik('Mapnik'));
+
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            //@
+            //@	MultiMark-Layer
+            //@
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            map.addLayer (new OpenLayers.Layer.MultiMark('Marker', {
+
+                icon: new OpenLayers.Icon ('../images/marker.png', {w:26,h:30}, {x:-13,y:-30}),
+                queryParam: 'm',
+                permalink: 'perma'
+            }));
+
+            //----------------------------------------------------------------------------
+            //	Wenn kein Permalink genutzt, stelle bestimmten Bereich dar.
+            //----------------------------------------------------------------------------
+
+            if (!map.getCenter()) {
+                map.zoomToExtent(
+                        new OpenLayers.Bounds(5.88, 47.26, 15.04, 54.91).
+                                transform(map.displayProjection, map.getProjectionObject()));
+            }
+        };
+    </script>
+    <style type="text/css">
+        @media print {
+
+            body>*, .olControlZoom {
+                display: none;
+            }
+
+            div#map {
+                display: block;
+            }
+
+        }
+    </style>
+</head>
+
+<body style="margin: 0">
+
+<div style="float:right"><a href="http://www.netzwolf.info/kartografie/openlayers/">zur &Uuml;bersicht</a></div>
+<h1>Setzen mehrerer Marker (mit Permalink)</h1>
+
+<div id="map" style="background: gray; width: 500pt; height: 70%; border: 1px solid gray"></div>
+<div style="width: 500pt">
+    <div style="float: right"><a id="perma" href="#">Permalink</a></div>
+    <button onclick="window.print()">Drucken</button></div>
+</div>
+
+<p>
+    <span style="background: yellow">Marker werden mit Strg-Click erzeugt und entfernt.</span>
+</p>
+
+<p>
+    Erkl&auml;rung im Quelltext der Seite.
+    Bitte speichere auch das zugeh&ouml;rige <a href="/j/ol/multimark.js">JavaScript</a>.
+</p>
+
+</body>
+</html>
