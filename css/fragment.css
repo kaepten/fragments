@@ -63,7 +63,7 @@
 .gM.calculator {
 	background: black;
 	float: right;
-    width: 400px;
+    width: 300px;
 }
 
 .gM .left {
@@ -152,7 +152,7 @@
 .calculator > .header {
 	background-color: #dadada;
 	border-bottom: solid 1px #e3e3e3;	
-	width: 400px;
+	width: 300px;
 }
 
 .calculator > .header div.left:nth-child(2) {	
@@ -300,7 +300,7 @@
 .coordBox {
 	list-style-type: none;
 	background-color: #EDF2FD;
-	width: 400px;
+	width: 300px;
 	border-bottom: solid 1px #e3e3e3;
 }
 
@@ -318,7 +318,7 @@
 
 .coordBox > .main > div.content {
 	height: 100%;
-	width: 370px;
+	width: 270px;
 	float: left;
 	background-color: #F0F0F0;
 }
