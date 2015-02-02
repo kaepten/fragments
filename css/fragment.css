@@ -392,6 +392,63 @@
 
 
 
+/* sidebar styles */
+
+    #calculatorbar {
+        background-color: #708090;
+        overflow: auto;
+        position: absolute;
+        padding: 4px;
+        width: 280px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        float: right;
+		z-index: 11;        
+    }	
+	
+	#map {
+        background-color: #b5cee3;	
+        position: absolute;
+        left: 0px;
+        right: 280px;
+        top: 0px;
+        bottom: 0px;
+        float: left;
+    }
+
+    #calculatorbarpin {
+        background-color: #708090;
+        color: #FFF;
+        position: absolute;
+        display: block;
+        right: 280px;
+        width: 24px;
+        height: 40px;
+        top: 20px;
+        border-top: 1px solid #DDD;
+        border-left: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
+        border-radius: 4px 0px 0px 4px;
+        z-index: 10;
+    }
+
+    #calculatorbarbutton {
+        position: absolute;
+        display: block;
+        width: 14px;
+        height: 14px;
+        top: 50%;
+        left: 20%;
+        margin-left: -5px;
+        margin-top: -10px;
+    }
+
+
+
+
+
+
 
 
 
@@ -539,6 +596,9 @@
 	content: "\e025";
 }
 
+.glyphicons-chevron-right:before {
+	content: "\e080";
+}
 .glyphicon-download:before {
 	content: "\e026";
 }
