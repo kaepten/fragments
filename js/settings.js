@@ -67,15 +67,23 @@ function LoadGeoMapsSiteSettings(url, parsedPageCoords) {
     _globalCoordinateUiIdList = [0];
     var settingObject;
     var settingsText = localStorage["GeoMaps"];
-    if (settingsText != undefined) {
-        settingObject = JSON.parse(settingsText);
-        if (settingObject != undefined) {
-            SetCurrentSettingSite(settingObject, url);
-            AddNewCoordinateObject(FindNewCoordinates(settingObject, parsedPageCoords), settingObject); // Neue Seiten-Koordinaten, die nich in den Settings waren hinzufügen
-            CleanOldCoordinates(settingObject, parsedPageCoords); // checken, ob in den Settings nicht Favs sind, die auf der Seite nicht mehr existieren
-            SaveGeoMapsSettings(settingObject);
-            return settingObject;
+    try {
+        if (settingsText != undefined) {
+            settingObject = JSON.parse(settingsText);
+            // if (settingObject != undefined && settingObject.siteSetting != undefined) {
+            if (settingObject != undefined) {
+                SetCurrentSettingSite(settingObject, url);
+                AddNewCoordinateObject(FindNewCoordinates(settingObject, parsedPageCoords), settingObject); // Neue Seiten-Koordinaten, die nich in den Settings waren hinzufügen
+                CleanOldCoordinates(settingObject, parsedPageCoords); // checken, ob in den Settings nicht Favs sind, die auf der Seite nicht mehr existieren
+                SaveGeoMapsSettings(settingObject);
+                return settingObject;
+            }
+            else {
+                return CreateInitialSetting(url, parsedPageCoords);
+            }
         }
+    }
+    catch(err) { // Abfangen und dann CreateInitial machen
     }
     return CreateInitialSetting(url, parsedPageCoords);
 }
@@ -115,14 +123,16 @@ function FindNewCoordinates(setting, parsedPageCoords) {
     for (var pageParsedCoordinateIndex = 0; pageParsedCoordinateIndex < parsedPageCoords.length; pageParsedCoordinateIndex++) {
         var parsedOrigin = parsedPageCoords[pageParsedCoordinateIndex].OriginCoordinateString;
         var notFound = true;
-        for (var settingsCoordIndex = 0; settingsCoordIndex < setting.siteSetting.coordSettings.length; settingsCoordIndex++) {
-            var setOrigin = setting.siteSetting.coordSettings[settingsCoordIndex].coordinate.OriginCoordinateString;
-            if (parsedOrigin == setOrigin) {
-                notFound = false;
-                break;
-            } // coordinate vorhanden
-            else {
-                notFound = true;
+        if(setting.siteSetting != undefined) {
+            for (var settingsCoordIndex = 0; settingsCoordIndex < setting.siteSetting.coordSettings.length; settingsCoordIndex++) {
+                var setOrigin = setting.siteSetting.coordSettings[settingsCoordIndex].coordinate.OriginCoordinateString;
+                if (parsedOrigin == setOrigin) {
+                    notFound = false;
+                    break;
+                } // coordinate vorhanden
+                else {
+                    notFound = true;
+                }
             }
         }
         if (notFound) {

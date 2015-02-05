@@ -51,11 +51,6 @@ if (!String.prototype.contains ) {
         return String.prototype.indexOf.apply( this, arguments ) !== -1;
     };
 }
-
-//String.prototype.trim = function () {
-  //  return this.replace(/^\s*/, "").replace(/\s*$/, "");
-//};
-
 // String.format(width [, char , align])
 // returns a string with a fixed length,
 // filled with char (default = " ")
@@ -70,7 +65,7 @@ String.prototype.fill = function(width, c , align) {
     if(!c) c = " ";
     if(!align) align = LEFT;
 
-    var fill = c.x(width - len);
+    var fill = c.xCount(width - len);
 
     var start = align === LEFT ? fill.length :
         align === CENTER ? fill.length - (width - len   -1) / 2 : 0;
@@ -78,7 +73,7 @@ String.prototype.fill = function(width, c , align) {
     return (fill + this + fill).substr(start, width);
 };
 
-String.prototype.x = function(num) {
+String.prototype.xCount = function(num) {
     if(!num || num < 0) return '';
     var tmp = this;
     while(--num) { tmp += this; };

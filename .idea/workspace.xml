@@ -8,6 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GeoMapsPlanner.html" afterPath="$PROJECT_DIR$/GeoMapsPlanner.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fragment.css" afterPath="$PROJECT_DIR$/css/fragment.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settings.js" afterPath="$PROJECT_DIR$/js/settings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="2e47b9db-df9c-4089-b39a-87b575751977" name="Failed commit: Default" comment="neu organisiert mit allen Sourcen als Resourcen" />
@@ -24,89 +27,66 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="fragments" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CoordBox.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CoordBox.html">
+      <file leaf-file-name="GeoMapsPlanner.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.21261682" vertical-offset="3616" max-vertical-offset="6953">
-              <caret line="380" column="55" selection-start-line="380" selection-start-column="55" selection-end-line="380" selection-end-column="55" />
+            <state vertical-scroll-proportion="-6.4615383">
+              <caret line="137" column="29" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
               <folding>
-                <element signature="e#1195#1376#0" expanded="false" />
-                <element signature="e#5949#8941#0" expanded="false" />
-                <element signature="e#6010#6522#0" expanded="false" />
-                <element signature="e#6199#6236#0" expanded="false" />
-                <element signature="e#6242#6279#0" expanded="false" />
-                <element signature="e#6581#6858#0" expanded="false" />
-                <element signature="e#6922#7476#0" expanded="false" />
-                <element signature="e#7514#8010#0" expanded="false" />
-                <element signature="e#7924#7961#0" expanded="false" />
-                <element signature="e#7967#8004#0" expanded="false" />
-                <element signature="e#8047#8199#0" expanded="false" />
-                <element signature="e#8247#8387#0" expanded="false" />
-                <element signature="e#8433#8500#0" expanded="false" />
-                <element signature="e#8565#8718#0" expanded="false" />
-                <element signature="e#8596#8712#0" expanded="false" />
-                <element signature="e#8784#8937#0" expanded="false" />
-                <element signature="e#8815#8931#0" expanded="false" />
-                <element signature="e#9031#9260#0" expanded="false" />
-                <element signature="e#9305#9755#0" expanded="false" />
-                <element signature="e#9419#9693#0" expanded="false" />
-                <element signature="e#9608#9683#0" expanded="false" />
-                <element signature="e#9800#9840#0" expanded="false" />
-                <element signature="e#10056#10651#0" expanded="false" />
-                <element signature="e#10198#10412#0" expanded="false" />
-                <element signature="e#10291#10398#0" expanded="false" />
-                <element signature="e#10480#10641#0" expanded="false" />
-                <element signature="e#10657#10695#0" expanded="false" />
-                <element signature="e#10745#11530#0" expanded="false" />
-                <element signature="e#10849#11128#0" expanded="false" />
-                <element signature="e#10947#11010#0" expanded="false" />
-                <element signature="e#11226#11524#0" expanded="false" />
-                <element signature="e#11363#11514#0" expanded="false" />
-                <element signature="e#11572#11623#0" expanded="false" />
-                <element signature="e#11670#11859#0" expanded="false" />
-                <element signature="e#11701#11805#0" expanded="false" />
-                <element signature="e#11811#11853#0" expanded="false" />
-                <element signature="e#11907#12971#0" expanded="false" />
-                <element signature="e#12053#12607#0" expanded="false" />
-                <element signature="e#12613#12965#0" expanded="false" />
-                <element signature="e#12701#12927#0" expanded="false" />
-                <element signature="e#12787#12855#0" expanded="false" />
-                <element signature="e#12989#13369#0" expanded="false" />
-                <element signature="e#13022#13125#0" expanded="false" />
-                <element signature="e#13059#13070#0" expanded="false" />
-                <element signature="e#13108#13119#0" expanded="false" />
-                <element signature="e#13187#13244#0" expanded="false" />
-                <element signature="e#13307#13365#0" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1417452690238" expanded="true" signature="2928:2940" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="3955:3969" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="4178:4192" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="4746:4760" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="5465:5479" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="5624:5638" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="5686:5700" placeholder="..." />
-                <marker date="1417452690238" expanded="true" signature="5748:5762" placeholder="..." />
+                <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <marker date="1423146766691" expanded="true" signature="4675:4687" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="5822:5836" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="6085:6099" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="6709:6723" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7524:7538" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7699:7713" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7761:7775" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7823:7837" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ol3.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ol3.html">
+      <file leaf-file-name="GeoMapsPlanner_.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GeoMapsPlanner_.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.346153" vertical-offset="1946" max-vertical-offset="2856">
-              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3107089">
+              <caret line="255" column="26" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
+              <folding>
+                <marker date="1423146766691" expanded="true" signature="4675:4687" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="5822:5836" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="6085:6099" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="6709:6723" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7524:7538" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7699:7713" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7761:7775" placeholder="..." />
+                <marker date="1423146766691" expanded="true" signature="7823:7837" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Base.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Base.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="160" column="30" selection-start-line="160" selection-start-column="30" selection-end-line="160" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,7 +118,15 @@
         <option value="$PROJECT_DIR$/testOL.html" />
         <option value="$PROJECT_DIR$/ol3/dragExample.html" />
         <option value="$PROJECT_DIR$/ol3.html" />
+        <option value="$PROJECT_DIR$/mapLayerTests.html" />
+        <option value="$PROJECT_DIR$/js/Core.js" />
         <option value="$PROJECT_DIR$/CoordBox.html" />
+        <option value="$PROJECT_DIR$/collapse.html" />
+        <option value="$PROJECT_DIR$/css/glyphicon.css" />
+        <option value="$PROJECT_DIR$/css/fragment.css" />
+        <option value="ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+        <option value="$PROJECT_DIR$/GeoMapsPlanner.html" />
+        <option value="$PROJECT_DIR$/js/settings.js" />
       </list>
     </option>
   </component>
@@ -149,11 +137,13 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1426" />
+    <option name="width" value="1936" />
+    <option name="height" value="1170" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -243,7 +233,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ol3" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -257,12 +247,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -280,7 +271,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/testOL.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
@@ -291,29 +282,31 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="LayoutCode.rearrangeEntriesHTML" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="227" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="298" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="227" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="298" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="228" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="300" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="902" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="973" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="231" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="299" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="230" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="298" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="231" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="299" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="905" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="973" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="JavaScriptLanguageLevel" value="ES5" />
     <property name="JavaScriptPreferStrict" value="true" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="js.phonegap.settings.workdir" value="" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\fragments" />
       <recent name="D:\Projekte\GeoMaps\Prototypen\fragments" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -322,22 +315,34 @@
       <recent name="D:\Projects\fragments\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.CoordBox.html">
-    <configuration default="false" name="Base.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="Base.js" working-dir="$PROJECT_DIR$">
-      <RunnerSettings RunnerId="Basic" />
-      <RunnerSettings RunnerId="debuggableProgram" />
-      <ConfigurationWrapper RunnerId="Basic" />
-      <ConfigurationWrapper RunnerId="debuggableProgram" />
+  <component name="RunManager" selected="JavaScript Debug.GeoMapsPlanner.html">
+    <configuration default="false" name="ol3.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/fragments/ol3.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+    <configuration default="false" name="fragments.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/fragments/fragments.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GeoMapsPlanner.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/fragments/GeoMapsPlanner.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="collapse.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/fragments/collapse.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GeoMapsPlanner_.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/fragments/GeoMapsPlanner_.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -345,6 +350,10 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -363,6 +372,7 @@
       <node-options />
       <gulpfile />
       <tasks />
+      <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
@@ -372,13 +382,21 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.CoordBox.html" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.Base.js" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.ol3.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.fragments.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.GeoMapsPlanner.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.collapse.html" />
+      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.GeoMapsPlanner_.html" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.Base.js" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.GeoMapsPlanner.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.GeoMapsPlanner_.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.collapse.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.ol3.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.fragments.html" />
       </list>
     </recent_temporary>
   </component>
@@ -386,7 +404,6 @@
   <component name="StructureViewFactory">
     <option name="AUTOSCROLL_MODE" value="false" />
     <option name="ACTIVE_ACTIONS" value=",HIDE_INHERITED,HIDE_INHERITED_FROM_OBJECT,SHOW_CLASSES" />
-    <option name="SHOW_TOOLBAR" value="true" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -458,13 +475,25 @@
       <option name="project" value="LOCAL" />
       <updated>1417123621269</updated>
     </task>
-    <task id="LOCAL-00011" summary="Layer mit aktuellen Koordinaten">
-      <created>1417457254808</created>
+    <task id="LOCAL-00011" summary="Main-Layout">
+      <created>1422882137931</created>
       <option name="number" value="00011" />
       <option name="project" value="LOCAL" />
-      <updated>1417457254808</updated>
+      <updated>1422882137931</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Main-Layout">
+      <created>1422892356878</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1422892356878</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Main-Layout">
+      <created>1422979346921</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1422979346921</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -488,25 +517,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
+    <frame x="-8" y="0" width="1936" height="1170" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28391168" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16407767" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32926086" sideWeight="0.4370947" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36019418" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15429173" sideWeight="0.34615386" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.100039385" sideWeight="0.5616083" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2629921" sideWeight="0.49940923" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15429173" sideWeight="0.65384614" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36291912" sideWeight="0.49940923" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33700788" sideWeight="0.5005908" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25867507" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26923078" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3604101" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -558,15 +587,32 @@
     <MESSAGE value="UiId für bessere Lesbarkeit der Koordinaten eingeführt.&#10;Dient nur zur Darstellung, intern wir mit GUID gearbeitet." />
     <MESSAGE value="Karte mit rudimentären Funktionen ergänzt" />
     <MESSAGE value="ol3 example mit daten-beispielen" />
-    <MESSAGE value="Layer mit aktuellen Koordinaten" />
-    <option name="LAST_COMMIT_MESSAGE" value="Layer mit aktuellen Koordinaten" />
+    <MESSAGE value="Main-Layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main-Layout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/GeoMapsPlanner_.html</url>
+          <line>242</line>
+          <option name="timeStamp" value="617" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/settings.js</url>
+          <line>97</line>
+          <option name="timeStamp" value="621" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="581" />
+      <default-breakpoints>
+        <breakpoint suspend="NONE" type="javascript-exception">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="623" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
@@ -574,153 +620,127 @@
         <watch expression="format" />
         <watch expression="pixel" />
         <watch expression="this_.getMap().getView()" />
+        <watch expression="siteCoords" />
+        <watch expression="setting.siteSetting" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8337" max-vertical-offset="9826">
-          <caret line="513" column="205" selection-start-line="513" selection-start-column="193" selection-end-line="513" selection-end-column="205" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="272">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8337" max-vertical-offset="9826">
+        <state vertical-scroll-proportion="0.0">
           <caret line="513" column="205" selection-start-line="513" selection-start-column="193" selection-end-line="513" selection-end-column="205" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="272">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8337" max-vertical-offset="9826">
+        <state vertical-scroll-proportion="0.0">
           <caret line="513" column="205" selection-start-line="513" selection-start-column="193" selection-end-line="513" selection-end-column="205" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="272">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8337" max-vertical-offset="9826">
+        <state vertical-scroll-proportion="0.0">
           <caret line="513" column="205" selection-start-line="513" selection-start-column="193" selection-end-line="513" selection-end-column="205" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Base.js">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="272">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8337" max-vertical-offset="9826">
-          <caret line="513" column="205" selection-start-line="513" selection-start-column="193" selection-end-line="513" selection-end-column="205" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CoordBox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3485">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="9826">
+        <state vertical-scroll-proportion="0.0">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="73" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4713" max-vertical-offset="7633">
+        <state vertical-scroll-proportion="0.0">
           <caret line="301" column="14" selection-start-line="301" selection-start-column="14" selection-end-line="301" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5621" max-vertical-offset="7378">
+        <state vertical-scroll-proportion="0.0">
           <caret line="346" column="0" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4601" max-vertical-offset="7378">
+        <state vertical-scroll-proportion="0.0">
           <caret line="305" column="106" selection-start-line="305" selection-start-column="106" selection-end-line="305" selection-end-column="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="2482">
+        <state vertical-scroll-proportion="0.0">
           <caret line="126" column="103" selection-start-line="126" selection-start-column="103" selection-end-line="126" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
+    <entry file="file://$PROJECT_DIR$/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1241">
+        <state vertical-scroll-proportion="0.0">
           <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
         </state>
       </provider>
@@ -740,114 +760,24 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/latlon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1191" max-vertical-offset="6647">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="475">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/wgs84_ch1903.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7037037" vertical-offset="728" max-vertical-offset="2686">
+        <state vertical-scroll-proportion="0.7037037">
           <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Geo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/fragments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35557768" vertical-offset="0" max-vertical-offset="1004">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1186" max-vertical-offset="1870">
-          <caret line="94" column="6" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/OOTestLib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_CoordBox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.4735203" vertical-offset="45" max-vertical-offset="10659">
-          <caret line="426" column="9" selection-start-line="426" selection-start-column="9" selection-end-line="426" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="7548">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16533066" vertical-offset="73" max-vertical-offset="1071">
-          <caret line="65" column="56" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/coordMarker.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15260324" vertical-offset="0" max-vertical-offset="557">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="979" max-vertical-offset="4556">
-          <caret line="62" column="48" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/divMapTest.user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2210">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ol3/ol.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1229">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/fragment.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2858293" vertical-offset="750" max-vertical-offset="21233">
-          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -858,150 +788,213 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ol3/ol.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12886">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapLayerTests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08440913" vertical-offset="0" max-vertical-offset="1007">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/netzwolf/multimark.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7976767" vertical-offset="2066" max-vertical-offset="4063">
+        <state vertical-scroll-proportion="0.7976767">
           <caret line="170" column="76" selection-start-line="170" selection-start-column="76" selection-end-line="170" selection-end-column="76" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/netzwolf/netzwolf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10129096" vertical-offset="0" max-vertical-offset="1887">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="83" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OOTest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.192307" vertical-offset="89" max-vertical-offset="1122">
-          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testOL.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96153843" vertical-offset="17" max-vertical-offset="969">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ol3/dragExample.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40384614" vertical-offset="0" max-vertical-offset="884">
+        <state vertical-scroll-proportion="0.40384614">
           <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ol3/dragExample.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.99010986" vertical-offset="1224" max-vertical-offset="3145">
+        <state vertical-scroll-proportion="-0.99010986">
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/netzwolf/netzwolf.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33026585">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/coordMarker.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08466136">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapLayerTests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="5" selection-start-line="23" selection-start-column="4" selection-end-line="60" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/OOTestLib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MapHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/latlon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Geo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/divMapTest.user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fragments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.716062">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ol3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.346153" vertical-offset="1946" max-vertical-offset="2856">
-          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collapse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87832314">
+          <caret line="83" column="24" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/glyphicon.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/fragment.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="506" column="5" selection-start-line="506" selection-start-column="5" selection-end-line="506" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoordBox.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21261682" vertical-offset="3616" max-vertical-offset="6953">
-          <caret line="380" column="55" selection-start-line="380" selection-start-column="55" selection-end-line="380" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="384" column="59" selection-start-line="384" selection-start-column="59" selection-end-line="384" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/fragments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35557768">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4615383">
+          <caret line="137" column="29" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
           <folding>
-            <element signature="e#1195#1376#0" expanded="false" />
-            <element signature="e#5949#8941#0" expanded="false" />
-            <element signature="e#6010#6522#0" expanded="false" />
-            <element signature="e#6199#6236#0" expanded="false" />
-            <element signature="e#6242#6279#0" expanded="false" />
-            <element signature="e#6581#6858#0" expanded="false" />
-            <element signature="e#6922#7476#0" expanded="false" />
-            <element signature="e#7514#8010#0" expanded="false" />
-            <element signature="e#7924#7961#0" expanded="false" />
-            <element signature="e#7967#8004#0" expanded="false" />
-            <element signature="e#8047#8199#0" expanded="false" />
-            <element signature="e#8247#8387#0" expanded="false" />
-            <element signature="e#8433#8500#0" expanded="false" />
-            <element signature="e#8565#8718#0" expanded="false" />
-            <element signature="e#8596#8712#0" expanded="false" />
-            <element signature="e#8784#8937#0" expanded="false" />
-            <element signature="e#8815#8931#0" expanded="false" />
-            <element signature="e#9031#9260#0" expanded="false" />
-            <element signature="e#9305#9755#0" expanded="false" />
-            <element signature="e#9419#9693#0" expanded="false" />
-            <element signature="e#9608#9683#0" expanded="false" />
-            <element signature="e#9800#9840#0" expanded="false" />
-            <element signature="e#10056#10651#0" expanded="false" />
-            <element signature="e#10198#10412#0" expanded="false" />
-            <element signature="e#10291#10398#0" expanded="false" />
-            <element signature="e#10480#10641#0" expanded="false" />
-            <element signature="e#10657#10695#0" expanded="false" />
-            <element signature="e#10745#11530#0" expanded="false" />
-            <element signature="e#10849#11128#0" expanded="false" />
-            <element signature="e#10947#11010#0" expanded="false" />
-            <element signature="e#11226#11524#0" expanded="false" />
-            <element signature="e#11363#11514#0" expanded="false" />
-            <element signature="e#11572#11623#0" expanded="false" />
-            <element signature="e#11670#11859#0" expanded="false" />
-            <element signature="e#11701#11805#0" expanded="false" />
-            <element signature="e#11811#11853#0" expanded="false" />
-            <element signature="e#11907#12971#0" expanded="false" />
-            <element signature="e#12053#12607#0" expanded="false" />
-            <element signature="e#12613#12965#0" expanded="false" />
-            <element signature="e#12701#12927#0" expanded="false" />
-            <element signature="e#12787#12855#0" expanded="false" />
-            <element signature="e#12989#13369#0" expanded="false" />
-            <element signature="e#13022#13125#0" expanded="false" />
-            <element signature="e#13059#13070#0" expanded="false" />
-            <element signature="e#13108#13119#0" expanded="false" />
-            <element signature="e#13187#13244#0" expanded="false" />
-            <element signature="e#13307#13365#0" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1417452690238" expanded="true" signature="2928:2940" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="3955:3969" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="4178:4192" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="4746:4760" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="5465:5479" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="5624:5638" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="5686:5700" placeholder="..." />
-            <marker date="1417452690238" expanded="true" signature="5748:5762" placeholder="..." />
+            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1423146766691" expanded="true" signature="4675:4687" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="5822:5836" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="6085:6099" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="6709:6723" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7524:7538" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7699:7713" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7761:7775" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7823:7837" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="30" selection-start-line="160" selection-start-column="30" selection-end-line="160" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner_.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3107089">
+          <caret line="255" column="26" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
+          <folding>
+            <marker date="1423146766691" expanded="true" signature="4675:4687" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="5822:5836" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="6085:6099" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="6709:6723" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7524:7538" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7699:7713" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7761:7775" placeholder="..." />
+            <marker date="1423146766691" expanded="true" signature="7823:7837" placeholder="..." />
           </folding>
         </state>
       </provider>
