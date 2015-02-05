@@ -201,20 +201,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-.calculator .test {
-	background: red;
-}
-
 .calculator > .header {
 	background-color: #dadada;
 	border-bottom: solid 1px #e3e3e3;	
@@ -450,7 +436,7 @@
 /* sidebar styles */
 
     #sidebar {
-        background-color: #708090;
+        background-color: rgba(80, 90, 100, .6);;
         overflow: auto;
         position: absolute;      
         width: 300px;
@@ -458,7 +444,7 @@
         top: 0px;
         bottom: 0px;
         float: right;
-		z-index: 11;        
+		z-index: 11;     
     }
 
     .sidebarcontrolCollapsed {
