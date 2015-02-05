@@ -97,3 +97,12 @@ function getGUID(){
     });
     return uuid;
 };
+
+Core.AppendLinkCursor = function(element)
+{
+    element.hover(function() {
+        $(this).css('cursor','pointer');
+    }, function() {
+        $(this).css('cursor','auto');
+    });
+};

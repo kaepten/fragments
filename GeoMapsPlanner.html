@@ -33,8 +33,40 @@
             font-weight: 400;
             font-size: 1em;
         }
-    </style>
 
+        .rotate-north {
+            position: absolute;
+            top: 165px;
+            left: 8px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 4px;
+            padding: 2px;
+        }
+        .ol-touch .rotate-north {
+            top: 80px;
+        }
+        .rotate-north a {
+            display: block;
+            color: black;
+            font-size: 16px;
+            margin: 1px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 2px;
+            height: 22px;
+            width: 150px;
+            background: rgba(0,60,136,0.4);
+        }
+        .ol-touch .rotate-north a {
+            font-size: 20px;
+            height: 30px;
+            width: 30px;
+            line-height: 28px;
+        }
+        .rotate-north a:hover {
+            background: rgba(0,60,136,0.7);
+        }
+    </style>
 
 </head>
 <body>
@@ -69,6 +101,26 @@
             <ul class="cordBoxList"></ul>
         </div>
     </div>
+
+
+
+    <div id="map" class="map"></div>
+    <script src="http://api3.geo.admin.ch/loader.js?lang=en" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script>
 
         $("#sidebarcontrol").click(function () {
@@ -154,6 +206,7 @@
         $(document).ready(function () {
             InitUI();
             AppendDocumentHandler();
+            DrawWayPoints();
         });
 
         function AppendCoordBoxHandler() {
@@ -356,13 +409,132 @@
             });
         });
 
-    </script>
 
-    <div id="map" class="map"></div>
-    <script src="http://api3.geo.admin.ch/loader.js?lang=en" type="text/javascript"></script>
-    <script type="text/javascript">
+
+
+        function DrawWayPoints(){
+
+            var test = geoMapsSettings;
+            var wayPoints=[];
+
+            var point = new ol.Feature({
+                geometry: new ol.geom.Point([678975, 236021]),
+                name: 'Null Island',
+                population: 4000,
+                rainfall: 500
+            });
+            wayPoints.push(point);
+
+            var point = new ol.Feature({
+                geometry: new ol.geom.Point([679418, 235645]),
+                name: 'Null Island',
+                population: 4000,
+                rainfall: 500
+            });
+            wayPoints.push(point);
+
+            var iconStyle = new ol.style.Style({
+                image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                    anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: '//map.geo.admin.ch/1403704943/img/marker.png'
+                }))
+            });
+
+            var vectorSource = new ol.source.Vector({
+                features: wayPoints
+            });
+            var vectorLayer = new ol.layer.Vector({
+                source: vectorSource,
+                style: iconStyle
+            });
+
+
+
+            map.addLayer(vectorLayer);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        window.app = {};
+        var app = window.app;
+
+
+        /**
+         * @constructor
+         * @extends {ol.control.Control}
+         * @param {Object=} opt_options Control options.
+         */
+        app.RotateNorthControl = function(opt_options) {
+
+            var options = opt_options || {};
+
+            var anchor = document.createElement('a');
+            anchor.href = '#rotate-north';
+            anchor.innerHTML = '<span id="geoMapKoords"></span>';
+
+            var this_ = this;
+            var handleRotateNorth = function(e) {
+                // prevent #rotate-north anchor from getting appended to the url
+                e.preventDefault();
+                this_.getMap().getView().setRotation(this_.getMap().getView().getRotation() + 90);
+            };
+
+            anchor.addEventListener('click', handleRotateNorth, false);
+            anchor.addEventListener('touchstart', handleRotateNorth, false);
+
+            var element = document.createElement('div');
+            element.className = 'rotate-north ol-unselectable';
+            element.appendChild(anchor);
+
+            ol.control.Control.call(this, {
+                element: element,
+                target: options.target
+            });
+        };
+        ol.inherits(app.RotateNorthControl, ol.control.Control);
+
+
+
+
+
+
+
+
+
+
+
+
         var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
         var map = new ga.Map({
+            controls: ol.control.defaults({
+                attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+                    collapsible: false
+                })
+            }).extend([
+                new app.RotateNorthControl()
+            ]),
             target: 'map',
             layers: [layer],
             view: new ol.View({
@@ -370,6 +542,24 @@
                 center: [679420,235646]
             })
         });
+
+        var mousePositionControl = new ol.control.MousePosition({
+            coordinateFormat: ol.coordinate.createStringXY(0),
+            projection: 'EPSG:21781',
+            className: 'custom-mouse-position',
+            target: document.getElementById('geoMapKoords'),
+            undefinedHTML: '&nbsp;'
+        });
+
+        map.addControl(mousePositionControl);
+
+
+
+
+
+
+
+
     </script>
 
     <div stlye="z-index:1;">
