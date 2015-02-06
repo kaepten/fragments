@@ -75,7 +75,7 @@ function RenderCoordinatesToPageHTML(settings) {
                 ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinateIndex].id, dist, Math.round(brng * 10) / 10, settings.siteSetting.coordSettings[lineToCoordinateIndex].uiId);
             }
         }
-        var shortDesc = 'Koordinate : ' + currentCoord.uiId; // TODO in Methode auslagern
+        var shortDesc = 'Koordinate : ' + currentCoord.uiId;
         if(currentCoord.description != '') {
             shortDesc = currentCoord.description;
         }
@@ -233,7 +233,7 @@ function SaveEditValues(element, formatType, settings) {
     var tmpID = GetCoordId(element);
     if(descr=='') {
         var coordSet = SettingSite.GetSettingCoordObject(geoMapsSettings, tmpID);
-        descr = 'Koordinate : ' + coordSet.uiId; // TODO in Methode auslagern
+        descr = 'Koordinate : ' + coordSet.uiId;
     }
 
     SettingCoord.Set(settings, tmpID, coord, descr);

@@ -185,8 +185,8 @@ function Coordinate(coordinateString)
                 var y = WGStoCHy(_parseLat, _parseLon);
                 var x = WGStoCHx(_parseLat, _parseLon);
                 var parts = Parse.LV03(y + " " + x);
-                that.Lv03.Y = CreateLVObject(parseFloat(parts[2] + parts[3] + "." + parts[4]), parts[1]);
-                that.Lv03.X = CreateLVObject(parseFloat(parts[6] + parts[7] + "." + parts[8]), parts[5]);
+                that.Lv03.Y = CreateLVObject(parseFloat(parts[2] + parts[3] + "." + parts[5]), parts[1]);
+                that.Lv03.X = CreateLVObject(parseFloat(parts[7] + parts[8] + "." + parts[10]), parts[6]);
                 //var req = new Request(Number(that.Lon.Degree), Number(that.Lat.Degree), NavrefFormats.Ddd, NavrefFormats.LV95);
                 //var response = CallNAVREFHandler(req, NAVREFCallBackHandler);
             }
