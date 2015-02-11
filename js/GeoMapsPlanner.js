@@ -130,6 +130,8 @@ function AppendCoordBoxHandler() {
         var id = GetCoordId(this);
         SettingSite.DeleteCoord(geoMapsSettings, id);
         $("[id^=geoMapsCoordBox-" + id + "]").remove();
+        // Wegpunkte neu zeichnen
+        DrawWayPoints();
     });
 
     $("div.edit .cancel").click(function () {
@@ -250,6 +252,10 @@ function AppendDocumentHandler() {
             RenderCoordinatesToPageHTML(geoMapsSettings);
             AppendCoordBoxHandler();
             $("#newCoordinate").val('');
+
+            // Wegpunkte neu zeichnen
+            DrawWayPoints();
+
         } else {
             $("#newCoordinate").addClass("bgred");
             setTimeout(function () {
