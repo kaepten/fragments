@@ -130,8 +130,7 @@ function AppendCoordBoxHandler() {
         var id = GetCoordId(this);
         SettingSite.DeleteCoord(geoMapsSettings, id);
         $("[id^=geoMapsCoordBox-" + id + "]").remove();
-        // Wegpunkte neu zeichnen
-        DrawWayPoints();
+        DeleteSingleWayPoint(id);
     });
 
     $("div.edit .cancel").click(function () {
@@ -247,15 +246,12 @@ function AppendDocumentHandler() {
             var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
 
             AddNewCoordinateObject([siteCoord], geoMapsSettings);
+            DrawSingleWayPoint(siteCoord);
 
             $("[id^=geoMapsCoordBox-]").remove();
             RenderCoordinatesToPageHTML(geoMapsSettings);
             AppendCoordBoxHandler();
             $("#newCoordinate").val('');
-
-            // Wegpunkte neu zeichnen
-            DrawWayPoints();
-
         } else {
             $("#newCoordinate").addClass("bgred");
             setTimeout(function () {

@@ -116,26 +116,78 @@
         var wayPoints=[];
 
         function DrawWayPoints(){
+
+            var styleArr = [];
+
+            var iconStyle1 = new ol.style.Style({
+                image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                    anchor: [0.5, 40],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: '//map.geo.admin.ch/1403704943/img/marker.png'
+                }))
+            });
+
+            var iconStyle2 = new ol.style.Style({
+                image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                    anchor: [0.5, 40],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: '//www.c-dev.ch/projects/flag-ch.png'
+                }))
+            });
+
+            var iconStyle = new ol.style.Style({
+                image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                    anchor: [0.5, 40],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    src: '//www.c-dev.ch/projects/flag-fm.png'
+                }))
+            });
+
+            styleArr.push(iconStyle1);
+            styleArr.push(iconStyle2);
+            styleArr.push(iconStyle);
+
             var settings = geoMapsSettings;
+
             var coordsCount = settings.siteSetting.coordSettings.length;
             for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
                 var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
 
-                if(!ArrayContains(wayPoints, currentCoord)) {
-                    var point = new ol.Feature({
-                        geometry: new ol.geom.Point([currentCoord.coordinate.Lv03.Y.Meter, currentCoord.coordinate.Lv03.X.Meter]),
-                        name: 'Null Island',
-                        population: 4000,
-                        rainfall: 500,
-                        coordinate: currentCoord
-                    });
-                    wayPoints.push(point);
-                }
+                var point = new ol.Feature({
+                    geometry: new ol.geom.Point([currentCoord.coordinate.Lv03.Y.Meter, currentCoord.coordinate.Lv03.X.Meter]),
+                    name: currentCoord.description,
+                    gmCoordinate: currentCoord
+                });
+                point.setStyle(styleArr[0]);
+                wayPoints.push(point);
             }
+
+            var vectorSource = new ol.source.Vector({
+                features: wayPoints
+            });
+            var vectorLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+            map.addLayer(vectorLayer);
+        }
+
+        function DrawSingleWayPoint(newCoord)
+        {
+            var wayPoints=[];
+            var point = new ol.Feature({
+                geometry: new ol.geom.Point([newCoord.coordinate.Lv03.Y.Meter, newCoord.coordinate.Lv03.X.Meter]),
+                name: newCoord.description,
+                gmCoordinate: newCoord
+            });
+            wayPoints.push(point);
 
             var iconStyle = new ol.style.Style({
                 image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-                    anchor: [0.5, 46],
+                    // anchor: [0.5, 46],
+                    anchor: [0.5, 40],
                     anchorXUnits: 'fraction',
                     anchorYUnits: 'pixels',
                     src: '//map.geo.admin.ch/1403704943/img/marker.png'
@@ -149,23 +201,24 @@
                 source: vectorSource,
                 style: iconStyle
             });
-
-
-
             map.addLayer(vectorLayer);
         }
 
-        function ArrayContains(wayPointsList, coord) {
-            for(var index=0; index<wayPointsList.length; index++) {
-                if(coord.id == wayPointsList[index].j.coordinate.id) {
-                    return true;
+
+        function DeleteSingleWayPoint(delCoordId) {
+            for(var index=0; index<wayPoints.length; index++) {
+                var cordId = wayPoints[index].j.gmCoordinate.id;
+                if(cordId == delCoordId) {
+                    wayPoints.slice(wayPoints[index]);
+                    break;
                 }
             }
-            return false;
         }
 
 
-        /*
+
+
+
         // Layer /Waypoint mit Beschriftung
         // http://openlayers.org/en/v3.1.1/examples/vector-labels.html
 
@@ -217,143 +270,21 @@
 
         // Näher Untersuchen - Schweizerkarte mit Layers!
         // http://openlayers.org/en/v3.1.1/examples/wms-custom-proj.html
-        */
+
+
+        // Mouseover zeigt Feature Information
+        //      http://openlayers.org/en/v3.1.1/examples/vector-layer.html
+
+
+
+
+
+
+
+
 
         window.app = {};
         var app = window.app;
-
-
-
-
-
-        /**
-         * @constructor
-         * @extends {ol.interaction.Pointer}
-         */
-        app.Drag = function() {
-
-            ol.interaction.Pointer.call(this, {
-                handleDownEvent: app.Drag.prototype.handleDownEvent,
-                handleDragEvent: app.Drag.prototype.handleDragEvent,
-                handleMoveEvent: app.Drag.prototype.handleMoveEvent,
-                handleUpEvent: app.Drag.prototype.handleUpEvent
-            });
-
-            /**
-             * @type {ol.Pixel}
-             * @private
-             */
-            this.coordinate_ = null;
-
-            /**
-             * @type {string|undefined}
-             * @private
-             */
-            this.cursor_ = 'pointer';
-
-            /**
-             * @type {ol.Feature}
-             * @private
-             */
-            this.feature_ = null;
-
-            /**
-             * @type {string|undefined}
-             * @private
-             */
-            this.previousCursor_ = undefined;
-
-        };
-        ol.inherits(app.Drag, ol.interaction.Pointer);
-
-
-        /**
-         * @param {ol.MapBrowserEvent} evt Map browser event.
-         * @return {boolean} `true` to start the drag sequence.
-         */
-        app.Drag.prototype.handleDownEvent = function(evt) {
-            var map = evt.map;
-
-            var feature = map.forEachFeatureAtPixel(evt.pixel,
-                    function(feature, layer) {
-                        return feature;
-                    });
-
-            if (feature) {
-                this.coordinate_ = evt.coordinate;
-                this.feature_ = feature;
-            }
-
-            return !!feature;
-        };
-
-
-        /**
-         * @param {ol.MapBrowserEvent} evt Map browser event.
-         */
-        app.Drag.prototype.handleDragEvent = function(evt) {
-            var map = evt.map;
-
-            var feature = map.forEachFeatureAtPixel(evt.pixel,
-                    function(feature, layer) {
-                        return feature;
-                    });
-
-            var deltaX = evt.coordinate[0] - this.coordinate_[0];
-            var deltaY = evt.coordinate[1] - this.coordinate_[1];
-
-            var geometry = /** @type {ol.geom.SimpleGeometry} */
-                    (this.feature_.getGeometry());
-            geometry.translate(deltaX, deltaY);
-
-            this.coordinate_[0] = evt.coordinate[0];
-            this.coordinate_[1] = evt.coordinate[1];
-        };
-
-
-        /**
-         * @param {ol.MapBrowserEvent} evt Event.
-         */
-        app.Drag.prototype.handleMoveEvent = function(evt) {
-            if (this.cursor_) {
-                var map = evt.map;
-                var feature = map.forEachFeatureAtPixel(evt.pixel,
-                        function(feature, layer) {
-                            return feature;
-                        });
-                var element = evt.map.getTargetElement();
-                if (feature) {
-                    if (element.style.cursor != this.cursor_) {
-                        this.previousCursor_ = element.style.cursor;
-                        element.style.cursor = this.cursor_;
-                    }
-                } else if (this.previousCursor_ !== undefined) {
-                    element.style.cursor = this.previousCursor_;
-                    this.previousCursor_ = undefined;
-                }
-            }
-        };
-
-
-        /**
-         * @param {ol.MapBrowserEvent} evt Map browser event.
-         * @return {boolean} `false` to stop the drag sequence.
-         */
-        app.Drag.prototype.handleUpEvent = function(evt) {
-            this.coordinate_ = null;
-            this.feature_ = null;
-            return false;
-        };
-
-
-
-
-
-
-
-
-
-
 
 
         /**
@@ -388,14 +319,21 @@
                 target: options.target
             });
         };
-
         ol.inherits(app.RotateNorthControl, ol.control.Control);
-        // ol.inherits(app.Drag, ol.interaction.Pointer);
+
+
+
+
+
+
+
+
+
+
 
 
         var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
         var map = new ga.Map({
-            interactions: ol.interaction.defaults().extend([new app.Drag()]),
             controls: ol.control.defaults({
                 attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
                     collapsible: false
@@ -420,6 +358,41 @@
         });
 
         map.addControl(mousePositionControl);
+
+
+
+
+        var displayFeatureInfo = function(pixel) {
+
+            var feature = map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+                return feature;
+            });
+
+            if (feature) {
+                var x = 1;
+            }
+
+            // var info = document.getElementById('info');
+            // if (feature) { info.innerHTML = feature.getId() + ': ' + feature.get('name'); } else { info.innerHTML = '&nbsp;';}
+        };
+
+        $(map.getViewport()).on('mousemove', function(evt) {
+            var pixel = map.getEventPixel(evt.originalEvent);
+            // displayFeatureInfo(pixel);
+        });
+
+        map.on('click', function(evt) {
+
+            var coordinate = evt.coordinate;
+            $("#newCoordinate").val(coordinate[0] + " " + coordinate[1]);
+
+            displayFeatureInfo(evt.pixel);
+        });
+
+
+
+
+
     </script>
 
     <div stlye="z-index:1;">
