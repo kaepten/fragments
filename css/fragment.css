@@ -227,7 +227,9 @@
 	margin-bottom: 10px;
 }
 
-
+.calculator > .header a.delSettings {
+	margin-left: 10px;
+}
 
 .calculator .btn-xs, .btn-group-xs > .btn {
 	padding: 4px 10px;
@@ -370,6 +372,13 @@
 }
 
 .coordBox > .edit {
+	background-color: #ffffc8;
+	border-top: 1px solid #d1e0fa;
+	font-size: 0.9em;
+	padding: 5px;
+}
+
+.coordBox > .calc {
 	background-color: #ffffc8;
 	border-top: 1px solid #d1e0fa;
 	font-size: 0.9em;
