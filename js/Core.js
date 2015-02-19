@@ -106,3 +106,34 @@ Core.AppendLinkCursor = function(element)
         $(this).css('cursor','auto');
     });
 };
+
+
+/**
+ * @param {number} n The max number of characters to keep.
+ * @return {string} Truncated string.
+ */
+String.prototype.trunc = String.prototype.trunc ||
+function(n) {
+    return this.length > n ? this.substr(0, n - 1) + '...' : this.substr(0);
+};
+
+
+// http://stackoverflow.com/questions/14484787/wrap-text-in-javascript
+Core.StringDivider = function (str, width, spaceReplacer) {
+    if (str.length > width) {
+        var p = width;
+        for (; p > 0 && (str[p] != ' ' && str[p] != '-'); p--) {
+        }
+        if (p > 0) {
+            var left;
+            if (str.substring(p, p + 1) == '-') {
+                left = str.substring(0, p + 1);
+            } else {
+                left = str.substring(0, p);
+            }
+            var right = str.substring(p + 1);
+            return left + spaceReplacer + stringDivider(right, width, spaceReplacer);
+        }
+    }
+    return str;
+}

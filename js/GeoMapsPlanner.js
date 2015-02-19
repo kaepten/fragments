@@ -277,6 +277,9 @@ function UpdateCoordinate(id, settings, descr, formatType) {
             }
         }
     }
+
+
+    map.render();
 }
 
 function GetCoordId(element) {
@@ -383,7 +386,11 @@ function AppendCoordBoxHandler() {
         SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
     });
 
-    $("a.goto").click(function () {alert("goto");});
+    $("a.goto").click(function () {
+        var id = GetCoordId(this);
+        var coordObj = SettingSite.GetSettingCoordObject(geoMapsSettings, id);
+        Map.ZoomToPoint(coordObj);
+    });
 
 
 
