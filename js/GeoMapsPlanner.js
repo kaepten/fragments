@@ -27,9 +27,7 @@ var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
     '                <div>' +
     '                    <a class="cmd updown"><span class="glyphicon glyphicon-chevron-down" style="display:none"></span><span class="glyphicon glyphicon-chevron-up"></span></a>' +
     '                </div>' +
-    '                <div class="coordinate">' +
-    '                    {1}' +
-    '                </div>' +
+    '                <div class="coordinate" id="plannerCoordinate{4}">{1}</div>' +
     '            </div>' +
     '            <div>' +
     '                <a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a>' +
@@ -81,8 +79,45 @@ var siteCoords;
 var geoMapsSettings;
 var coordFormat;
 
-function ParseCoordinates() {
-    var pageParserRegExp = /(?!id="geoMapsCoord1"\s*)([N|S])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d*)['|′]*.*?([EOW])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d*)['|′]*/gmi;
+function MergeCoordinateArray(originalArray, newArray) {
+
+    var outerArray = new Array();
+    var innerArray = new Array();
+
+    if(originalArray.length == 0) {
+        return newArray;
+    } else if(newArray.length == 0) {
+        return originalArray;
+    }
+
+    var mergedArray = new Array();
+    mergedArray = mergedArray.concat(originalArray);
+    for (var i = 0; i < originalArray.length; ++i) {
+        for (var ii = 0; ii < newArray.length; ++ii) {
+            if(originalArray[i].OriginCoordinateString == newArray[ii].OriginCoordinateString) {
+                continue;
+            }
+            else{
+                mergedArray.push(newArray[ii]);
+            }
+        }
+    }
+    return mergedArray;
+}
+
+function ParseAllCoordinatesFormats() {
+    var coords = new Array();
+    coords = MergeCoordinateArray(coords, ParseCoordinates(PageParse.DddRegExp));
+    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.DmmRegExp));
+    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.DmsRegExp));
+    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.LV03RegExp));
+    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.LV95RegExp));
+    return coords;
+}
+
+function ParseCoordinates(parserRegEx) {
+    // var pageParserRegExp = /(?!id="geoMapsCoord1"\s*)([N|S])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d*)['|′]*.*?([EOW])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d*)['|′]*/gmi;
+    var pageParserRegExp =  parserRegEx;
     $.fn.egrep = function(pat) {
         var out = [];
         var lastParent;
@@ -119,10 +154,10 @@ function ParseCoordinates() {
             var validCoordinates = ($(n[i]).html()).match(pageParserRegExp);
             var replaceHtml = replaceHtml = $(n[i]).html();  // .trim().replace(/(\r\n|\n|\r)/gm,"");
             var idSpan = $(n[i]);
-            if(idSpan[0].id.contains('geoMapsCoord')) { // die seite wurde bereits geparst und ids verteilt
-                var coord = new Coordinate(validCoordinates[0]);
-                coords.push(coord);
-                coordIndex++;
+            if(idSpan[0].id.contains('geoMapsCoord') || idSpan[0].id.contains('plannerCoordinate')) { // plannerCoordinate die seite wurde bereits geparst und ids verteilt
+                //var coord = new Coordinate(validCoordinates[0]);
+                //coords.push(coord);
+                //coordIndex++;
             }
             else {
                 for (var ii = 0; ii < validCoordinates.length; ++ii) {
@@ -131,7 +166,8 @@ function ParseCoordinates() {
                         alert('Fehler beim parsen der Koordinate!');
                     }
                     coords.push(coord);
-                    replaceHtml = replaceHtml.replace(validCoordinates[ii], '<span id="geoMapsCoord' + coordIndex + '" style="color:white;">' + validCoordinates[ii] + '</span>&nbsp;(' + coord.FormatLv03 + ')');
+                    // replaceHtml = replaceHtml.replace(validCoordinates[ii], '<span id="geoMapsCoord' + coordIndex + '" style="color:white;">' + validCoordinates[ii] + '</span>&nbsp;(' + coord.FormatLv03 + ')');
+                    replaceHtml = replaceHtml.replace(validCoordinates[ii], '<span id="geoMapsCoord' + coordIndex + '">' + validCoordinates[ii] + '</span>');
                     coordIndex++;
                 }
                 $(n[i]).html(replaceHtml);
@@ -158,11 +194,10 @@ function RenderCoordinatesToPageHTML(settings) {
                 ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinateIndex].id, dist, Math.round(brng * 10) / 10, settings.siteSetting.coordSettings[lineToCoordinateIndex].uiId);
             }
         }
-        var shortDesc = 'Koordinate : ' + currentCoord.uiId;
-        if(currentCoord.description != '') {
-            shortDesc = currentCoord.description;
+        if(currentCoord.description == '') {
+            currentCoord.description = 'Point:' + currentCoord.uiId;
         }
-        var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, qualityMarker.format(shortDesc), currentCoord.uiId);
+        var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, qualityMarker.format(currentCoord.description), currentCoord.uiId);
         $(".cordBoxList").append(box);
         UpdateState(currentCoord, settings.siteSetting.coordinateFormatType);
     }
@@ -240,7 +275,7 @@ function SetQualityState(state, coordinateId) {
 
 function InitUI() {
     $("[id^=geoMapsCoordBox-]").remove();
-    siteCoords = ParseCoordinates();
+    siteCoords = ParseAllCoordinatesFormats();
     geoMapsSettings = LoadGeoMapsSiteSettings(document.URL, siteCoords);
     coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
     $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
@@ -262,6 +297,7 @@ function UpdateCoordinate(id, settings, descr, formatType) {
     // update sämtliche line-To Einträge
     var coords = settings.siteSetting.coordSettings;
     var pointCount = coords.length;
+    var lastCoord;
     for (var i = 0; i < pointCount; i++) {
         var p1 = new LatLon(Number(coords[i].coordinate.Lat.Degree), Number(coords[i].coordinate.Lon.Degree));
         $("#geoMapsCoordBox-"+coords[i].id).find('.coordinate').html(Coordinate.GetFormat(formatType, coords[i].coordinate));
@@ -274,12 +310,16 @@ function UpdateCoordinate(id, settings, descr, formatType) {
 
                 $("#geoMapsCoordBox-"+coords[ii].id).find('.projectionPoint-'+coords[ii].id+' .dist').html(dist);
                 $("#geoMapsCoordBox-"+coords[ii].id).find('.projectionPoint-'+coords[ii].id+' .angle').html(Math.round(brng*10)/10);
+
+                lastCoord = coords[ii];
             }
         }
     }
 
+    // Map.ZoomToPoint(lastCoord);
 
-    map.render();
+    refreshLayer(lastCoord);
+    // map.render();
 }
 
 function GetCoordId(element) {
@@ -597,7 +637,7 @@ function AppendDocumentHandler() {
 $(document).ready(function () {
     InitUI();
     AppendDocumentHandler();
-    // DrawWayPoints();
+    DrawWayPoints(geoMapsSettings);
 });
 
 $(function () {

@@ -239,6 +239,14 @@ var Parse = {
     LV95RegExp : /^((Ost|E|East|O)?\s*2[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((Nord|N|North)?\s*1[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))$/gmi
 };
 
+var PageParse = {
+    DddRegExp : /(([NS-])?\s*(\d{1,2})[.,]+(\d*)\s*[:d°]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[.,]+(\d*)\s*[:d°]?)\s*([EOW])?/gmi,
+    DmmRegExp : /(([NS-])?\s*(\d{1,2})[\s:d°]+\s*(\d{1,2})[.,]?(\d*)\s*[:'´’\u2032]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[\s:d°]+\s*(\d{1,2})[.,]?(\d*)\s*[:'´’\u2032]?)\s*([EOW])?/gmi,
+    DmsRegExp : /(([NS-])?\s*(\d{1,2})[\s:d°]+\s*(\d{1,2})\s*[:'´’\u2032]?\s*(\d{1,2})[.,]?(\d*)\s*[:“"\u2033]?)\s*([NS])?[\s,/\\]*(([EOW-])?\s*(\d{1,3})[\s:d°]+\s*(\d{1,2})\s*[:'´’\u2032]?\s*(\d{1,2})[.,]?(\d*)\s*[:“"\u2033]?)\s*([EOW])?/gmi,
+    LV03RegExp : /((\d\d\d)[\s,.]*(\d\d\d)([,.](\d*))?)[\s\/]*\s*((\d\d\d)[\s,.]*(\d\d\d)([,.](\d*))?)/gmi,
+    LV95RegExp : /((Ost|E|East|O)?\s*2[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))[\s\/]*\s*((Nord|N|North)?\s*1[\s]*(\d\d\d)[\s,.]*(\d\d\d)[,.]?(\d*))/gmi
+};
+
 Parse.Dmm = function (dmmString) {
     // parse coord from format = DD°MM.MMMM (Dmm)
     var myPattern = new RegExp(Parse.DmmRegExp);

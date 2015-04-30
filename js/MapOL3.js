@@ -66,7 +66,7 @@
 */
 
 $(document).ready(function () {
-    DrawWayPoints(geoMapsSettings);
+//     DrawWayPoints(geoMapsSettings);
 });
 
 window.app = {};
@@ -86,7 +86,7 @@ var myDom = {
         offsetY: -22,
         color: "red",
         outline: "#ffffff",
-        outlineWidth: 2,
+        outlineWidth: 5,
         maxreso: 10
     }
 };
@@ -94,7 +94,7 @@ var myDom = {
 var getText = function(feature, resolution, dom) {
     var type = dom.text;
     var maxResolution = dom.maxreso;
-    var text = feature.j.gmCoordinate.description; // "test blabli blub";//  feature.get('description');
+    var text = feature.n.gmCoordinate.description; // "test blabli blub";//  feature.get('description');
 
     if (resolution > maxResolution) {
         text = '';
@@ -120,7 +120,7 @@ var createTextStyle = function(feature, resolution, dom) {
     var font = weight + ' ' + size + ' ' + dom.font;
     var fillColor = dom.color;
     var outlineColor = dom.outline;
-    var outlineWidth = parseInt(dom.outlineWidth, 10);
+    var outlineWidth = parseInt(dom.outlineWidth, 20);
 
     return new ol.style.Text({
         textAlign: align,
@@ -156,10 +156,48 @@ var createPointStyleFunction = function() {
 //region mapWrapper Funktionen
 
 Map.ZoomToPoint = function(coordObj){
+
+    var duration = 2000;
+    var start = +new Date();
+    var pan = ol.animation.pan({
+        duration: duration,
+        source: /** @type {ol.Coordinate} */ (map.getView().getCenter()),
+        start: start
+    });
+    var bounce = ol.animation.bounce({
+        duration: duration,
+        resolution: 3 * map.getView().getResolution(),
+        start: start
+    });
+    map.beforeRender(pan, bounce);
     map.getView().setCenter([coordObj.coordinate.Lv03.Y.Meter, coordObj.coordinate.Lv03.X.Meter]);
 }
 
 function DrawWayPoints(settings){
+
+
+    var coordsCount = settings.siteSetting.coordSettings.length;
+    for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
+        var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
+
+        /*
+        var point = new ol.Feature({
+            geometry: new ol.geom.Point([currentCoord.coordinate.Lv03.Y.Meter, currentCoord.coordinate.Lv03.X.Meter]),
+            name: currentCoord.description,
+            gmCoordinate: currentCoord
+        });
+        point.setStyle(styleArr[0]);
+        wayPoints.push(point);
+        */
+
+        DrawSingleWayPoint(currentCoord);
+    }
+    return;
+
+
+
+
+
 
     var styleArr = [];
 
@@ -217,7 +255,7 @@ function DrawWayPoints(settings){
 }
 
 function DrawSingleWayPoint(newCoord) {
-    var wayPoints=[];
+
     var point = new ol.Feature({
         geometry: new ol.geom.Point([newCoord.coordinate.Lv03.Y.Meter, newCoord.coordinate.Lv03.X.Meter]),
         name: newCoord.description,
@@ -245,15 +283,24 @@ function DrawSingleWayPoint(newCoord) {
     map.addLayer(vectorLayer);
 }
 
-function refreshLayer() {
-    vectorLayer.setStyle(createPointStyleFunction());
+function refreshLayer(lastCoord) {
+
+    console.log(map.getView().getZoom());
+    console.log(map.getView().getResolution());
+
+
+    DeleteSingleWayPoint(lastCoord.id);
+    //DrawSingleWayPoint(lastCoord);
+
+    // view.setCenter(bern);
 };
 
 function DeleteSingleWayPoint(delCoordId) {
     for(var index=0; index<wayPoints.length; index++) {
-        var cordId = wayPoints[index].j.gmCoordinate.id;
+        var cordId = wayPoints[index].n.gmCoordinate.id;
         if(cordId == delCoordId) {
-            wayPoints.slice(wayPoints[index]);
+            var deletable = index;
+            wayPoints = wayPoints.slice(deletable);
             break;
         }
     }
@@ -422,8 +469,8 @@ app.Drag.prototype.handleUpEvent = function(evt) {
 
 var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
 var currentView = new ol.View({
-    resolution: 3,
-    center: [679420,235646]
+    resolution: 10,
+    center: [682714.88, 235624.94] // 682 714.88 / 235 624.94
 })
 var map = new ga.Map({
     interactions: ol.interaction.defaults().extend([new app.Drag()]),
@@ -449,6 +496,13 @@ var mousePositionControl = new ol.control.MousePosition({
 
 map.addControl(mousePositionControl);
 
+var info = $('#info');
+info.tooltip({
+    animation: false,
+    trigger: 'manual'
+});
+
+
 var displayFeatureInfo = function(pixel) {
 
     var feature = map.forEachFeatureAtPixel(pixel, function(feature, layer) {
@@ -459,8 +513,21 @@ var displayFeatureInfo = function(pixel) {
         var x = 1;
     }
 
-    // var info = document.getElementById('info');
-    // if (feature) { info.innerHTML = feature.getId() + ': ' + feature.get('name'); } else { info.innerHTML = '&nbsp;';}
+    info.css({
+        left: pixel[0] + 'px',
+        top: (pixel[1] - 15) + 'px'
+    });
+    var feature = map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+        return feature;
+    });
+    if (feature) {
+        info.tooltip('hide')
+            .attr('data-original-title', feature.get('name'))
+            .tooltip('fixTitle')
+            .tooltip('show');
+    } else {
+        info.tooltip('hide');
+    }
 };
 
 $(map.getViewport()).on('mousemove', function(evt) {
