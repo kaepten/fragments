@@ -8,29 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="Main-Layout">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/MapOL3.js" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\CoordBox.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\collapse.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\js\Base.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\js\fragments.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\mapLayerTests.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\ol3.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\fragments\ol3_drag.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Core.js" afterPath="$PROJECT_DIR$/js/Core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GeoMapsPlanner.html" afterPath="$PROJECT_DIR$/GeoMapsPlanner.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/GeoMapsPlanner.js" afterPath="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/MapOL3.js" afterPath="$PROJECT_DIR$/js/MapOL3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\fragments.html" afterPath="$PROJECT_DIR$/archive/fragments.html" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\js\MapHandler.js" afterPath="$PROJECT_DIR$/archive/MapHandler.js" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\js\OOTestLib.js" afterPath="$PROJECT_DIR$/archive/OOTestLib.js" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\js\divMapTest.user.js" afterPath="$PROJECT_DIR$/archive/divMapTest.user.js" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\data\layers\7day-M2.5.json" afterPath="$PROJECT_DIR$/archive/ol3/data/layers/7day-M2.5.json" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\data\layers\_notes\dwsync.xml" afterPath="$PROJECT_DIR$/archive/ol3/data/layers/_notes/dwsync.xml" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\data\layers\buildings.kml" afterPath="$PROJECT_DIR$/archive/ol3/data/layers/buildings.kml" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\dragExample.html" afterPath="$PROJECT_DIR$/archive/ol3/dragExample.html" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\dragExample.js" afterPath="$PROJECT_DIR$/archive/ol3/dragExample.js" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\ol.css" afterPath="$PROJECT_DIR$/archive/ol3/ol.css" />
-      <change type="MOVED" beforePath="D:\Projects\fragments\ol3\ol.js" afterPath="$PROJECT_DIR$/archive/ol3/ol.js" />
     </list>
     <list id="2e47b9db-df9c-4089-b39a-87b575751977" name="Failed commit: Default" comment="neu organisiert mit allen Sourcen als Resourcen" />
     <ignored path="fragments.iws" />
@@ -52,62 +31,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GeoMapsPlanner.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.461538">
-              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapOL3.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MapOL3.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.68865436">
+              <caret line="415" column="23" selection-start-line="415" selection-start-column="23" selection-end-line="415" selection-end-column="23" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#2515#2848#0" expanded="false" />
-                <element signature="e#2900#3355#0" expanded="false" />
-                <element signature="e#3415#4222#0" expanded="false" />
-                <element signature="n#!!block;n#DrawWayPoints#0" expanded="false" />
-                <element signature="n#!!block;n#refreshLayer#0" expanded="false" />
-                <element signature="n#!!block;n#DeleteSingleWayPoint#0" expanded="false" />
-                <element signature="e#8079#8110#0" expanded="false" />
-                <element signature="e#8112#8217#0" expanded="false" />
-                <element signature="e#9158#9176#0" expanded="false" />
+                <element signature="e#2423#2756#0" expanded="false" />
+                <element signature="e#2808#3263#0" expanded="false" />
+                <element signature="e#3323#4130#0" expanded="false" />
+                <element signature="e#4175#4744#0" expanded="false" />
+                <element signature="e#4815#5322#0" expanded="false" />
+                <element signature="e#5324#5339#0" expanded="false" />
+                <element signature="e#8579#8610#0" expanded="false" />
+                <element signature="e#13722#13769#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Geo.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Geo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeoMapsPlanner.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GeoMapsPlanner.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3005894">
-              <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+            <state vertical-scroll-proportion="-20.73077">
+              <caret line="320" column="26" selection-start-line="320" selection-start-column="17" selection-end-line="320" selection-end-column="26" />
               <folding>
-                <marker date="1424360924910" expanded="true" signature="1158:1170" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="2133:2147" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="2336:2350" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="2877:2891" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="3410:3424" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="4085:4099" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="4240:4254" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="4302:4316" placeholder="..." />
-                <marker date="1424360924910" expanded="true" signature="4364:4378" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
+                <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -119,6 +77,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Html5" />
       </list>
     </option>
   </component>
@@ -153,7 +112,6 @@
         <option value="ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
         <option value="$PROJECT_DIR$/js/settings.js" />
         <option value="api3.geo.admin.ch/1422462768/static/js/ga.js" />
-        <option value="$PROJECT_DIR$/js/Coordinate.js" />
         <option value="api3.geo.admin.ch/1423674042/static/js/ga.js" />
         <option value="$PROJECT_DIR$/css/fragment.css" />
         <option value="$PROJECT_DIR$/js/Base.js" />
@@ -162,9 +120,14 @@
         <option value="$PROJECT_DIR$/js/Core.js" />
         <option value="$PROJECT_DIR$/archive/fragments.html" />
         <option value="$PROJECT_DIR$/js/OL3Map.js" />
-        <option value="$PROJECT_DIR$/GeoMapsPlanner.html" />
-        <option value="$PROJECT_DIR$/js/MapOL3.js" />
+        <option value="api3.geo.admin.ch/1423673962/static/js/ga.js" />
+        <option value="D:/Data/index.php.html" />
+        <option value="$PROJECT_DIR$/index.php.html" />
+        <option value="$PROJECT_DIR$/js/Coordinate.js" />
         <option value="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
+        <option value="$PROJECT_DIR$/GeoMapsPlanner.html" />
+        <option value="api3.geo.admin.ch/1429771861/static/js/ga.js" />
+        <option value="$PROJECT_DIR$/js/MapOL3.js" />
       </list>
     </option>
   </component>
@@ -172,6 +135,7 @@
     <exe-path />
     <config-path />
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
@@ -180,8 +144,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1170" />
+    <option name="height" value="1186" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -240,20 +205,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="fragments">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -282,17 +234,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="netzwolf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="fragments">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/sourcen/1.2.3/1.2/core.js" />
+    <property name="last_opened_file_path" value="D:/Data" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
@@ -324,11 +317,12 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="js.phonegap.settings.workdir" value="" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Data" />
       <recent name="D:\Projects\fragments" />
       <recent name="D:\Projekte\GeoMaps\Prototypen\fragments" />
     </key>
@@ -345,17 +339,13 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="netzwolf.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/fragments/netzwolf/netzwolf.html">
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <method />
-    </configuration>
-    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
-      <setting name="configLocationType" value="CONFIG_FILE" />
-      <setting name="settingsFile" value="" />
-      <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="Chrome" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
@@ -363,6 +353,13 @@
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
       <method />
     </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
@@ -383,12 +380,14 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.GeoMapsPlanner.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.netzwolf.html" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.GeoMapsPlanner.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.netzwolf.html" />
       </list>
     </recent_temporary>
   </component>
@@ -503,7 +502,19 @@
       <option name="project" value="LOCAL" />
       <updated>1424188402276</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Main-Layout">
+      <created>1424361394424</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1424361394424</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Main-Layout">
+      <created>1430404215679</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1430404215679</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -527,49 +538,49 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1936" height="1170" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14007372" sideWeight="0.25679013" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4118217" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36019418" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12427594" sideWeight="0.53119427" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12427594" sideWeight="0.4688057" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44674557" sideWeight="0.81832546" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51941746" sideWeight="0.18167457" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26744187" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36019418" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21511628" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14007372" sideWeight="0.7432099" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27228683" sideWeight="0.81832546" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4118217" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28595316" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879376" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3699029" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38127092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15607402" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3699029" sideWeight="0.5007899" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48252428" sideWeight="0.4997367" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20393701" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1484992" sideWeight="0.49950543" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51941746" sideWeight="0.18167457" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28698885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14854369" sideWeight="0.4997367" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15903106" sideWeight="0.54668933" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36019418" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15903106" sideWeight="0.4533107" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2776699" sideWeight="0.81832546" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -586,9 +597,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
     <MESSAGE value="New Version" />
     <MESSAGE value="neu organisiert mit allen Sourcen als Resourcen" />
     <MESSAGE value="HTML Testseite - Schrott entfernt" />
@@ -617,31 +625,132 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="693" />
+      <option name="time" value="769" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
-        <watch expression="coordObj" />
-        <watch expression="coordObj.coordinate.Lv03.X.Meter" />
-        <watch expression="map" />
+        <watch expression="currentFeatures[idx]" />
+        <watch expression="saveFeature" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2423#2756#0" expanded="false" />
+            <element signature="e#2808#3263#0" expanded="false" />
+            <element signature="e#3323#4130#0" expanded="false" />
+            <element signature="e#4175#4744#0" expanded="false" />
+            <element signature="e#4815#5322#0" expanded="false" />
+            <element signature="e#5324#5339#0" expanded="false" />
+            <element signature="e#8579#8610#0" expanded="false" />
+            <element signature="e#13722#13769#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Geo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+          <folding>
+            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2423#2756#0" expanded="false" />
+            <element signature="e#2808#3263#0" expanded="false" />
+            <element signature="e#3323#4130#0" expanded="false" />
+            <element signature="e#4175#4744#0" expanded="false" />
+            <element signature="e#4815#5322#0" expanded="false" />
+            <element signature="e#5324#5339#0" expanded="false" />
+            <element signature="e#8579#8610#0" expanded="false" />
+            <element signature="e#13722#13769#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Geo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1424360924910" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2133:2147" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2336:2350" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2877:2891" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="3410:3424" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4085:4099" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4240:4254" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4302:4316" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4364:4378" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -674,15 +783,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1424360924910" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2133:2147" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2336:2350" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2877:2891" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="3410:3424" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4085:4099" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4240:4254" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4302:4316" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4364:4378" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -749,13 +858,6 @@
     <entry file="http://api3.geo.admin.ch/1414743045/static/js/old-ga.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/archive/ol3/ol.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/netzwolf/multimark.js">
@@ -833,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="375" column="34" selection-start-line="375" selection-start-column="34" selection-end-line="375" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -841,7 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="146" column="11" selection-start-line="146" selection-start-column="11" selection-end-line="146" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,7 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06882591">
           <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,23 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51821864">
-          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.017206477">
-          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,7 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39777327">
           <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.7165992">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,62 +977,95 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11734164">
           <caret line="59" column="3677" selection-start-line="59" selection-start-column="3677" selection-end-line="59" selection-end-column="3677" />
-          <folding>
-            <marker date="1413787466861" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1413787466861" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://api3.geo.admin.ch/1423673962/static/js/ga.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5190476">
+          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Geo.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7015873">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/archive/ol3/ol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="622" column="231" selection-start-line="622" selection-start-column="231" selection-end-line="622" selection-end-column="231" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://api3.geo.admin.ch/1429771861/static/js/ga.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+          <caret line="244" column="23" selection-start-line="244" selection-start-column="23" selection-end-line="244" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.461538">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.8251534">
+          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#2515#2848#0" expanded="false" />
-            <element signature="e#2900#3355#0" expanded="false" />
-            <element signature="e#3415#4222#0" expanded="false" />
-            <element signature="n#!!block;n#DrawWayPoints#0" expanded="false" />
-            <element signature="n#!!block;n#refreshLayer#0" expanded="false" />
-            <element signature="n#!!block;n#DeleteSingleWayPoint#0" expanded="false" />
-            <element signature="e#8079#8110#0" expanded="false" />
-            <element signature="e#8112#8217#0" expanded="false" />
-            <element signature="e#9158#9176#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3005894">
-          <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+        <state vertical-scroll-proportion="-20.73077">
+          <caret line="320" column="26" selection-start-line="320" selection-start-column="17" selection-end-line="320" selection-end-column="26" />
           <folding>
-            <marker date="1424360924910" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2133:2147" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2336:2350" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="2877:2891" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="3410:3424" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4085:4099" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4240:4254" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4302:4316" placeholder="..." />
-            <marker date="1424360924910" expanded="true" signature="4364:4378" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68865436">
+          <caret line="415" column="23" selection-start-line="415" selection-start-column="23" selection-end-line="415" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2423#2756#0" expanded="false" />
+            <element signature="e#2808#3263#0" expanded="false" />
+            <element signature="e#3323#4130#0" expanded="false" />
+            <element signature="e#4175#4744#0" expanded="false" />
+            <element signature="e#4815#5322#0" expanded="false" />
+            <element signature="e#5324#5339#0" expanded="false" />
+            <element signature="e#8579#8610#0" expanded="false" />
+            <element signature="e#13722#13769#0" expanded="false" />
           </folding>
         </state>
       </provider>

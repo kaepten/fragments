@@ -65,14 +65,8 @@
 //      http://openlayers.org/en/v3.1.1/examples/vector-layer.html
 */
 
-$(document).ready(function () {
-//     DrawWayPoints(geoMapsSettings);
-});
-
 window.app = {};
 var app = window.app;
-
-var wayPoints=[];
 var myDom = {
     points: {
         text: "shorten",
@@ -173,65 +167,57 @@ Map.ZoomToPoint = function(coordObj){
     map.getView().setCenter([coordObj.coordinate.Lv03.Y.Meter, coordObj.coordinate.Lv03.X.Meter]);
 }
 
-function DrawWayPoints(settings){
+//region Styles
 
+var styleArr = [];
+
+var iconStyle1 = new ol.style.Style({
+    image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+        anchor: [0.5, 40],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: '//map.geo.admin.ch/1403704943/img/marker.png'
+    }))
+});
+
+var iconStyle2 = new ol.style.Style({
+    image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+        anchor: [0.5, 40],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: '//www.c-dev.ch/projects/flag-ch.png'
+    }))
+});
+
+var iconStyle = new ol.style.Style({
+    image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+        anchor: [0.5, 40],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: '//www.c-dev.ch/projects/flag-fm.png'
+    }))
+});
+
+styleArr.push(iconStyle1);
+styleArr.push(iconStyle2);
+styleArr.push(iconStyle);
+
+//endregion
+
+function DrawWayPoints(settings){
 
     var coordsCount = settings.siteSetting.coordSettings.length;
     for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
         var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
-
-        /*
-        var point = new ol.Feature({
-            geometry: new ol.geom.Point([currentCoord.coordinate.Lv03.Y.Meter, currentCoord.coordinate.Lv03.X.Meter]),
-            name: currentCoord.description,
-            gmCoordinate: currentCoord
-        });
-        point.setStyle(styleArr[0]);
-        wayPoints.push(point);
-        */
-
         DrawSingleWayPoint(currentCoord);
     }
+
+
     return;
 
 
 
 
-
-
-    var styleArr = [];
-
-    var iconStyle1 = new ol.style.Style({
-        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-            anchor: [0.5, 40],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: '//map.geo.admin.ch/1403704943/img/marker.png'
-        }))
-    });
-
-    var iconStyle2 = new ol.style.Style({
-        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-            anchor: [0.5, 40],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: '//www.c-dev.ch/projects/flag-ch.png'
-        }))
-    });
-
-    var iconStyle = new ol.style.Style({
-        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-            anchor: [0.5, 40],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: '//www.c-dev.ch/projects/flag-fm.png'
-        }))
-    });
-
-    styleArr.push(iconStyle1);
-    styleArr.push(iconStyle2);
-    styleArr.push(iconStyle);
-
     var coordsCount = settings.siteSetting.coordSettings.length;
     for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
         var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
@@ -245,42 +231,21 @@ function DrawWayPoints(settings){
         wayPoints.push(point);
     }
 
-    var vectorSource = new ol.source.Vector({
-        features: wayPoints
-    });
-    var vectorLayer = new ol.layer.Vector({
-        source: vectorSource
-    });
-    map.addLayer(vectorLayer);
+
+    vectorSource.addFeatures(wayPoints);
+    vectorLayer.setStyle(createPointStyleFunction());
+    vectorLayer.setSource(vectorSource);
+
 }
 
 function DrawSingleWayPoint(newCoord) {
-
     var point = new ol.Feature({
         geometry: new ol.geom.Point([newCoord.coordinate.Lv03.Y.Meter, newCoord.coordinate.Lv03.X.Meter]),
         name: newCoord.description,
         gmCoordinate: newCoord
     });
     wayPoints.push(point);
-
-    var iconStyle = new ol.style.Style({
-        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-            // anchor: [0.5, 46],
-            anchor: [0.5, 40],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: '//map.geo.admin.ch/1403704943/img/marker.png'
-        }))
-    });
-
-    var vectorSource = new ol.source.Vector({
-        features: wayPoints
-    });
-    var vectorLayer = new ol.layer.Vector({
-        source: vectorSource,
-        style: createPointStyleFunction()
-    });
-    map.addLayer(vectorLayer);
+    vectorSource.addFeature(point);
 }
 
 function refreshLayer(lastCoord) {
@@ -288,19 +253,29 @@ function refreshLayer(lastCoord) {
     console.log(map.getView().getZoom());
     console.log(map.getView().getResolution());
 
+    var currentFeatures = vectorSource.getFeatures();
 
-    DeleteSingleWayPoint(lastCoord.id);
-    //DrawSingleWayPoint(lastCoord);
-
-    // view.setCenter(bern);
+    for(var idx=0; idx<currentFeatures.length; idx++) {
+        if(lastCoord.id == currentFeatures[idx].n.gmCoordinate.id)
+        {
+            var savedCoordinate = currentFeatures[idx].n.gmCoordinate;
+            DeleteSingleWayPoint(currentFeatures[idx]);
+            DrawSingleWayPoint(savedCoordinate);
+            break;
+        }
+    }
 };
 
-function DeleteSingleWayPoint(delCoordId) {
+function DeleteSingleWayPoint(feature) {
+
+    var delCoordId = feature.n.gmCoordinate.id;
+
     for(var index=0; index<wayPoints.length; index++) {
         var cordId = wayPoints[index].n.gmCoordinate.id;
         if(cordId == delCoordId) {
             var deletable = index;
             wayPoints = wayPoints.slice(deletable);
+            vectorSource.removeFeature(feature);
             break;
         }
     }
@@ -429,6 +404,8 @@ app.Drag.prototype.handleDragEvent = function(evt) {
 
     this.coordinate_[0] = evt.coordinate[0];
     this.coordinate_[1] = evt.coordinate[1];
+
+    console.log(evt.coordinate[0] + " : " + evt.coordinate[1]);
 };
 
 
@@ -485,6 +462,12 @@ var map = new ga.Map({
     layers: [layer],
     view: currentView
 });
+var wayPoints=[];
+var vectorLayer = new ol.layer.Vector();
+vectorLayer.setStyle(createPointStyleFunction());
+var vectorSource = new ol.source.Vector();
+vectorLayer.setSource(vectorSource);
+map.addLayer(vectorLayer);
 
 var mousePositionControl = new ol.control.MousePosition({
     coordinateFormat: ol.coordinate.createStringXY(0),
@@ -510,7 +493,7 @@ var displayFeatureInfo = function(pixel) {
     });
 
     if (feature) {
-        var x = 1;
+        DeleteSingleWayPoint(feature);
     }
 
     info.css({
