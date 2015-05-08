@@ -315,11 +315,7 @@ function UpdateCoordinate(id, settings, descr, formatType) {
             }
         }
     }
-
-    // Map.ZoomToPoint(lastCoord);
-
-    refreshLayer(lastCoord);
-    // map.render();
+    refreshLayer(id);
 }
 
 function GetCoordId(element) {
@@ -366,10 +362,14 @@ function SaveEditValues(element, formatType, settings) {
     UpdateCoordinate(GetCoordId(element), settings, descr, formatType);
 }
 
-function CreateProjection(element) {
+function CreateProjection(element, coordFormat, geoMapsSettings) {
     "use strict";
-    var p2 = new LatLon(Number(coords[ii].coordinate.Lat.Degree), Number(coords[ii].coordinate.Lon.Degree));
-    var dist = p1.distanceTo(p2);          // in km
+    var dist = $(element).closest('div.calc').find('input.coordDist').val();
+    var angle = $(element).closest('div.calc').find('input.coordAngle').val();
+
+    var p1 = new LatLon(Number(coords[ii].coordinate.Lat.Degree), Number(coords[ii].coordinate.Lon.Degree));
+    var p2 = p1.destinationPoint(dist, angle);
+    var x= 0;
 }
 
 function GetCoordinateFormatObject(format) {
@@ -521,7 +521,7 @@ function AppendCoordBoxHandler() {
         var id = GetCoordId(this);
         SettingSite.DeleteCoord(geoMapsSettings, id);
         $("[id^=geoMapsCoordBox-" + id + "]").remove();
-        DeleteSingleWayPoint(id);
+        DeleteSingleWayPoint(GetFeatureOfCoordinateId(id));
     });
 }
 

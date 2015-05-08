@@ -248,23 +248,25 @@ function DrawSingleWayPoint(newCoord) {
     vectorSource.addFeature(point);
 }
 
-function refreshLayer(lastCoord) {
+function refreshLayer(id) {
+    var currentFeatrue = GetFeatureOfCoordinateId(id);
+    var savedCoordinate = currentFeatrue.n.gmCoordinate;
+    DeleteSingleWayPoint(currentFeatrue);
+    DrawSingleWayPoint(savedCoordinate);
+    // neue Koordinate anspringen (automatisch durch setzen der Geometry)
+    currentFeatrue.setGeometry(new ol.geom.Point([currentFeatrue.n.gmCoordinate.coordinate.Lv03.Y.Meter, currentFeatrue.n.gmCoordinate.coordinate.Lv03.X.Meter]));
+};
 
-    console.log(map.getView().getZoom());
-    console.log(map.getView().getResolution());
-
+function GetFeatureOfCoordinateId(id) {
+    "use strict";
     var currentFeatures = vectorSource.getFeatures();
-
     for(var idx=0; idx<currentFeatures.length; idx++) {
-        if(lastCoord.id == currentFeatures[idx].n.gmCoordinate.id)
+        if(id == currentFeatures[idx].n.gmCoordinate.id)
         {
-            var savedCoordinate = currentFeatures[idx].n.gmCoordinate;
-            DeleteSingleWayPoint(currentFeatures[idx]);
-            DrawSingleWayPoint(savedCoordinate);
-            break;
+            return currentFeatures[idx];
         }
     }
-};
+}
 
 function DeleteSingleWayPoint(feature) {
 
@@ -280,6 +282,8 @@ function DeleteSingleWayPoint(feature) {
         }
     }
 }
+
+
 
 //endregion
 
@@ -491,10 +495,6 @@ var displayFeatureInfo = function(pixel) {
     var feature = map.forEachFeatureAtPixel(pixel, function(feature, layer) {
         return feature;
     });
-
-    if (feature) {
-        DeleteSingleWayPoint(feature);
-    }
 
     info.css({
         left: pixel[0] + 'px',

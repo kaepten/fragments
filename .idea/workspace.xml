@@ -7,7 +7,8 @@
     <bookmark url="file://$PROJECT_DIR$/js/Coordinate.js" line="68" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="Main-Layout">
+    <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/GeoMapsPlanner.js" afterPath="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/MapOL3.js" afterPath="$PROJECT_DIR$/js/MapOL3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -31,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MapOL3.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapOL3.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68865436">
-              <caret line="415" column="23" selection-start-line="415" selection-start-column="23" selection-end-line="415" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="500" column="35" selection-start-line="500" selection-start-column="35" selection-end-line="500" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#2423#2756#0" expanded="false" />
@@ -44,29 +45,71 @@
                 <element signature="e#4175#4744#0" expanded="false" />
                 <element signature="e#4815#5322#0" expanded="false" />
                 <element signature="e#5324#5339#0" expanded="false" />
-                <element signature="e#8579#8610#0" expanded="false" />
-                <element signature="e#13722#13769#0" expanded="false" />
+                <element signature="e#8810#8841#0" expanded="false" />
+                <element signature="e#13953#14000#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeoMapsPlanner.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeoMapsPlanner.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.73077">
-              <caret line="320" column="26" selection-start-line="320" selection-start-column="17" selection-end-line="320" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="360" column="18" selection-start-line="360" selection-start-column="18" selection-end-line="360" selection-end-column="18" />
               <folding>
-                <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
-                <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+                <element signature="n#!!block;n#MergeCoordinateArray#0" expanded="false" />
+                <element signature="n#!!block;n#ParseAllCoordinatesFormats#0" expanded="false" />
+                <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
+                <element signature="n#!!block;n#RenderCoordinatesToPageHTML#0" expanded="false" />
+                <element signature="n#!!block;n#UpdateState#0" expanded="false" />
+                <element signature="n#!!block;n#SetQualityState#0" expanded="false" />
+                <element signature="n#!!block;n#InitUI#0" expanded="false" />
+                <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
+                <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
+                <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
+                <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
+                <element signature="n#!!block;n#Confirm#0" expanded="false" />
+                <marker date="1431099808054" expanded="true" signature="1158:1170" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="2105:2119" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="2308:2322" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="2849:2863" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="3382:3396" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="4057:4071" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="4212:4226" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="4274:4288" placeholder="..." />
+                <marker date="1431099808054" expanded="true" signature="4336:4350" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="258" column="0" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="latlon.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/latlon.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="145" column="33" selection-start-line="145" selection-start-column="17" selection-end-line="145" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Geo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Geo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,7 +152,6 @@
         <option value="$PROJECT_DIR$/CoordBox.html" />
         <option value="$PROJECT_DIR$/collapse.html" />
         <option value="$PROJECT_DIR$/css/glyphicon.css" />
-        <option value="ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
         <option value="$PROJECT_DIR$/js/settings.js" />
         <option value="api3.geo.admin.ch/1422462768/static/js/ga.js" />
         <option value="api3.geo.admin.ch/1423674042/static/js/ga.js" />
@@ -124,10 +166,11 @@
         <option value="D:/Data/index.php.html" />
         <option value="$PROJECT_DIR$/index.php.html" />
         <option value="$PROJECT_DIR$/js/Coordinate.js" />
-        <option value="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
         <option value="$PROJECT_DIR$/GeoMapsPlanner.html" />
         <option value="api3.geo.admin.ch/1429771861/static/js/ga.js" />
+        <option value="ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
         <option value="$PROJECT_DIR$/js/MapOL3.js" />
+        <option value="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
       </list>
     </option>
   </component>
@@ -514,7 +557,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430404215679</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Main-Layout">
+      <created>1431011943686</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1431011943686</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -541,25 +590,25 @@
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14007372" sideWeight="0.25679013" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14007372" sideWeight="0.49382716" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4118217" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51941746" sideWeight="0.18167457" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36019418" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21511628" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14007372" sideWeight="0.7432099" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14007372" sideWeight="0.50617284" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27228683" sideWeight="0.81832546" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35949612" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42151162" sideWeight="0.81832546" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
@@ -616,6 +665,11 @@
           <line>242</line>
           <option name="timeStamp" value="617" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/GeoMapsPlanner.js</url>
+          <line>369</line>
+          <option name="timeStamp" value="782" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -625,12 +679,12 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="769" />
+      <option name="time" value="783" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
-        <watch expression="currentFeatures[idx]" />
-        <watch expression="saveFeature" />
+        <watch expression="currentFeatures[idx].n" language="JavaScript" />
+        <watch expression="element" />
       </configuration>
     </watches-manager>
   </component>
@@ -639,7 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -655,8 +708,8 @@
             <element signature="e#4175#4744#0" expanded="false" />
             <element signature="e#4815#5322#0" expanded="false" />
             <element signature="e#5324#5339#0" expanded="false" />
-            <element signature="e#8579#8610#0" expanded="false" />
-            <element signature="e#13722#13769#0" expanded="false" />
+            <element signature="e#8810#8841#0" expanded="false" />
+            <element signature="e#13953#14000#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -673,15 +726,27 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="281" column="0" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
           <folding>
-            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+            <element signature="n#!!block;n#MergeCoordinateArray#0" expanded="false" />
+            <element signature="n#!!block;n#ParseAllCoordinatesFormats#0" expanded="false" />
+            <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
+            <element signature="n#!!block;n#RenderCoordinatesToPageHTML#0" expanded="false" />
+            <element signature="n#!!block;n#UpdateState#0" expanded="false" />
+            <element signature="n#!!block;n#SetQualityState#0" expanded="false" />
+            <element signature="n#!!block;n#InitUI#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
+            <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
+            <element signature="n#!!block;n#Confirm#0" expanded="false" />
+            <marker date="1431099808054" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -690,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,8 +770,8 @@
             <element signature="e#4175#4744#0" expanded="false" />
             <element signature="e#4815#5322#0" expanded="false" />
             <element signature="e#5324#5339#0" expanded="false" />
-            <element signature="e#8579#8610#0" expanded="false" />
-            <element signature="e#13722#13769#0" expanded="false" />
+            <element signature="e#8810#8841#0" expanded="false" />
+            <element signature="e#13953#14000#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -724,15 +788,27 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+            <element signature="n#!!block;n#MergeCoordinateArray#0" expanded="false" />
+            <element signature="n#!!block;n#ParseAllCoordinatesFormats#0" expanded="false" />
+            <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
+            <element signature="n#!!block;n#RenderCoordinatesToPageHTML#0" expanded="false" />
+            <element signature="n#!!block;n#UpdateState#0" expanded="false" />
+            <element signature="n#!!block;n#SetQualityState#0" expanded="false" />
+            <element signature="n#!!block;n#InitUI#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
+            <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
+            <element signature="n#!!block;n#Confirm#0" expanded="false" />
+            <marker date="1431099808054" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -742,15 +818,27 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+            <element signature="n#!!block;n#MergeCoordinateArray#0" expanded="false" />
+            <element signature="n#!!block;n#ParseAllCoordinatesFormats#0" expanded="false" />
+            <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
+            <element signature="n#!!block;n#RenderCoordinatesToPageHTML#0" expanded="false" />
+            <element signature="n#!!block;n#UpdateState#0" expanded="false" />
+            <element signature="n#!!block;n#SetQualityState#0" expanded="false" />
+            <element signature="n#!!block;n#InitUI#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
+            <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
+            <element signature="n#!!block;n#Confirm#0" expanded="false" />
+            <marker date="1431099808054" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -759,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="179" column="35" selection-start-line="179" selection-start-column="35" selection-end-line="179" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,15 +870,27 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
+            <element signature="n#!!block;n#MergeCoordinateArray#0" expanded="false" />
+            <element signature="n#!!block;n#ParseAllCoordinatesFormats#0" expanded="false" />
+            <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
+            <element signature="n#!!block;n#RenderCoordinatesToPageHTML#0" expanded="false" />
+            <element signature="n#!!block;n#UpdateState#0" expanded="false" />
+            <element signature="n#!!block;n#SetQualityState#0" expanded="false" />
+            <element signature="n#!!block;n#InitUI#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
+            <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
+            <element signature="n#!!block;n#Confirm#0" expanded="false" />
+            <marker date="1431099808054" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -807,7 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -822,7 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -902,11 +999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="http://api3.geo.admin.ch/1422462768/static/js/ga.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
@@ -919,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="251" column="20" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="http://api3.geo.admin.ch/1423674042/static/js/ga.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
@@ -935,13 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="375" column="34" selection-start-line="375" selection-start-column="34" selection-end-line="375" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/latlon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="11" selection-start-line="146" selection-start-column="11" selection-end-line="146" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -992,20 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5190476">
-          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Geo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7015873">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/archive/ol3/ol.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -1018,6 +1082,20 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8251534">
+          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1026,36 +1104,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
+    <entry file="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Geo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8251534">
-          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
+    <entry file="file://$PROJECT_DIR$/js/latlon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.73077">
-          <caret line="320" column="26" selection-start-line="320" selection-start-column="17" selection-end-line="320" selection-end-column="26" />
-          <folding>
-            <marker date="1430402499790" expanded="true" signature="1158:1170" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2105:2119" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2308:2322" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="2849:2863" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="3382:3396" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4057:4071" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4212:4226" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4274:4288" placeholder="..." />
-            <marker date="1430402499790" expanded="true" signature="4336:4350" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="145" column="33" selection-start-line="145" selection-start-column="17" selection-end-line="145" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/MapOL3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68865436">
-          <caret line="415" column="23" selection-start-line="415" selection-start-column="23" selection-end-line="415" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="500" column="35" selection-start-line="500" selection-start-column="35" selection-end-line="500" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#2423#2756#0" expanded="false" />
@@ -1064,8 +1137,46 @@
             <element signature="e#4175#4744#0" expanded="false" />
             <element signature="e#4815#5322#0" expanded="false" />
             <element signature="e#5324#5339#0" expanded="false" />
-            <element signature="e#8579#8610#0" expanded="false" />
-            <element signature="e#13722#13769#0" expanded="false" />
+            <element signature="e#8810#8841#0" expanded="false" />
+            <element signature="e#13953#14000#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="258" column="0" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="360" column="18" selection-start-line="360" selection-start-column="18" selection-end-line="360" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!block;n#MergeCoordinateArray#0" expanded="false" />
+            <element signature="n#!!block;n#ParseAllCoordinatesFormats#0" expanded="false" />
+            <element signature="n#!!block;n#ParseCoordinates#0" expanded="false" />
+            <element signature="n#!!block;n#RenderCoordinatesToPageHTML#0" expanded="false" />
+            <element signature="n#!!block;n#UpdateState#0" expanded="false" />
+            <element signature="n#!!block;n#SetQualityState#0" expanded="false" />
+            <element signature="n#!!block;n#InitUI#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeCoordinatesFormat#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordId#0" expanded="false" />
+            <element signature="n#!!block;n#GetProjectionId#0" expanded="false" />
+            <element signature="n#!!block;n#GetCoordinateFormatObject#0" expanded="false" />
+            <element signature="n#!!block;n#Confirm#0" expanded="false" />
+            <marker date="1431099808054" expanded="true" signature="1158:1170" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2105:2119" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2308:2322" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="2849:2863" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="3382:3396" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4057:4071" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4212:4226" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4274:4288" placeholder="..." />
+            <marker date="1431099808054" expanded="true" signature="4336:4350" placeholder="..." />
           </folding>
         </state>
       </provider>
