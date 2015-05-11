@@ -137,3 +137,8 @@ Core.StringDivider = function (str, width, spaceReplacer) {
     }
     return str;
 }
+
+Core.Confirm = function(questionString) {
+    "use strict";
+    return confirm(questionString);
+}

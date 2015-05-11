@@ -14,6 +14,8 @@ $("#sidebarcontrol").click(function () {
 
 Core.AppendLinkCursor($("#sidebarcontrol"));
 
+//region HTML Fragmente für Koordinaten-Box
+
 var html_coordBox = '<li id="geoMapsCoordBox-{0}"  class="coordBox">' +
     '    <div class="clearfix main">' +
     '        <div class="marker">' +
@@ -75,36 +77,50 @@ var extPoints = '<tr class="projectionPoint-{0}">' +
 
 var qualityMarker = '<i class="fa fa-adjust mid green" style="display: none;"></i><i class="fa fa-circle low orange" style="display: none;"></i><i class="fa fa-circle high green" style="display: none;"></i>&nbsp;{0}';
 
+//endregion
+
 var siteCoords;
 var geoMapsSettings;
 var coordFormat;
 
-function MergeCoordinateArray(originalArray, newArray) {
+//region Funktionen zum Parsen der HTML Seite nach Koordinaten
+
+/**
+ * Fügt die Werte zweier Arrays mit Coordinaten-Objekte zusammen (Distinct)
+ * @param {Array}sourceArray
+ * @param {Array} targetArray
+ * @returns {Array}
+ */
+function MergeCoordinateArray(sourceArray, targetArray) {
 
     var outerArray = new Array();
     var innerArray = new Array();
 
-    if(originalArray.length == 0) {
-        return newArray;
-    } else if(newArray.length == 0) {
-        return originalArray;
+    if(sourceArray.length == 0) {
+        return targetArray;
+    } else if(targetArray.length == 0) {
+        return sourceArray;
     }
 
     var mergedArray = new Array();
-    mergedArray = mergedArray.concat(originalArray);
-    for (var i = 0; i < originalArray.length; ++i) {
-        for (var ii = 0; ii < newArray.length; ++ii) {
-            if(originalArray[i].OriginCoordinateString == newArray[ii].OriginCoordinateString) {
+    mergedArray = mergedArray.concat(sourceArray);
+    for (var i = 0; i < sourceArray.length; ++i) {
+        for (var ii = 0; ii < targetArray.length; ++ii) {
+            if(sourceArray[i].OriginCoordinateString == targetArray[ii].OriginCoordinateString) {
                 continue;
             }
             else{
-                mergedArray.push(newArray[ii]);
+                mergedArray.push(targetArray[ii]);
             }
         }
     }
     return mergedArray;
 }
 
+/**
+ * Parst die HTML Seite nach allen unterschiedlichen Koordinaten-Formate
+ * @returns {Array} Koordinaten
+ */
 function ParseAllCoordinatesFormats() {
     var coords = new Array();
     coords = MergeCoordinateArray(coords, ParseCoordinates(PageParse.DddRegExp));
@@ -115,6 +131,11 @@ function ParseAllCoordinatesFormats() {
     return coords;
 }
 
+/**
+ * Parst Koordinaten auf der aktuellen HTML Seite entsprechend dem Regulären Ausdruck
+ * @param parserRegEx Regulärer Ausdruck, welcher verwendet wird
+ * @return {Array} Koordinaten Objekte
+ */
 function ParseCoordinates(parserRegEx) {
     // var pageParserRegExp = /(?!id="geoMapsCoord1"\s*)([N|S])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d*)['|′]*.*?([EOW])\s*(\d\d*)\s*[grad|°]*\s*(\d\d*)\s*[.,]\s*(\d*)['|′]*/gmi;
     var pageParserRegExp =  parserRegEx;
@@ -179,7 +200,13 @@ function ParseCoordinates(parserRegEx) {
     return coords;
 }
 
-function RenderCoordinatesToPageHTML(settings) {
+//endregion
+
+/**
+ * Rendert die Koordinaten-Boxen für jede Koordinate der Settings
+ * @param settings
+ */
+function RenderCoordBoxToPageHTML(settings) {
     var coordsCount = settings.siteSetting.coordSettings.length;
     for (var currentCoordIndex = 0; currentCoordIndex < coordsCount; currentCoordIndex++) {
         var currentCoord = settings.siteSetting.coordSettings[currentCoordIndex];
@@ -199,7 +226,7 @@ function RenderCoordinatesToPageHTML(settings) {
         }
         var box = html_coordBox.format(currentCoord.id, Coordinate.GetFormat(settings.siteSetting.coordinateFormatType,currentCoord.coordinate), ext, qualityMarker.format(currentCoord.description), currentCoord.uiId);
         $(".cordBoxList").append(box);
-        UpdateState(currentCoord, settings.siteSetting.coordinateFormatType);
+        SetCoordinateQualityState(currentCoord, settings.siteSetting.coordinateFormatType);
     }
     for (var i = 0; i < coordsCount; i++) {
         if (geoMapsSettings.siteSetting.coordSettings[i].isSiteFavorite) {
@@ -220,10 +247,15 @@ function RenderCoordinatesToPageHTML(settings) {
     }
 }
 
-function UpdateState(coordSetting, siteFormat) {
-
+/**
+ * Setzt die Qualitäts-Stati
+ * @param coordSetting
+ * @param siteFormat
+ * @returns {string}
+ */
+function SetCoordinateQualityState(coordSetting, siteFormat) {
     if(siteFormat == coordSetting.coordinate.OriginFormat) {
-        SetQualityState('high',coordSetting.id);
+        SetCoordinateQualityStateUI('high',coordSetting.id);
         return;
     }
 
@@ -232,17 +264,17 @@ function UpdateState(coordSetting, siteFormat) {
         case CoordinateFormat.Dmm:
         case CoordinateFormat.Dms:
             if(coordSetting.coordinate.IsWGS84) {
-                SetQualityState('mid',coordSetting.id);
+                SetCoordinateQualityStateUI('mid',coordSetting.id);
             } else {
-                SetQualityState('low',coordSetting.id);
+                SetCoordinateQualityStateUI('low',coordSetting.id);
             }
             return ;
         case CoordinateFormat.LV03:
         case CoordinateFormat.LV95:
             if(coordSetting.coordinate.IsWGS84) {
-                SetQualityState('low',coordSetting.id);
+                SetCoordinateQualityStateUI('low',coordSetting.id);
             } else {
-                SetQualityState('mid',coordSetting.id);
+                SetCoordinateQualityStateUI('mid',coordSetting.id);
             }
             return;
         default:
@@ -253,7 +285,12 @@ function UpdateState(coordSetting, siteFormat) {
     return qualityMarker.format('');
 }
 
-function SetQualityState(state, coordinateId) {
+/**
+ * Setzt die Qualitäts-Stati im UI
+ * @param state
+ * @param coordinateId
+ */
+function SetCoordinateQualityStateUI(state, coordinateId) {
     switch(state) {
         case 'high':
             $('#geoMapsCoordBox-'+coordinateId+' .fa-adjust.mid').hide();
@@ -273,24 +310,27 @@ function SetQualityState(state, coordinateId) {
     }
 }
 
-function InitUI() {
-    $("[id^=geoMapsCoordBox-]").remove();
-    siteCoords = ParseAllCoordinatesFormats();
-    geoMapsSettings = LoadGeoMapsSiteSettings(document.URL, siteCoords);
-    coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
-    $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
-    RenderCoordinatesToPageHTML(geoMapsSettings);
-    AppendCoordBoxHandler();
-}
-
-function ChangeCoordinatesFormat(settings, formatType) {
+/**
+ * Wechselt die Darstellung der Coordinaten (CoordBox)
+ * @param settings
+ * @param formatType
+ * @constructor
+ */
+function ChangeCoordinatesFormatUI(settings, formatType) {
     for (var i = 0; i < settings.siteSetting.coordSettings.length; i++) {
         $("#geoMapsCoordBox-"+settings.siteSetting.coordSettings[i].id).find('.coordinate').html(Coordinate.GetFormat(formatType, settings.siteSetting.coordSettings[i].coordinate));
-        UpdateState(settings.siteSetting.coordSettings[i],formatType);
+        SetCoordinateQualityState(settings.siteSetting.coordSettings[i],formatType);
     }
 }
 
-function UpdateCoordinate(id, settings, descr, formatType) {
+/**
+ * Aktualisiert die CoordBox(en)
+ * @param id
+ * @param settings
+ * @param descr
+ * @param formatType
+ */
+function UpdateCoordinateUI(id, settings, descr, formatType) {
     // update ui für Coordinate
     $("#geoMapsCoordBox-"+id).find('.description').html(qualityMarker.format(descr));
     $("#geoMapsCoordBox-"+id).find('div.edit').toggle();
@@ -301,7 +341,7 @@ function UpdateCoordinate(id, settings, descr, formatType) {
     for (var i = 0; i < pointCount; i++) {
         var p1 = new LatLon(Number(coords[i].coordinate.Lat.Degree), Number(coords[i].coordinate.Lon.Degree));
         $("#geoMapsCoordBox-"+coords[i].id).find('.coordinate').html(Coordinate.GetFormat(formatType, coords[i].coordinate));
-        UpdateState(coords[i], settings.siteSetting.coordinateFormatType);
+        SetCoordinateQualityState(coords[i], settings.siteSetting.coordinateFormatType);
         for (var ii = 0; ii < pointCount; ii++) {
             if(i!=ii) {
                 var p2 = new LatLon(Number(coords[ii].coordinate.Lat.Degree), Number(coords[ii].coordinate.Lon.Degree));
@@ -318,8 +358,14 @@ function UpdateCoordinate(id, settings, descr, formatType) {
     refreshLayer(id);
 }
 
-function GetCoordId(element) {
-    var idElement = $(element).closest('[id^=geoMapsCoordBox-]');
+/**
+ * Ermittelt die ID der Koordinate anhand des UI Element
+ * @param elementUi
+ * @returns {*}
+ * @constructor
+ */
+function GetCoordId(elementUi) {
+    var idElement = $(elementUi).closest('[id^=geoMapsCoordBox-]');
     var currentId = $(idElement).attr('id');
     var myRegexp = /.*?-([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})/i;
     var match = myRegexp.exec(currentId);
@@ -330,8 +376,13 @@ function GetCoordId(element) {
     return match[1];
 }
 
-function GetProjectionId(element) {
-    var idElement = $(element).closest('[class^=projectionPoint-]');
+/**
+ * Ermittelt die Id der Projektions Koordinate
+ * @param elementUi
+ * @returns {*}
+ */
+function GetProjectionId(elementUi) {
+    var idElement = $(elementUi).closest('[class^=projectionPoint-]');
     var currentId = $(idElement).attr('class');
     var myRegexp = /.*?-([A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12})/i;
     var match = myRegexp.exec(currentId);
@@ -342,9 +393,15 @@ function GetProjectionId(element) {
     return match[1];
 }
 
-function SaveEditValues(element, formatType, settings) {
-    var coord = new Coordinate($(element).closest('div.edit').find('input.coordValue').val());
-    var descr = $(element).closest('div.edit').find('input.coordDesc').val();
+/**
+ * Speichern der Koordinaten Eigenschaften der CoordBox
+ * @param elementUi
+ * @param formatType
+ * @param settings
+ */
+function SaveEditValues(elementUi, formatType, settings) {
+    var coord = new Coordinate($(elementUi).closest('div.edit').find('input.coordValue').val());
+    var descr = $(elementUi).closest('div.edit').find('input.coordDesc').val();
     if (!coord.IsValid) {
         alert('FEHLER beim Parsen der Eingabe!');
         $('div.edit').find('input.coordValue').addClass("bgred");
@@ -352,26 +409,48 @@ function SaveEditValues(element, formatType, settings) {
     } else {
         $('div.edit').find('input.coordValue').removeClass("bgred");
     }
-    var tmpID = GetCoordId(element);
+    var tmpID = GetCoordId(elementUi);
     if(descr=='') {
         var coordSet = SettingSite.GetSettingCoordObject(geoMapsSettings, tmpID);
         descr = 'Koordinate : ' + coordSet.uiId;
     }
 
     SettingCoord.Set(settings, tmpID, coord, descr);
-    UpdateCoordinate(GetCoordId(element), settings, descr, formatType);
+    UpdateCoordinateUI(GetCoordId(elementUi), settings, descr, formatType);
 }
 
-function CreateProjection(element, coordFormat, geoMapsSettings) {
+/**
+ * Projektions Koordinate erstellen
+ * @param elementUi
+ * @param coordFormat
+ * @param geoMapsSettings
+ */
+function CreateProjection(elementUi, coordFormat, geoMapsSettings) {
     "use strict";
-    var dist = $(element).closest('div.calc').find('input.coordDist').val();
-    var angle = $(element).closest('div.calc').find('input.coordAngle').val();
+    var dist = $(elementUi).closest('div.calc').find('input.coordDist').val();
+    var angle = $(elementUi).closest('div.calc').find('input.coordAngle').val();
 
-    var p1 = new LatLon(Number(coords[ii].coordinate.Lat.Degree), Number(coords[ii].coordinate.Lon.Degree));
+    var id = GetCoordId(elementUi);
+    var coordObj = SettingSite.GetSettingCoordObject(geoMapsSettings, id);
+
+    var p1 = new LatLon(Number(coordObj.coordinate.Lat.Degree), Number(coordObj.coordinate.Lon.Degree));
     var p2 = p1.destinationPoint(dist, angle);
-    var x= 0;
+
+    var newCoord = new Coordinate(p2.lat + " " + p2.lon);
+    if (newCoord.IsValid) {
+        CreateAndAddNew(newCoord, geoMapsSettings);
+        $("[id^=geoMapsCoordBox-]").remove();
+        RenderCoordBoxToPageHTML(geoMapsSettings);
+        AppendCoordBoxHandler();
+    }
+
 }
 
+/**
+ * Konvertiert string Formatangaben zum typsicheren Objekt Formatangabe
+ * @param {string} format
+ * @returns {CoordinateFormat}
+ */
 function GetCoordinateFormatObject(format) {
     switch (format) {
         case 'Ddd':
@@ -389,11 +468,9 @@ function GetCoordinateFormatObject(format) {
     }
 }
 
-function Confirm(questionString) {
-    "use strict";
-    return confirm(questionString);
-}
-
+/**
+ * Fügt den CoordBox die Handler an
+ */
 function AppendCoordBoxHandler() {
 
     $("[id^=geoMapsCoordBox-] .updown").click(function () {
@@ -432,10 +509,6 @@ function AppendCoordBoxHandler() {
         Map.ZoomToPoint(coordObj);
     });
 
-
-
-
-
     $("a.calc").click(function () {
         var id = GetCoordId(this);
         var coordObj = SettingSite.GetSettingCoordObject(geoMapsSettings, id);
@@ -471,15 +544,6 @@ function AppendCoordBoxHandler() {
             SaveEditValues(this, coordFormat, geoMapsSettings);
         }
     });
-
-
-
-
-
-
-
-
-
 
     $("a.edit").click(function () {
         var id = GetCoordId(this);
@@ -519,17 +583,26 @@ function AppendCoordBoxHandler() {
 
     $("a.del").click(function () {
         var id = GetCoordId(this);
-        SettingSite.DeleteCoord(geoMapsSettings, id);
-        $("[id^=geoMapsCoordBox-" + id + "]").remove();
-        DeleteSingleWayPoint(GetFeatureOfCoordinateId(id));
+        deleteExisting(id);
     });
 }
 
+function deleteExisting(id) {
+    "use strict";
+    SettingSite.DeleteCoord(geoMapsSettings, id);
+    $("[id^=geoMapsCoordBox-" + id + "]").remove();
+    DeleteSingleWayPoint(GetFeatureOfCoordinateId(id));
+}
+
+
+/**
+ * Fügt alle Handler für die Seite
+ */
 function AppendDocumentHandler() {
 
     $("input[name=CoordFormat]").change(function () {
         coordFormat = GetCoordinateFormatObject($("input[name=CoordFormat]:checked").val());
-        ChangeCoordinatesFormat(geoMapsSettings, coordFormat);
+        ChangeCoordinatesFormatUI(geoMapsSettings, coordFormat);
         SettingSite.SetCoordFormat(geoMapsSettings, coordFormat);
     });
 
@@ -551,7 +624,7 @@ function AppendDocumentHandler() {
     });
 
     $("a.allDelete").click(function () {
-        if (Confirm('Sollen alle Koordinaten aus dem Calculator entfernt werden?\r\nDie Seite muss neu geladen werden um die vorhanenen Koordinaten wieder zu erkennen.')) {
+        if (Core.Confirm('Sollen alle Koordinaten aus dem Calculator entfernt werden?\r\nDie Seite muss neu geladen werden um die vorhanenen Koordinaten wieder zu erkennen.')) {
             var ids = [];
             for (var coordIndex = 0; coordIndex < geoMapsSettings.siteSetting.coordSettings.length; coordIndex++) {
                 if (!geoMapsSettings.siteSetting.coordSettings[coordIndex].isSiteFavorite) {
@@ -604,34 +677,61 @@ function AppendDocumentHandler() {
     });
 
     errorFlag = true;
-    function addNew() {
-        var newCoord = new Coordinate($("#newCoordinate").val());
-        if (newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
+}
+
+
+function addNew() {
+    var newCoord = new Coordinate($("#newCoordinate").val());
+    if (newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
+        $("#newCoordinate").removeClass("bgred");
+        if ($("#newCoordinate").val().trim().length == 0) return;
+
+        CreateAndAddNew(newCoord, geoMapsSettings);
+
+        $("[id^=geoMapsCoordBox-]").remove();
+        RenderCoordBoxToPageHTML(geoMapsSettings);
+        AppendCoordBoxHandler();
+        $("#newCoordinate").val('');
+    } else {
+        $("#newCoordinate").addClass("bgred");
+        setTimeout(function () {
+            console.log("error : " + errorFlag);
+            if (errorFlag) {
+                $("#newCoordinate").val('');
+            }
             $("#newCoordinate").removeClass("bgred");
-            if ($("#newCoordinate").val().trim().length == 0) return;
-            var newGUID = getGUID();
-            var uiId = GetUiId();
-            var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
-
-            AddNewCoordinateObject([siteCoord], geoMapsSettings);
-            DrawSingleWayPoint(siteCoord);
-
-            $("[id^=geoMapsCoordBox-]").remove();
-            RenderCoordinatesToPageHTML(geoMapsSettings);
-            AppendCoordBoxHandler();
-            $("#newCoordinate").val('');
-        } else {
-            $("#newCoordinate").addClass("bgred");
-            setTimeout(function () {
-                console.log("error : " + errorFlag);
-                if (errorFlag) {
-                    $("#newCoordinate").val('');
-                }
-                $("#newCoordinate").removeClass("bgred");
-            }, 2000);
-            return;
-        }
+        }, 2000);
+        return;
     }
+}
+
+/**
+ * Erzeugt eine neue Koordinate und fügt sie den Settings hinzu
+ * @param newCoord
+ * @param geoMapsSettings
+ */
+function CreateAndAddNew(newCoord, geoMapsSettings) {
+    "use strict";
+    var newGUID = getGUID();
+    var uiId = GetUiId();
+    var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
+
+    AddNewCoordinateObject([siteCoord], geoMapsSettings);
+    DrawSingleWayPoint(siteCoord);
+}
+
+
+/**
+ * Initialisiert das UI
+ */
+function InitUI() {
+    $("[id^=geoMapsCoordBox-]").remove();
+    siteCoords = ParseAllCoordinatesFormats();
+    geoMapsSettings = LoadGeoMapsSiteSettings(document.URL, siteCoords);
+    coordFormat = geoMapsSettings.siteSetting.coordinateFormatType;
+    $("input[name=CoordFormat][value=" + coordFormat + "]").prop('checked', true);
+    RenderCoordBoxToPageHTML(geoMapsSettings);
+    AppendCoordBoxHandler();
 }
 
 $(document).ready(function () {
@@ -640,6 +740,9 @@ $(document).ready(function () {
     DrawWayPoints(geoMapsSettings);
 });
 
+/**
+ * jQuery Sortable UI Elemente
+ */
 $(function () {
     // $(".cordBoxList").sortable({         stop: function (event, ui) {        },        start: function (event, ui) {        }    });
 

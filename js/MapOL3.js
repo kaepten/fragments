@@ -519,9 +519,16 @@ $(map.getViewport()).on('mousemove', function(evt) {
 });
 
 map.on('click', function(evt) {
+    if(evt.originalEvent.ctrlKey) {
+        var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+            return feature;
+        });
+        DeleteSingleWayPoint(feature);
+    } else {
+        var coordinate = evt.coordinate;
+        $("#newCoordinate").val(coordinate[0] + " " + coordinate[1]);
+        addNew();
+    }
 
-    var coordinate = evt.coordinate;
-    $("#newCoordinate").val(coordinate[0] + " " + coordinate[1]);
-
-    displayFeatureInfo(evt.pixel);
+    // displayFeatureInfo(evt.pixel);
 });
