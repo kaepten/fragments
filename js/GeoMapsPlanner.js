@@ -501,6 +501,12 @@ function AppendCoordBoxHandler() {
         $('#geoMapsCoordBox-' + projectionId + ' .projectionPoint-' + coordId + ' .glyphicon-eye-close').toggle();
         $('#geoMapsCoordBox-' + projectionId + ' .projectionPoint-' + coordId + ' .glyphicon-eye-open').toggle();
         SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
+
+
+        var cord1 = SettingSite.GetSettingCoordObject(geoMapsSettings, coordId);
+        var cord2 = SettingSite.GetSettingCoordObject(geoMapsSettings, projectionId);
+
+        DrawLine(cord1, cord2);
     });
 
     $("a.goto").click(function () {
@@ -736,6 +742,9 @@ function InitUI() {
 
 $(document).ready(function () {
     InitUI();
+
+    // DrawLine(["682714.88", "235624.94"],["684444.88", "233889.94"]);
+
     AppendDocumentHandler();
     DrawWayPoints(geoMapsSettings);
 });

@@ -204,6 +204,39 @@ styleArr.push(iconStyle);
 
 //endregion
 
+
+var conv = function(i) {
+    return ol.proj.transform(i, 'EPSG:4326', 'EPSG:3857');
+};
+
+function DrawLine(cord1, cord2) {
+
+    var styleFunction = function(feature, resolution) {
+        var geometry = feature.getGeometry();
+        var styles = [
+            // linestring
+            new ol.style.Style({
+                stroke: new ol.style.Stroke({color: '#ff0000', width: 4})
+            })
+        ];
+        return styles;
+    }
+
+    var vectorLayerLine = new ol.layer.Vector({
+        style: styleFunction
+    });
+    var vectorSourceLine = new ol.source.Vector();
+
+
+    var line = new ol.geom.LineString([[cord1.coordinate.Lv03.Y.Meter, cord1.coordinate.Lv03.X.Meter], [cord2.coordinate.Lv03.Y.Meter, cord2.coordinate.Lv03.X.Meter]],"XY");
+    var lineFeature = new ol.Feature(line);
+
+    vectorSourceLine.addFeatures([lineFeature]);
+    vectorLayerLine.setSource(vectorSourceLine);
+
+    map.addLayer(vectorLayerLine);
+}
+
 function DrawWayPoints(settings){
 
     var coordsCount = settings.siteSetting.coordSettings.length;
