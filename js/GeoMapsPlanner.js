@@ -742,9 +742,6 @@ function InitUI() {
 
 $(document).ready(function () {
     InitUI();
-
-    // DrawLine(["682714.88", "235624.94"],["684444.88", "233889.94"]);
-
     AppendDocumentHandler();
     DrawWayPoints(geoMapsSettings);
 });

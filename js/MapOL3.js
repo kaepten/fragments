@@ -235,7 +235,55 @@ function DrawLine(cord1, cord2) {
     vectorLayerLine.setSource(vectorSourceLine);
 
     map.addLayer(vectorLayerLine);
+
+
+    DrawCircle(cord1);
 }
+
+function DrawCircle(cord1) {
+    "use strict";
+    // Geometries
+    var point = new ol.geom.Point([cord1.coordinate.Lv03.Y.Meter, cord1.coordinate.Lv03.X.Meter]);
+    var circle = new ol.geom.Circle([cord1.coordinate.Lv03.Y.Meter, cord1.coordinate.Lv03.X.Meter],160);
+
+    // Features
+    var pointFeature = new ol.Feature(point);
+    var circleFeature = new ol.Feature(circle);
+
+    // Source and vector layer
+    var vectorSource = new ol.source.Vector({
+        features: [pointFeature, circleFeature]
+    });
+
+    var style = new ol.style.Style({
+        fill: new ol.style.Fill({
+            color: 'rgba(255, 100, 50, 0.3)'
+        }),
+        stroke: new ol.style.Stroke({
+            width: 2,
+            color: 'rgba(255, 100, 50, 0.8)'
+        }),
+        image: new ol.style.Circle({
+            fill: new ol.style.Fill({
+                color: 'rgba(55, 200, 150, 0.5)'
+            }),
+            stroke: new ol.style.Stroke({
+                width: 1,
+                color: 'rgba(55, 200, 150, 0.8)'
+            }),
+            radius: 7
+        })
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+        style: style
+    });
+
+
+    map.addLayer(vectorLayer);
+}
+
 
 function DrawWayPoints(settings){
 
