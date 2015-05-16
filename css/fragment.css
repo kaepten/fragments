@@ -119,6 +119,10 @@
 	color: #f9a200;
 }
 
+.gM .yellow {
+	color: #ffe10f;
+}
+
 .gM table {
 	border-spacing: 0;
 	border-collapse: collapse;
@@ -410,7 +414,7 @@
 
 /* div um a commands*/
 .content > div:nth-child(3) {
-	width: 110px;
+	width: 90px;
 	float: right;
 	padding-top: 2px;
 }

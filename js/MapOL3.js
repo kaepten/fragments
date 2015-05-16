@@ -151,7 +151,7 @@ var createPointStyleFunction = function() {
 
 Map.ZoomToPoint = function(coordObj){
 
-    var duration = 2000;
+    var duration = 1000;
     var start = +new Date();
     var pan = ol.animation.pan({
         duration: duration,
@@ -203,11 +203,6 @@ styleArr.push(iconStyle2);
 styleArr.push(iconStyle);
 
 //endregion
-
-
-var conv = function(i) {
-    return ol.proj.transform(i, 'EPSG:4326', 'EPSG:3857');
-};
 
 function DrawLine(cord1, cord2) {
 
@@ -608,7 +603,7 @@ map.on('click', function(evt) {
     } else {
         var coordinate = evt.coordinate;
         $("#newCoordinate").val(coordinate[0] + " " + coordinate[1]);
-        addNew();
+        AddNewCoordBox();
     }
 
     // displayFeatureInfo(evt.pixel);

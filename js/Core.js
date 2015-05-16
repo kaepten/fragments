@@ -142,3 +142,53 @@ Core.Confirm = function(questionString) {
     "use strict";
     return confirm(questionString);
 }
+
+/**
+ * Rundet eine Zahl X auf n Nachkommastellen
+ * @param x
+ * @param n
+ * @returns {*}
+ */
+Core.Round = function runde(x, n) {
+    if (n < 1 || n > 14) return Math.round(x);
+    var e = Math.pow(10, n);
+    var k = (Math.round(x * e) / e).toString();
+    if (k.indexOf('.') == -1) k += '.';
+    k += e.toString().substring(1);
+    return k.substring(0, k.indexOf('.') + n+1);
+}
+
+/**
+ * Fügt einer Zahl Tausender Trennzeichen hinzu. Kommastelle als Punkt!
+ * @param number
+ * @returns {*}
+ * @constructor
+ */
+Core.Trenner = function(number) {
+    // Info: Die '' sind zwei Hochkommas
+    var nachkomma = "";
+    if(number.indexOf(".") > -1) {
+        nachkomma = number.split(".")[1];
+        number = number.split(".")[0];
+    }
+
+    number = '' + number;
+    if (number.length > 3) {
+        var mod = number.length % 3;
+        var output = (mod > 0 ? (number.substring(0,mod)) : '');
+        for (i=0 ; i < Math.floor(number.length / 3); i++) {
+            if ((mod == 0) && (i == 0)) {
+                output += number.substring(mod + 3 * i, mod + 3 * i + 3);
+            } else {
+                // hier wird das Trennzeichen festgelegt mit '.'
+                output += "'" + number.substring(mod + 3 * i, mod + 3 * i + 3);
+            }
+        }
+        if(nachkomma.length > 0) {
+            return(output +"."+nachkomma);
+        } else {
+            return (output);
+        }
+    }
+    else return number;
+}

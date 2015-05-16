@@ -69,10 +69,10 @@ var extPoints = '<tr class="projectionPoint-{0}">' +
     '   <td><i class="fa fa-level-up fa-rotate-90 fa-lg"></i></td>' +
     '   <td class="pointId">{3}</td>' +
     '   <td><i class="fa fa-arrows-h"></i></td>' +
-    '   <td><span  class="dist">{1}</span>km</td>' +
+    '   <td><span  class="dist">{1}</span>m</td>' +
     '   <td><i class="fa fa-location-arrow"></i></td>' +
     '   <td><span class="angle">{2}</span>°</td>' +
-    '   <td class="commands"><a class="cmd goto"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="cmd showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
+    '   <td class="commands"><a class="cmd gotoProjection"><span class="glyphicon glyphicon-map-marker"></span></a> <a class="cmd showhide"><span class="glyphicon glyphicon-eye-close"></span><span style="display: none;" class="glyphicon glyphicon-eye-open green"></span></a></td>' +
     '</tr>';
 
 var qualityMarker = '<i class="fa fa-adjust mid green" style="display: none;"></i><i class="fa fa-circle low orange" style="display: none;"></i><i class="fa fa-circle high green" style="display: none;"></i>&nbsp;{0}';
@@ -216,7 +216,7 @@ function RenderCoordBoxToPageHTML(settings) {
             if (currentCoord.id != settings.siteSetting.coordSettings[lineToCoordinateIndex].id) {
                 var currentProjCoord = settings.siteSetting.coordSettings[lineToCoordinateIndex].coordinate;
                 var p2 = new LatLon(Number(currentProjCoord.Lat.Degree), Number(currentProjCoord.Lon.Degree));
-                var dist = p1.distanceTo(p2);          // in km
+                var dist = Core.Trenner(Core.Round(p1.distanceTo(p2),2));          // in m
                 var brng = p1.bearingTo(p2);
                 ext = ext + extPoints.format(settings.siteSetting.coordSettings[lineToCoordinateIndex].id, dist, Math.round(brng * 10) / 10, settings.siteSetting.coordSettings[lineToCoordinateIndex].uiId);
             }
@@ -355,7 +355,7 @@ function UpdateCoordinateUI(id, settings, descr, formatType) {
             }
         }
     }
-    refreshLayer(id);
+    map.UpdateWayPoint(id);
 }
 
 /**
@@ -438,7 +438,7 @@ function CreateProjection(elementUi, coordFormat, geoMapsSettings) {
 
     var newCoord = new Coordinate(p2.lat + " " + p2.lon);
     if (newCoord.IsValid) {
-        CreateAndAddNew(newCoord, geoMapsSettings);
+        CreateAndAddNewCoordinate(newCoord, geoMapsSettings);
         $("[id^=geoMapsCoordBox-]").remove();
         RenderCoordBoxToPageHTML(geoMapsSettings);
         AppendCoordBoxHandler();
@@ -500,19 +500,23 @@ function AppendCoordBoxHandler() {
         var projectionId = GetProjectionId(this); // gegenseite auch ein/ausblenden
         $('#geoMapsCoordBox-' + projectionId + ' .projectionPoint-' + coordId + ' .glyphicon-eye-close').toggle();
         $('#geoMapsCoordBox-' + projectionId + ' .projectionPoint-' + coordId + ' .glyphicon-eye-open').toggle();
-        SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
-
+        var isShown = SettingSite.SetProjectionShowLineTo(geoMapsSettings, coordId, projectionId);
 
         var cord1 = SettingSite.GetSettingCoordObject(geoMapsSettings, coordId);
         var cord2 = SettingSite.GetSettingCoordObject(geoMapsSettings, projectionId);
+        map.ShowHideLine(isShown, cord1, cord2);
+    });
 
-        DrawLine(cord1, cord2);
+    $("a.gotoProjection").click(function () {
+        var projectionId = GetProjectionId(this); // gegenseite auch ein/ausblenden
+        var coordObj = SettingSite.GetSettingCoordObject(geoMapsSettings, projectionId);
+        map.ZoomToPoint(coordObj);
     });
 
     $("a.goto").click(function () {
-        var id = GetCoordId(this);
+        var id = GetCoordId(this); // gegenseite auch ein/ausblenden
         var coordObj = SettingSite.GetSettingCoordObject(geoMapsSettings, id);
-        Map.ZoomToPoint(coordObj);
+        map.ZoomToPoint(coordObj);
     });
 
     $("a.calc").click(function () {
@@ -589,17 +593,9 @@ function AppendCoordBoxHandler() {
 
     $("a.del").click(function () {
         var id = GetCoordId(this);
-        deleteExisting(id);
+        DeleteCoordinate(id);
     });
 }
-
-function deleteExisting(id) {
-    "use strict";
-    SettingSite.DeleteCoord(geoMapsSettings, id);
-    $("[id^=geoMapsCoordBox-" + id + "]").remove();
-    DeleteSingleWayPoint(GetFeatureOfCoordinateId(id));
-}
-
 
 /**
  * Fügt alle Handler für die Seite
@@ -622,6 +618,15 @@ function AppendDocumentHandler() {
                 elC.toggle();
             }
         }
+
+        for(var idx=0; idx<geoMapsSettings.siteSetting.coordSettings.length; idx++) {
+            for(var idxx=0; geoMapsSettings.siteSetting.coordSettings[idx].showLineTo.length; idxx++) {
+                if(geoMapsSettings.siteSetting.coordSettings[idx].showLineTo[idxx].isShown) {
+                    map.RemoveLine(geoMapsSettings.siteSetting.coordSettings[idx].id, geoMapsSettings.siteSetting.coordSettings[idx].showLineTo[idxx].coordId);
+                }
+            }
+        }
+
         SettingSite.HideAllShowLineTo(geoMapsSettings);
     });
 
@@ -638,6 +643,7 @@ function AppendDocumentHandler() {
                 }
             }
             for (var idIndex = 0; idIndex < ids.length; idIndex++) {
+                map.DeleteSingleWayPointById(ids[idIndex]);
                 SettingSite.DeleteCoord(geoMapsSettings, ids[idIndex]);
                 $("[id^=geoMapsCoordBox-" + ids[idIndex] + "]").remove();
             }
@@ -669,14 +675,14 @@ function AppendDocumentHandler() {
 
     $("a.newCoord").click(function () {
         errorFlag = true;
-        addNew();
+        AddNewCoordBox();
     });
 
     $("#newCoordinate").keyup(function (e) {
         if (e.keyCode == 13) {
             $(this).trigger("enterKey");
             errorFlag = true;
-            addNew();
+            AddNewCoordBox();
         } else {
             errorFlag = false;
         }
@@ -685,14 +691,26 @@ function AppendDocumentHandler() {
     errorFlag = true;
 }
 
+function DeleteCoordinate(id) {
+    "use strict";
+    SettingSite.DeleteCoord(geoMapsSettings, id);
+    $("[id^=geoMapsCoordBox-" + id + "]").remove();
+    $("[class^=projectionPoint-" + id + "]").remove();
+    map.DeleteSingleWayPointById(id);
+}
 
-function addNew() {
+function SetMainCoord(position) {
+    "use strict";
+    $("#newCoordinate").val(position);
+}
+
+function AddNewCoordBox() {
     var newCoord = new Coordinate($("#newCoordinate").val());
     if (newCoord.IsValid || $("#newCoordinate").val().trim().length == 0) {
         $("#newCoordinate").removeClass("bgred");
         if ($("#newCoordinate").val().trim().length == 0) return;
 
-        CreateAndAddNew(newCoord, geoMapsSettings);
+        CreateAndAddNewCoordinate(newCoord, geoMapsSettings);
 
         $("[id^=geoMapsCoordBox-]").remove();
         RenderCoordBoxToPageHTML(geoMapsSettings);
@@ -716,16 +734,15 @@ function addNew() {
  * @param newCoord
  * @param geoMapsSettings
  */
-function CreateAndAddNew(newCoord, geoMapsSettings) {
+function CreateAndAddNewCoordinate(newCoord, geoMapsSettings) {
     "use strict";
     var newGUID = getGUID();
     var uiId = GetUiId();
     var siteCoord = new SettingCoord(newCoord.OriginCoordinateString, newGUID, uiId);
 
     AddNewCoordinateObject([siteCoord], geoMapsSettings);
-    DrawSingleWayPoint(siteCoord);
+    map.AddSingleWayPoint(siteCoord);
 }
-
 
 /**
  * Initialisiert das UI
@@ -740,10 +757,13 @@ function InitUI() {
     AppendCoordBoxHandler();
 }
 
+var map;
+
 $(document).ready(function () {
     InitUI();
     AppendDocumentHandler();
-    DrawWayPoints(geoMapsSettings);
+    map = new Map_OL3();
+    map.DrawWayPoints(geoMapsSettings);
 });
 
 /**

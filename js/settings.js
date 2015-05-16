@@ -187,19 +187,24 @@ function SettingSite() {
 }
 
 SettingSite.SetProjectionShowLineTo = function (setting, coordId, projectionCoordId) {
+    var isShown;
     var tmpCoord = SettingSite.GetSettingCoordObject(setting, coordId);
     for (var index = 0; index < tmpCoord.showLineTo.length; index++) {
         if (tmpCoord.showLineTo[index].coordId == projectionCoordId) {
             tmpCoord.showLineTo[index].isShown = !tmpCoord.showLineTo[index].isShown;
+            isShown = tmpCoord.showLineTo[index].isShown;
+            break;
         }
     }
     var tmpCoordProj = SettingSite.GetSettingCoordObject(setting, projectionCoordId);
     for (var index = 0; index < tmpCoordProj.showLineTo.length; index++) {
         if (tmpCoordProj.showLineTo[index].coordId == coordId) {
             tmpCoordProj.showLineTo[index].isShown = !tmpCoordProj.showLineTo[index].isShown;
+            break;
         }
     }
     SaveGeoMapsSettings(setting);
+    return isShown;
 }
 
 SettingSite.DeleteCoord = function (setting, id) {
