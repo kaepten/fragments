@@ -8,13 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c5cb2-487b-4f84-8a6e-7478948dd148" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/Map_OL3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Core.js" afterPath="$PROJECT_DIR$/js/Core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GeoMapsPlanner.html" afterPath="$PROJECT_DIR$/GeoMapsPlanner.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/GeoMapsPlanner.js" afterPath="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/MapOL3.js" afterPath="$PROJECT_DIR$/js/MapOL3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Map_OL3.js" afterPath="$PROJECT_DIR$/js/Map_OL3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fragment.css" afterPath="$PROJECT_DIR$/css/fragment.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/settings.js" afterPath="$PROJECT_DIR$/js/settings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="2e47b9db-df9c-4089-b39a-87b575751977" name="Failed commit: Default" comment="neu organisiert mit allen Sourcen als Resourcen" />
@@ -37,205 +34,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Map_OL3.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Map_OL3.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Map_OL3.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="429" column="143" selection-start-line="429" selection-start-column="143" selection-end-line="429" selection-end-column="143" />
+            <state vertical-scroll-proportion="0.50329876">
+              <caret line="318" column="84" selection-start-line="318" selection-start-column="84" selection-end-line="318" selection-end-column="84" />
               <folding>
-                <element signature="e#96#115#0" expanded="false" />
                 <element signature="e#586#1097#0" expanded="true" />
                 <element signature="e#1161#2060#0" expanded="true" />
                 <element signature="e#2109#2742#0" expanded="true" />
                 <element signature="e#2156#2735#0" expanded="true" />
                 <element signature="e#2264#2300#0" expanded="true" />
-                <element signature="e#3332#3363#0" expanded="false" />
-                <element signature="e#3369#3490#0" expanded="true" />
-                <element signature="e#3542#4442#0" expanded="true" />
-                <element signature="e#3809#4024#0" expanded="true" />
-                <element signature="e#4527#4545#0" expanded="false" />
-                <element signature="e#4550#4622#0" expanded="true" />
-                <element signature="e#4649#5418#0" expanded="true" />
-                <element signature="e#4972#5035#0" expanded="true" />
-                <element signature="e#5078#5149#0" expanded="true" />
-                <element signature="e#5193#5258#0" expanded="true" />
-                <element signature="e#5298#5369#0" expanded="true" />
-                <element signature="e#5477#5606#0" expanded="true" />
-                <element signature="e#5662#5988#0" expanded="true" />
-                <element signature="e#5788#5835#0" expanded="true" />
-                <element signature="e#5996#6065#0" expanded="true" />
-                <element signature="e#6121#6744#0" expanded="true" />
-                <element signature="e#6247#6294#0" expanded="true" />
-                <element signature="e#6446#6483#0" expanded="true" />
-                <element signature="e#6752#6809#0" expanded="true" />
-                <element signature="e#6865#7570#0" expanded="true" />
-                <element signature="e#7030#7085#0" expanded="true" />
-                <element signature="e#7578#7707#0" expanded="true" />
-                <element signature="e#7761#7853#0" expanded="true" />
-                <element signature="e#7876#7899#0" expanded="false" />
-                <element signature="e#8273#8318#0" expanded="true" />
-                <element signature="e#8823#9081#0" expanded="true" />
+                <element signature="e#3899#3930#0" expanded="false" />
+                <element signature="e#3936#4057#0" expanded="true" />
+                <element signature="e#4109#5009#0" expanded="true" />
+                <element signature="e#4376#4591#0" expanded="true" />
+                <element signature="e#5094#5112#0" expanded="false" />
+                <element signature="e#5117#5189#0" expanded="true" />
+                <element signature="e#5216#5985#0" expanded="true" />
+                <element signature="e#5539#5602#0" expanded="true" />
+                <element signature="e#5645#5716#0" expanded="true" />
+                <element signature="e#5760#5825#0" expanded="true" />
+                <element signature="e#5865#5936#0" expanded="true" />
+                <element signature="e#6044#6173#0" expanded="true" />
+                <element signature="e#6229#6555#0" expanded="true" />
+                <element signature="e#6355#6402#0" expanded="true" />
+                <element signature="e#6563#6632#0" expanded="true" />
+                <element signature="e#6688#7311#0" expanded="true" />
+                <element signature="e#6814#6861#0" expanded="true" />
+                <element signature="e#7013#7050#0" expanded="true" />
+                <element signature="e#7319#7376#0" expanded="true" />
+                <element signature="e#7432#8137#0" expanded="true" />
+                <element signature="e#7597#7652#0" expanded="true" />
+                <element signature="e#8145#8274#0" expanded="true" />
+                <element signature="e#8328#8420#0" expanded="true" />
+                <element signature="e#8843#8888#0" expanded="true" />
+                <element signature="e#9659#9917#0" expanded="true" />
                 <element signature="n#!!block;n#GetFeatureOfCoordinateId#0;n#!!block;n#Map_OL3#0" expanded="true" />
-                <element signature="e#9630#10479#0" expanded="true" />
-                <element signature="e#10529#10842#0" expanded="true" />
-                <element signature="e#10893#11005#0" expanded="true" />
-                <element signature="e#12046#12613#0" expanded="true" />
-                <element signature="e#12200#12228#0" expanded="true" />
-                <element signature="e#12673#12822#0" expanded="true" />
-                <element signature="e#12868#13634#0" expanded="true" />
-                <element signature="e#14381#14954#0" expanded="true" />
-                <element signature="e#14552#14599#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeoMapsPlanner.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46358544">
-              <caret line="624" column="84" selection-start-line="624" selection-start-column="84" selection-end-line="624" selection-end-column="84" />
-              <folding>
-                <element signature="e#113#327#0" expanded="false" />
-                <element signature="e#341#555#0" expanded="false" />
-                <element signature="e#607#650#0" expanded="false" />
-                <element signature="e#4878#4913#0" expanded="false" />
-                <element signature="e#4947#4982#0" expanded="false" />
-                <element signature="e#5119#5415#0" expanded="false" />
-                <element signature="e#5177#5409#0" expanded="false" />
-                <element signature="e#5275#5316#0" expanded="false" />
-                <element signature="e#5333#5399#0" expanded="false" />
-                <element signature="n#!!block;n#ParseCoordinates#0" expanded="true" />
-                <element signature="e#6671#7236#0" expanded="false" />
-                <element signature="e#6801#7222#0" expanded="false" />
-                <element signature="e#6882#7204#0" expanded="false" />
-                <element signature="e#7103#7182#0" expanded="false" />
-                <element signature="e#7254#7377#0" expanded="false" />
-                <element signature="e#7629#9057#0" expanded="false" />
-                <element signature="e#7643#9004#0" expanded="false" />
-                <element signature="e#7958#8180#0" expanded="false" />
-                <element signature="e#7960#8029#0" expanded="false" />
-                <element signature="e#8198#8994#0" expanded="false" />
-                <element signature="e#8269#8937#0" expanded="false" />
-                <element signature="e#8381#8473#0" expanded="false" />
-                <element signature="e#9016#9051#0" expanded="false" />
-                <element signature="n#!!block;n#RenderCoordBoxToPageHTML#0" expanded="true" />
-                <element signature="e#10999#11256#0" expanded="false" />
-                <element signature="e#11326#11697#0" expanded="false" />
-                <element signature="e#11891#12331#0" expanded="false" />
-                <element signature="e#13729#14537#0" expanded="false" />
-                <element signature="e#14791#15065#0" expanded="false" />
-                <element signature="e#17021#17103#0" expanded="false" />
-                <element signature="e#17545#17627#0" expanded="false" />
-                <element signature="e#18036#18175#0" expanded="false" />
-                <element signature="e#18181#18257#0" expanded="false" />
-                <element signature="e#18315#18453#0" expanded="false" />
-                <element signature="n#!!block;n#CreateProjection#0" expanded="true" />
-                <element signature="e#19686#20067#0" expanded="false" />
-                <element signature="n#!!block;n#AppendCoordBoxHandler#0" expanded="true" />
-                <element signature="e#20398#20435#0" expanded="false" />
-                <element signature="e#20441#20478#0" expanded="false" />
-                <element signature="e#22559#22663#0" expanded="false" />
-                <element signature="e#22851#22888#0" expanded="false" />
-                <element signature="e#22894#22931#0" expanded="false" />
-                <element signature="e#23336#23452#0" expanded="false" />
-                <element signature="e#23555#23671#0" expanded="false" />
-                <element signature="e#24125#24162#0" expanded="false" />
-                <element signature="e#24168#24205#0" expanded="false" />
-                <element signature="e#24608#24724#0" expanded="false" />
-                <element signature="e#24827#24943#0" expanded="false" />
-                <element signature="e#26537#27421#0" expanded="true" />
-                <element signature="e#27568#27847#0" expanded="false" />
-                <element signature="e#27666#27729#0" expanded="false" />
-                <element signature="e#27945#28243#0" expanded="false" />
-                <element signature="e#28082#28233#0" expanded="false" />
-                <element signature="e#28291#28350#0" expanded="true" />
-                <element signature="e#28397#28594#0" expanded="true" />
-                <element signature="e#28428#28540#0" expanded="false" />
-                <element signature="e#28546#28588#0" expanded="false" />
-                <element signature="n#!!block;n#DeleteCoordinate#0" expanded="true" />
-                <element signature="n#!!block;n#SetMainCoord#0" expanded="true" />
-                <element signature="n#!!block;n#AddNewCoordBox#0" expanded="true" />
-                <element signature="e#29489#29801#0" expanded="false" />
-                <element signature="e#29647#29707#0" expanded="false" />
-                <element signature="n#!!block;n#CreateAndAddNewCoordinate#0" expanded="true" />
-                <element signature="n#!!block;n#InitUI#0" expanded="true" />
-                <element signature="e#30729#30840#0" expanded="true" />
-                <marker date="1431779368021" expanded="false" signature="1203:1215" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="2150:2164" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="2353:2367" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="2894:2908" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="3427:3441" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="4111:4125" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="4266:4280" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="4328:4342" placeholder="..." />
-                <marker date="1431779368021" expanded="false" signature="4390:4404" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeoMapsPlanner.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/settings.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="188" column="35" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="35" />
-              <folding>
-                <element signature="n#!!block;n#AddNewCoordinateObject#0" expanded="true" />
-                <element signature="e#7899#8721#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Coordinate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Coordinate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="436" column="27" selection-start-line="436" selection-start-column="22" selection-end-line="436" selection-end-column="27" />
-              <folding>
-                <element signature="n#!!block;n#Coordinate#0" expanded="true" />
-                <element signature="e#1333#1444#0" expanded="true" />
-                <element signature="n#!!block;n#NAVREFCallBackHandler#0;n#!!block;n#Coordinate#0" expanded="true" />
-                <element signature="e#11000#11248#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wgs84_ch1903.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/wgs84_ch1903.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="152" selection-end-column="1" />
-              <folding>
-                <element signature="n#!!block;n#CHtoWGSlat#0" expanded="true" />
-                <element signature="n#!!block;n#runde#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Core.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Core.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-              <folding>
-                <element signature="e#1539#1935#0" expanded="true" />
-                <element signature="e#1978#2087#0" expanded="true" />
-                <element signature="e#3157#3672#0" expanded="true" />
-                <element signature="e#3714#3771#0" expanded="true" />
+                <element signature="e#10467#11316#0" expanded="true" />
+                <element signature="e#11366#11679#0" expanded="true" />
+                <element signature="e#11730#11842#0" expanded="true" />
+                <element signature="e#12883#13450#0" expanded="true" />
+                <element signature="e#13037#13065#0" expanded="true" />
+                <element signature="e#13510#13659#0" expanded="true" />
+                <element signature="e#13705#14471#0" expanded="true" />
+                <element signature="e#14524#15157#0" expanded="true" />
+                <element signature="e#15218#15791#0" expanded="true" />
+                <element signature="e#15389#15436#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -281,7 +126,6 @@
         <option value="$PROJECT_DIR$/css/glyphicon.css" />
         <option value="api3.geo.admin.ch/1422462768/static/js/ga.js" />
         <option value="api3.geo.admin.ch/1423674042/static/js/ga.js" />
-        <option value="$PROJECT_DIR$/css/fragment.css" />
         <option value="$PROJECT_DIR$/js/Base.js" />
         <option value="$PROJECT_DIR$/js/latlon.js" />
         <option value="$PROJECT_DIR$/vector-labels.js" />
@@ -292,13 +136,14 @@
         <option value="$PROJECT_DIR$/index.php.html" />
         <option value="$PROJECT_DIR$/js/Coordinate.js" />
         <option value="api3.geo.admin.ch/1429771861/static/js/ga.js" />
-        <option value="$PROJECT_DIR$/GeoMapsPlanner.html" />
         <option value="$PROJECT_DIR$/js/MapOL3.js" />
         <option value="$PROJECT_DIR$/js/Core.js" />
         <option value="$PROJECT_DIR$/js/settings.js" />
         <option value="api3.geo.admin.ch/1430902887/static/js/ga.js" />
         <option value="ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
         <option value="$PROJECT_DIR$/js/GeoMapsPlanner.js" />
+        <option value="$PROJECT_DIR$/GeoMapsPlanner.html" />
+        <option value="$PROJECT_DIR$/css/fragment.css" />
         <option value="$PROJECT_DIR$/js/Map_OL3.js" />
       </list>
     </option>
@@ -413,20 +258,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="netzwolf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -697,7 +528,13 @@
       <option name="project" value="LOCAL" />
       <updated>1431463412731</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Main-Layout">
+      <created>1431779975248</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1431779975248</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -724,17 +561,14 @@
     <frame x="-8" y="-8" width="2576" height="1426" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16390859" sideWeight="0.3773585" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16390859" sideWeight="0.3759191" order="0" side_tool="true" content_ui="combo" x="1286" y="458" width="261" height="667" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4118217" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4148265" sideWeight="0.15642238" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14184397" sideWeight="0.15642238" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35725552" sideWeight="0.49802995" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21828212" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16390859" sideWeight="0.6226415" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16390859" sideWeight="0.6240809" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17482886" sideWeight="0.8595679" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4148265" sideWeight="0.8435776" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56809336" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
@@ -742,8 +576,11 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.19475357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1643" y="243" width="775" height="508" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527559" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35725552" sideWeight="0.49802995" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14195584" sideWeight="0.8435776" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29766536" sideWeight="0.49921012" order="7" side_tool="false" content_ui="tabs" />
@@ -806,21 +643,6 @@
           <line>352</line>
           <option name="timeStamp" value="824" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/Map_OL3.js</url>
-          <line>426</line>
-          <option name="timeStamp" value="901" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/Map_OL3.js</url>
-          <line>400</line>
-          <option name="timeStamp" value="902" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/Map_OL3.js</url>
-          <line>435</line>
-          <option name="timeStamp" value="903" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -830,11 +652,11 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="904" />
+      <option name="time" value="906" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
-        <watch expression="geoMapsSettings" />
+        <watch expression="vector" />
       </configuration>
     </watches-manager>
   </component>
@@ -957,32 +779,23 @@
             <element signature="e#24168#24205#0" expanded="false" />
             <element signature="e#24608#24724#0" expanded="false" />
             <element signature="e#24827#24943#0" expanded="false" />
-            <element signature="e#26537#27421#0" expanded="true" />
-            <element signature="e#27568#27847#0" expanded="false" />
-            <element signature="e#27666#27729#0" expanded="false" />
-            <element signature="e#27945#28243#0" expanded="false" />
-            <element signature="e#28082#28233#0" expanded="false" />
-            <element signature="e#28291#28350#0" expanded="true" />
-            <element signature="e#28397#28594#0" expanded="true" />
-            <element signature="e#28428#28540#0" expanded="false" />
-            <element signature="e#28546#28588#0" expanded="false" />
+            <element signature="e#26540#27424#0" expanded="true" />
+            <element signature="e#27571#27850#0" expanded="false" />
+            <element signature="e#27669#27732#0" expanded="false" />
+            <element signature="e#27948#28246#0" expanded="false" />
+            <element signature="e#28085#28236#0" expanded="false" />
+            <element signature="e#28294#28353#0" expanded="true" />
+            <element signature="e#28400#28597#0" expanded="true" />
+            <element signature="e#28431#28543#0" expanded="false" />
+            <element signature="e#28549#28591#0" expanded="false" />
             <element signature="n#!!block;n#DeleteCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#SetMainCoord#0" expanded="true" />
             <element signature="n#!!block;n#AddNewCoordBox#0" expanded="true" />
-            <element signature="e#29489#29801#0" expanded="false" />
-            <element signature="e#29647#29707#0" expanded="false" />
+            <element signature="e#29492#29804#0" expanded="false" />
+            <element signature="e#29650#29710#0" expanded="false" />
             <element signature="n#!!block;n#CreateAndAddNewCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#InitUI#0" expanded="true" />
-            <element signature="e#30729#30840#0" expanded="true" />
-            <marker date="1431779368021" expanded="false" signature="1203:1215" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2150:2164" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2353:2367" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2894:2908" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="3427:3441" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4111:4125" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4266:4280" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4328:4342" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4390:4404" placeholder="..." />
+            <element signature="e#30732#30843#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1112,32 +925,23 @@
             <element signature="e#24168#24205#0" expanded="false" />
             <element signature="e#24608#24724#0" expanded="false" />
             <element signature="e#24827#24943#0" expanded="false" />
-            <element signature="e#26537#27421#0" expanded="true" />
-            <element signature="e#27568#27847#0" expanded="false" />
-            <element signature="e#27666#27729#0" expanded="false" />
-            <element signature="e#27945#28243#0" expanded="false" />
-            <element signature="e#28082#28233#0" expanded="false" />
-            <element signature="e#28291#28350#0" expanded="true" />
-            <element signature="e#28397#28594#0" expanded="true" />
-            <element signature="e#28428#28540#0" expanded="false" />
-            <element signature="e#28546#28588#0" expanded="false" />
+            <element signature="e#26540#27424#0" expanded="true" />
+            <element signature="e#27571#27850#0" expanded="false" />
+            <element signature="e#27669#27732#0" expanded="false" />
+            <element signature="e#27948#28246#0" expanded="false" />
+            <element signature="e#28085#28236#0" expanded="false" />
+            <element signature="e#28294#28353#0" expanded="true" />
+            <element signature="e#28400#28597#0" expanded="true" />
+            <element signature="e#28431#28543#0" expanded="false" />
+            <element signature="e#28549#28591#0" expanded="false" />
             <element signature="n#!!block;n#DeleteCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#SetMainCoord#0" expanded="true" />
             <element signature="n#!!block;n#AddNewCoordBox#0" expanded="true" />
-            <element signature="e#29489#29801#0" expanded="false" />
-            <element signature="e#29647#29707#0" expanded="false" />
+            <element signature="e#29492#29804#0" expanded="false" />
+            <element signature="e#29650#29710#0" expanded="false" />
             <element signature="n#!!block;n#CreateAndAddNewCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#InitUI#0" expanded="true" />
-            <element signature="e#30729#30840#0" expanded="true" />
-            <marker date="1431779368021" expanded="false" signature="1203:1215" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2150:2164" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2353:2367" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2894:2908" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="3427:3441" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4111:4125" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4266:4280" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4328:4342" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4390:4404" placeholder="..." />
+            <element signature="e#30732#30843#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1195,32 +999,23 @@
             <element signature="e#24168#24205#0" expanded="false" />
             <element signature="e#24608#24724#0" expanded="false" />
             <element signature="e#24827#24943#0" expanded="false" />
-            <element signature="e#26537#27421#0" expanded="true" />
-            <element signature="e#27568#27847#0" expanded="false" />
-            <element signature="e#27666#27729#0" expanded="false" />
-            <element signature="e#27945#28243#0" expanded="false" />
-            <element signature="e#28082#28233#0" expanded="false" />
-            <element signature="e#28291#28350#0" expanded="true" />
-            <element signature="e#28397#28594#0" expanded="true" />
-            <element signature="e#28428#28540#0" expanded="false" />
-            <element signature="e#28546#28588#0" expanded="false" />
+            <element signature="e#26540#27424#0" expanded="true" />
+            <element signature="e#27571#27850#0" expanded="false" />
+            <element signature="e#27669#27732#0" expanded="false" />
+            <element signature="e#27948#28246#0" expanded="false" />
+            <element signature="e#28085#28236#0" expanded="false" />
+            <element signature="e#28294#28353#0" expanded="true" />
+            <element signature="e#28400#28597#0" expanded="true" />
+            <element signature="e#28431#28543#0" expanded="false" />
+            <element signature="e#28549#28591#0" expanded="false" />
             <element signature="n#!!block;n#DeleteCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#SetMainCoord#0" expanded="true" />
             <element signature="n#!!block;n#AddNewCoordBox#0" expanded="true" />
-            <element signature="e#29489#29801#0" expanded="false" />
-            <element signature="e#29647#29707#0" expanded="false" />
+            <element signature="e#29492#29804#0" expanded="false" />
+            <element signature="e#29650#29710#0" expanded="false" />
             <element signature="n#!!block;n#CreateAndAddNewCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#InitUI#0" expanded="true" />
-            <element signature="e#30729#30840#0" expanded="true" />
-            <marker date="1431779368021" expanded="false" signature="1203:1215" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2150:2164" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2353:2367" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2894:2908" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="3427:3441" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4111:4125" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4266:4280" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4328:4342" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4390:4404" placeholder="..." />
+            <element signature="e#30732#30843#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1305,32 +1100,23 @@
             <element signature="e#24168#24205#0" expanded="false" />
             <element signature="e#24608#24724#0" expanded="false" />
             <element signature="e#24827#24943#0" expanded="false" />
-            <element signature="e#26537#27421#0" expanded="true" />
-            <element signature="e#27568#27847#0" expanded="false" />
-            <element signature="e#27666#27729#0" expanded="false" />
-            <element signature="e#27945#28243#0" expanded="false" />
-            <element signature="e#28082#28233#0" expanded="false" />
-            <element signature="e#28291#28350#0" expanded="true" />
-            <element signature="e#28397#28594#0" expanded="true" />
-            <element signature="e#28428#28540#0" expanded="false" />
-            <element signature="e#28546#28588#0" expanded="false" />
+            <element signature="e#26540#27424#0" expanded="true" />
+            <element signature="e#27571#27850#0" expanded="false" />
+            <element signature="e#27669#27732#0" expanded="false" />
+            <element signature="e#27948#28246#0" expanded="false" />
+            <element signature="e#28085#28236#0" expanded="false" />
+            <element signature="e#28294#28353#0" expanded="true" />
+            <element signature="e#28400#28597#0" expanded="true" />
+            <element signature="e#28431#28543#0" expanded="false" />
+            <element signature="e#28549#28591#0" expanded="false" />
             <element signature="n#!!block;n#DeleteCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#SetMainCoord#0" expanded="true" />
             <element signature="n#!!block;n#AddNewCoordBox#0" expanded="true" />
-            <element signature="e#29489#29801#0" expanded="false" />
-            <element signature="e#29647#29707#0" expanded="false" />
+            <element signature="e#29492#29804#0" expanded="false" />
+            <element signature="e#29650#29710#0" expanded="false" />
             <element signature="n#!!block;n#CreateAndAddNewCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#InitUI#0" expanded="true" />
-            <element signature="e#30729#30840#0" expanded="true" />
-            <marker date="1431779368021" expanded="false" signature="1203:1215" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2150:2164" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2353:2367" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2894:2908" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="3427:3441" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4111:4125" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4266:4280" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4328:4342" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4390:4404" placeholder="..." />
+            <element signature="e#30732#30843#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1449,13 +1235,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/fragment.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="375" column="34" selection-start-line="375" selection-start-column="34" selection-end-line="375" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/archive/ol3/data/layers/_notes/dwsync.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06882591">
@@ -1519,7 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1540,23 +1318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="152" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#CHtoWGSlat#0" expanded="true" />
-            <element signature="n#!!block;n#runde#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding>
-            <element signature="e#1539#1935#0" expanded="true" />
-            <element signature="e#1978#2087#0" expanded="true" />
-            <element signature="e#3157#3672#0" expanded="true" />
-            <element signature="e#3714#3771#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1622,10 +1383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="188" column="35" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!block;n#AddNewCoordinateObject#0" expanded="true" />
-            <element signature="e#7899#8721#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1639,69 +1396,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Map_OL3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="429" column="143" selection-start-line="429" selection-start-column="143" selection-end-line="429" selection-end-column="143" />
-          <folding>
-            <element signature="e#96#115#0" expanded="false" />
-            <element signature="e#586#1097#0" expanded="true" />
-            <element signature="e#1161#2060#0" expanded="true" />
-            <element signature="e#2109#2742#0" expanded="true" />
-            <element signature="e#2156#2735#0" expanded="true" />
-            <element signature="e#2264#2300#0" expanded="true" />
-            <element signature="e#3332#3363#0" expanded="false" />
-            <element signature="e#3369#3490#0" expanded="true" />
-            <element signature="e#3542#4442#0" expanded="true" />
-            <element signature="e#3809#4024#0" expanded="true" />
-            <element signature="e#4527#4545#0" expanded="false" />
-            <element signature="e#4550#4622#0" expanded="true" />
-            <element signature="e#4649#5418#0" expanded="true" />
-            <element signature="e#4972#5035#0" expanded="true" />
-            <element signature="e#5078#5149#0" expanded="true" />
-            <element signature="e#5193#5258#0" expanded="true" />
-            <element signature="e#5298#5369#0" expanded="true" />
-            <element signature="e#5477#5606#0" expanded="true" />
-            <element signature="e#5662#5988#0" expanded="true" />
-            <element signature="e#5788#5835#0" expanded="true" />
-            <element signature="e#5996#6065#0" expanded="true" />
-            <element signature="e#6121#6744#0" expanded="true" />
-            <element signature="e#6247#6294#0" expanded="true" />
-            <element signature="e#6446#6483#0" expanded="true" />
-            <element signature="e#6752#6809#0" expanded="true" />
-            <element signature="e#6865#7570#0" expanded="true" />
-            <element signature="e#7030#7085#0" expanded="true" />
-            <element signature="e#7578#7707#0" expanded="true" />
-            <element signature="e#7761#7853#0" expanded="true" />
-            <element signature="e#7876#7899#0" expanded="false" />
-            <element signature="e#8273#8318#0" expanded="true" />
-            <element signature="e#8823#9081#0" expanded="true" />
-            <element signature="n#!!block;n#GetFeatureOfCoordinateId#0;n#!!block;n#Map_OL3#0" expanded="true" />
-            <element signature="e#9630#10479#0" expanded="true" />
-            <element signature="e#10529#10842#0" expanded="true" />
-            <element signature="e#10893#11005#0" expanded="true" />
-            <element signature="e#12046#12613#0" expanded="true" />
-            <element signature="e#12200#12228#0" expanded="true" />
-            <element signature="e#12673#12822#0" expanded="true" />
-            <element signature="e#12868#13634#0" expanded="true" />
-            <element signature="e#14381#14954#0" expanded="true" />
-            <element signature="e#14552#14599#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/GeoMapsPlanner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46358544">
-          <caret line="624" column="84" selection-start-line="624" selection-start-column="84" selection-end-line="624" selection-end-column="84" />
+        <state vertical-scroll-proportion="2.4698114">
+          <caret line="612" column="33" selection-start-line="612" selection-start-column="33" selection-end-line="612" selection-end-column="33" />
           <folding>
             <element signature="e#113#327#0" expanded="false" />
             <element signature="e#341#555#0" expanded="false" />
@@ -1751,32 +1449,95 @@
             <element signature="e#24168#24205#0" expanded="false" />
             <element signature="e#24608#24724#0" expanded="false" />
             <element signature="e#24827#24943#0" expanded="false" />
-            <element signature="e#26537#27421#0" expanded="true" />
-            <element signature="e#27568#27847#0" expanded="false" />
-            <element signature="e#27666#27729#0" expanded="false" />
-            <element signature="e#27945#28243#0" expanded="false" />
-            <element signature="e#28082#28233#0" expanded="false" />
-            <element signature="e#28291#28350#0" expanded="true" />
-            <element signature="e#28397#28594#0" expanded="true" />
-            <element signature="e#28428#28540#0" expanded="false" />
-            <element signature="e#28546#28588#0" expanded="false" />
+            <element signature="e#26540#27424#0" expanded="true" />
+            <element signature="e#27571#27850#0" expanded="false" />
+            <element signature="e#27669#27732#0" expanded="false" />
+            <element signature="e#27948#28246#0" expanded="false" />
+            <element signature="e#28085#28236#0" expanded="false" />
+            <element signature="e#28294#28353#0" expanded="true" />
+            <element signature="e#28400#28597#0" expanded="true" />
+            <element signature="e#28431#28543#0" expanded="false" />
+            <element signature="e#28549#28591#0" expanded="false" />
             <element signature="n#!!block;n#DeleteCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#SetMainCoord#0" expanded="true" />
             <element signature="n#!!block;n#AddNewCoordBox#0" expanded="true" />
-            <element signature="e#29489#29801#0" expanded="false" />
-            <element signature="e#29647#29707#0" expanded="false" />
+            <element signature="e#29492#29804#0" expanded="false" />
+            <element signature="e#29650#29710#0" expanded="false" />
             <element signature="n#!!block;n#CreateAndAddNewCoordinate#0" expanded="true" />
             <element signature="n#!!block;n#InitUI#0" expanded="true" />
-            <element signature="e#30729#30840#0" expanded="true" />
-            <marker date="1431779368021" expanded="false" signature="1203:1215" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2150:2164" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2353:2367" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="2894:2908" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="3427:3441" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4111:4125" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4266:4280" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4328:4342" placeholder="..." />
-            <marker date="1431779368021" expanded="false" signature="4390:4404" placeholder="..." />
+            <element signature="e#30732#30843#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88773584">
+          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/fragment.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33268672">
+          <caret line="360" column="13" selection-start-line="360" selection-start-column="13" selection-end-line="360" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoMapsPlanner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.827853">
+          <caret line="113" column="17" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Map_OL3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50329876">
+          <caret line="318" column="84" selection-start-line="318" selection-start-column="84" selection-end-line="318" selection-end-column="84" />
+          <folding>
+            <element signature="e#586#1097#0" expanded="true" />
+            <element signature="e#1161#2060#0" expanded="true" />
+            <element signature="e#2109#2742#0" expanded="true" />
+            <element signature="e#2156#2735#0" expanded="true" />
+            <element signature="e#2264#2300#0" expanded="true" />
+            <element signature="e#3899#3930#0" expanded="false" />
+            <element signature="e#3936#4057#0" expanded="true" />
+            <element signature="e#4109#5009#0" expanded="true" />
+            <element signature="e#4376#4591#0" expanded="true" />
+            <element signature="e#5094#5112#0" expanded="false" />
+            <element signature="e#5117#5189#0" expanded="true" />
+            <element signature="e#5216#5985#0" expanded="true" />
+            <element signature="e#5539#5602#0" expanded="true" />
+            <element signature="e#5645#5716#0" expanded="true" />
+            <element signature="e#5760#5825#0" expanded="true" />
+            <element signature="e#5865#5936#0" expanded="true" />
+            <element signature="e#6044#6173#0" expanded="true" />
+            <element signature="e#6229#6555#0" expanded="true" />
+            <element signature="e#6355#6402#0" expanded="true" />
+            <element signature="e#6563#6632#0" expanded="true" />
+            <element signature="e#6688#7311#0" expanded="true" />
+            <element signature="e#6814#6861#0" expanded="true" />
+            <element signature="e#7013#7050#0" expanded="true" />
+            <element signature="e#7319#7376#0" expanded="true" />
+            <element signature="e#7432#8137#0" expanded="true" />
+            <element signature="e#7597#7652#0" expanded="true" />
+            <element signature="e#8145#8274#0" expanded="true" />
+            <element signature="e#8328#8420#0" expanded="true" />
+            <element signature="e#8843#8888#0" expanded="true" />
+            <element signature="e#9659#9917#0" expanded="true" />
+            <element signature="n#!!block;n#GetFeatureOfCoordinateId#0;n#!!block;n#Map_OL3#0" expanded="true" />
+            <element signature="e#10467#11316#0" expanded="true" />
+            <element signature="e#11366#11679#0" expanded="true" />
+            <element signature="e#11730#11842#0" expanded="true" />
+            <element signature="e#12883#13450#0" expanded="true" />
+            <element signature="e#13037#13065#0" expanded="true" />
+            <element signature="e#13510#13659#0" expanded="true" />
+            <element signature="e#13705#14471#0" expanded="true" />
+            <element signature="e#14524#15157#0" expanded="true" />
+            <element signature="e#15218#15791#0" expanded="true" />
+            <element signature="e#15389#15436#0" expanded="true" />
           </folding>
         </state>
       </provider>

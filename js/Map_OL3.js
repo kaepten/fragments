@@ -107,6 +107,26 @@ function Map_OL3() {
         })
     });
 
+    var styleGebiete = new ol.style.Style({
+        fill: new ol.style.Fill({
+            color: 'rgba(255, 100, 50, 0.3)'
+        }),
+        stroke: new ol.style.Stroke({
+            width: 2,
+            color: 'rgba(255, 100, 50, 0.8)'
+        }),
+        image: new ol.style.Circle({
+            fill: new ol.style.Fill({
+                color: 'rgba(55, 200, 150, 0.5)'
+            }),
+            stroke: new ol.style.Stroke({
+                width: 1,
+                color: 'rgba(55, 200, 150, 0.8)'
+            }),
+            radius: 7
+        })
+    });
+
     //endregion
 
     //region CustomControl Rotation
@@ -272,6 +292,9 @@ function Map_OL3() {
 
     //region Initialize Map
 
+
+
+
     var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
     var currentView = new ol.View({
         resolution: 10,
@@ -291,12 +314,33 @@ function Map_OL3() {
         view: currentView
     });
 
+
+    var schutz1 = ga.layer.create('ch.swisstopo.vec200-adminboundaries-protectedarea', {opacity: '0.3'});
+    var schutz2 = ga.layer.create('ch.bafu.wrz-wildruhezonen_portal', {opacity: '0.5'});
+    map.addLayer(schutz1);
+    map.addLayer(schutz2);
+
+
     var wayPoints=[];
     var vectorLayer = new ol.layer.Vector();
     vectorLayer.setStyle(createPointStyleFunction());
     var vectorSource = new ol.source.Vector();
     vectorLayer.setSource(vectorSource);
     map.addLayer(vectorLayer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     var styleFunction = function(feature, resolution) {
         var geometry = feature.getGeometry();
@@ -313,6 +357,7 @@ function Map_OL3() {
     });
     var vectorSourceLine = new ol.source.Vector();
     map.addLayer(vectorLayerLine);
+
 
 
     //endregion

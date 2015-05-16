@@ -82,7 +82,7 @@
 .gM .calculator {
 	background: black;
 	float: right;
-    width: 300px;
+    width: 350px;
 }
 
 .gM .left {
@@ -208,7 +208,7 @@
 .calculator > .header {
 	background-color: #dadada;
 	border-bottom: solid 1px #e3e3e3;	
-	width: 300px;
+	width: 350px;
 }
 
 .calculator > .header div.left:nth-child(2) {	
@@ -308,7 +308,7 @@
 	position: relative;
 	font-size: 1em;
 	margin: 3px;
-	width: 200px;
+	width: 250px;
 }
 
 .calculator input[type="text"]:focus {
@@ -340,7 +340,7 @@
 .coordBox {
 	list-style-type: none;
 	background-color: #EDF2FD;
-	width: 300px;
+	width: 350px;
 	border-bottom: solid 1px #e3e3e3;
 }
 
@@ -358,7 +358,7 @@
 
 .coordBox > .main > div.content {
 	height: 100%;
-	width: 270px;
+	width: 320px;
 	float: left;
 	background-color: #F0F0F0;
 }
@@ -452,7 +452,7 @@
         background-color: rgba(80, 90, 100, .6);;
         overflow: auto;
         position: absolute;      
-        width: 300px;
+        width: 350px;
         right: 0px;
         top: 0px;
         bottom: 0px;
@@ -483,7 +483,7 @@
         color: #FFF;
         position: absolute;
         display: block;
-        right: 300px;
+        right: 350px;
         width: 20px;
         height: 40px;
         top: 20px;

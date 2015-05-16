@@ -609,6 +609,13 @@ function AppendDocumentHandler() {
     });
 
     $("a.allShowHide").click(function () {
+        for(var idx=0; idx<geoMapsSettings.siteSetting.coordSettings.length; idx++) {
+            for(var idxx=0; idxx<geoMapsSettings.siteSetting.coordSettings[idx].showLineTo.length; idxx++) {
+                if(geoMapsSettings.siteSetting.coordSettings[idx].showLineTo[idxx].isShown) {
+                    map.RemoveLine(geoMapsSettings.siteSetting.coordSettings[idx].id, geoMapsSettings.siteSetting.coordSettings[idx].showLineTo[idxx].coordId);
+                }
+            }
+        }
         var showElements = $(".coordBox .ext .showhide");
         for (var i = 0; i < showElements.length; i++) {
             var elO = showElements.eq(i).find(".glyphicon-eye-open");
@@ -618,15 +625,6 @@ function AppendDocumentHandler() {
                 elC.toggle();
             }
         }
-
-        for(var idx=0; idx<geoMapsSettings.siteSetting.coordSettings.length; idx++) {
-            for(var idxx=0; geoMapsSettings.siteSetting.coordSettings[idx].showLineTo.length; idxx++) {
-                if(geoMapsSettings.siteSetting.coordSettings[idx].showLineTo[idxx].isShown) {
-                    map.RemoveLine(geoMapsSettings.siteSetting.coordSettings[idx].id, geoMapsSettings.siteSetting.coordSettings[idx].showLineTo[idxx].coordId);
-                }
-            }
-        }
-
         SettingSite.HideAllShowLineTo(geoMapsSettings);
     });
 
