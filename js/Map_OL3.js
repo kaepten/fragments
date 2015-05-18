@@ -298,7 +298,7 @@ function Map_OL3() {
     var layer = ga.layer.create('ch.swisstopo.pixelkarte-farbe');
     var currentView = new ol.View({
         resolution: 10,
-        center: [682714.88, 235624.94] // 682 714.88 / 235 624.94
+        center: [600000, 200000] // 682714.88, 235624.94
     })
     var map = new ga.Map({
         interactions: ol.interaction.defaults().extend([new app.Drag()]),
@@ -314,33 +314,12 @@ function Map_OL3() {
         view: currentView
     });
 
-
-    var schutz1 = ga.layer.create('ch.swisstopo.vec200-adminboundaries-protectedarea', {opacity: '0.3'});
-    var schutz2 = ga.layer.create('ch.bafu.wrz-wildruhezonen_portal', {opacity: '0.5'});
-    map.addLayer(schutz1);
-    map.addLayer(schutz2);
-
-
     var wayPoints=[];
     var vectorLayer = new ol.layer.Vector();
     vectorLayer.setStyle(createPointStyleFunction());
     var vectorSource = new ol.source.Vector();
     vectorLayer.setSource(vectorSource);
     map.addLayer(vectorLayer);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     var styleFunction = function(feature, resolution) {
         var geometry = feature.getGeometry();
@@ -395,6 +374,7 @@ function Map_OL3() {
         });
         wayPoints.push(point);
         vectorSource.addFeature(point);
+        map.getView().setCenter([newCoord.coordinate.Lv03.Y.Meter, newCoord.coordinate.Lv03.X.Meter]);
     }
 
     this.DeleteSingleWayPointById = function(id) {
@@ -481,6 +461,11 @@ function Map_OL3() {
             vectorSourceLine.removeFeature(removableFeature);
             vectorLayerLine.setSource(vectorSourceLine);
         }
+    }
+
+    this.AddLayer = function(layer) {
+        "use strict";
+        map.addLayer(layer);
     }
 
     //region Map Events

@@ -126,6 +126,7 @@
 .gM table {
 	border-spacing: 0;
 	border-collapse: collapse;
+	font-size: 1em;
 }
 
 .gM td {
@@ -345,7 +346,7 @@
 }
 
 .coordBox > .main > div.marker {
-	height: 100%;
+	/* height: 100%; */
 	width: 30px;
 	float: left;
 }
@@ -357,7 +358,7 @@
 }
 
 .coordBox > .main > div.content {
-	height: 100%;
+	/* height: 100%; */
 	width: 320px;
 	float: left;
 	background-color: #F0F0F0;

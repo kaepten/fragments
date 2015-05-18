@@ -123,11 +123,11 @@ function MergeCoordinateArray(sourceArray, targetArray) {
  */
 function ParseAllCoordinatesFormats() {
     var coords = new Array();
-    coords = MergeCoordinateArray(coords, ParseCoordinates(PageParse.DddRegExp));
+    // coords = MergeCoordinateArray(coords, ParseCoordinates(PageParse.DddRegExp));
     coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.DmmRegExp));
-    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.DmsRegExp));
-    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.LV03RegExp));
-    coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.LV95RegExp));
+    // coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.DmsRegExp));
+    // coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.LV03RegExp));
+    // coords = MergeCoordinateArray(coords,ParseCoordinates(PageParse.LV95RegExp));
     return coords;
 }
 
@@ -761,6 +761,64 @@ $(document).ready(function () {
     InitUI();
     AppendDocumentHandler();
     map = new Map_OL3();
+
+
+        var layers ={};
+        displayLayer = function(layerBodId, visible) {
+            layers[layerBodId].setVisible(visible);
+        };
+
+        var tpl =
+            '<div class="checkbox">' +
+            '<label>{label}' +
+            '<input type="checkbox" onclick="displayLayer(\'{layerBodId}\', this.checked)"/>' +
+            '</label>' +
+        '</div>';
+
+        var nano = function(template, data) {
+            return template.replace(/\{([\w\.]*)\}/g,
+                function (str, key) {
+                    var keys = key.split("."), value = data[keys.shift()];
+                    $.each(keys, function () {
+                        value = value[this];
+                    });
+                    return (value === null || value === undefined) ? "" : value;
+                }
+            );
+        };
+
+    Core.AppendLinkCursor($('.checkbox-tree'));
+    $('.checkbox-inhalt').hide();
+
+    $('.checkbox-tree').bind('click', function(evt) {
+            var display = $('.checkbox-inhalt').css('display');
+            if (display === 'block') {
+                $('.checkbox-inhalt').hide();
+            } else {
+                $('.checkbox-inhalt').show();
+            }
+            $(this).find('.glyphicon-chevron-down').toggle();
+            $(this).find('.glyphicon-chevron-up').toggle();
+        });
+
+        var catalogConfig = [
+            {layerBodId: 'ch.bafu.bundesinventare-amphibien', label: 'Amphibien Ortsfeste Objekte'},
+            {layerBodId: 'ch.bafu.bundesinventare-amphibien_wanderobjekte', label: 'Amphibien Wanderobjekte'},
+            {layerBodId: 'ch.bafu.bundesinventare-auen', label: 'Auengebiete'},
+            {layerBodId: 'ch.bafu.bundesinventare-bln', label: 'BLN'},
+            {layerBodId: 'ch.bafu.bundesinventare-flachmoore', label: 'Flachmoore'},
+            {layerBodId: 'ch.bafu.bundesinventare-hochmoore', label: 'Hochmoore'}
+        ];
+
+        for (var i=0; i < catalogConfig.length; i++) {
+            var item = catalogConfig[i];
+            $('.checkbox-inhalt').append(nano(tpl, item));
+            layers[item.layerBodId] = ga.layer.create(item.layerBodId);
+            layers[item.layerBodId].setVisible(false);
+            map.AddLayer(layers[item.layerBodId]);
+        }
+
+
     map.DrawWayPoints(geoMapsSettings);
 });
 
