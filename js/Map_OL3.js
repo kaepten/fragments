@@ -425,8 +425,8 @@ function Map_OL3() {
     this.ShowHideLine = function(isShown, coord1, coord2) {
         if(isShown) {
             this.AddLine(coord1, coord2);
-        } else {
-            this.RemoveLine(coord1.id, coord2.id);
+        } else if(coord1 != undefined && coord2 != undefined) {
+                this.RemoveLine(coord1.id, coord2.id);
         }
     }
 
